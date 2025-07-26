@@ -12,7 +12,7 @@ import Message from '../Message/Message';
 import { LuDot } from "react-icons/lu";
 
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
   // Accordion state (multi-open)
   const [openSections, setOpenSections] = useState({
     participants: false,
@@ -22,12 +22,18 @@ const LeftSidebar = () => {
 
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
+  const [receiverNames, setReceiverNames] = useState(['']);
   const handleRemoveReceiver = (id) => {
     if (receivers.length > 1) {
+      const idx = receivers.findIndex(r => r === id);
       setReceivers((prev) => prev.filter((r) => r !== id));
+      setReceiverNames((prev) => prev.filter((_, i) => i !== idx));
     }
   };
 
+  const handleAddMessage = () => {
+    setMessages(prev => [...prev, { id: Date.now() + Math.random(), text: '' }]);
+  };
   const handleAccordion = (section) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -37,6 +43,7 @@ const LeftSidebar = () => {
 
   const handleAddReceiver = () => {
     setReceivers((prev) => [...prev, Date.now() + Math.random()]);
+    setReceiverNames((prev) => [...prev, '']);
   };
 
   return (
@@ -184,7 +191,7 @@ const LeftSidebar = () => {
 
                               <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwo">
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwoContainer">
-                                  <Participant />
+                                  <Participant senderName={senderName} setSenderName={setSenderName} />
                                 </div>
                               </div>
                             </div>
@@ -218,7 +225,13 @@ const LeftSidebar = () => {
                                   <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivMiddleContainer">
                                     {receivers.map((id, idx) => (
                                       <div key={id} style={{marginBottom: '10px', position: 'relative'}}>
-                                        <ParticipantReceiver />
+                                        <ParticipantReceiver
+                                          value={receiverNames[idx]}
+                                          onChange={e => {
+                                            const val = e.target.value;
+                                            setReceiverNames(prev => prev.map((n, i) => i === idx ? val : n));
+                                          }}
+                                        />
                                         {receivers.length > 1 && (
                                           <button
                                             onClick={() => handleRemoveReceiver(id)}
@@ -344,7 +357,20 @@ const LeftSidebar = () => {
                     </div>
                     {openSections.messages && (
                       <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwo">
-                        <Message />
+                        {/* Usunięto pojedynczy Message, renderujemy tylko te z mapy */}
+                        {messages.map((msg, idx) => (
+                          <Message
+                            key={msg.id}
+                            senderName={senderName}
+                            receiverNames={receiverNames}
+                            defaultType={msg.type || 'sender'}
+                            _senderNameVersion={senderName}
+                            value={msg.text}
+                            onChange={val => {
+                              setMessages(prev => prev.map((m, i) => i === idx ? { ...m, text: val } : m));
+                            }}
+                          />
+                        ))}
                         
                         {/* Top Part */}
                         <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoTop"></div>
@@ -364,9 +390,11 @@ const LeftSidebar = () => {
                                 {/* Right Part */}
                                 <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRight">
                                   <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainer">
+                                  <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainer" onClick={handleAddMessage} style={{cursor:'pointer'}}>
                                     <p className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainerText">
                                       Add Message
                                     </p>
+                                  </div>
                                   </div>
                                 </div>
                               </div>

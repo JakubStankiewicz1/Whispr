@@ -2,7 +2,8 @@ import React from 'react';
 import './participant.css';
 import { FiUser } from "react-icons/fi";
 
-const Participant = () => {
+
+const Participant = ({ senderName, setSenderName }) => {
   return (
     <div className='participant'>
         <div className="participantContainer">
@@ -18,7 +19,13 @@ const Participant = () => {
             {/* Right Part */}
             <div className="participantContainerRight">
                 <div className="participantContainerRightContainer">
-                    <input type="text" placeholder='Sender name' className='participantContainerRightContainerInput' />
+                    <input
+                      type="text"
+                      placeholder='Sender name'
+                      className='participantContainerRightContainerInput'
+                      value={senderName}
+                      onChange={e => setSenderName(e.target.value)}
+                    />
                 </div>
             </div>
         </div>

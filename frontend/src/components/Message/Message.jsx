@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import './message.css';
 import { FiUser } from "react-icons/fi";
 import { GoArrowSwitch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 
-const Message = () => {
+import { useEffect } from 'react';
+const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNameVersion, value, onChange }) => {
+  const [text, setText] = useState(value || "");
+  const [focused, setFocused] = useState(false);
+  const [type, setType] = useState(defaultType); // 'sender' or 'receiver'
+  const [receiverIdx, setReceiverIdx] = useState(0);
+  useEffect(() => { setText(value || ""); }, [value, _senderNameVersion]);
+  const isActive = focused || text;
+  const displayName = type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '';
+  const displayRole = type === 'sender' ? 'Sender' : 'Receiver';
+  const handleSwitch = () => {
+    if (type === 'sender') {
+      setType('receiver');
+    } else {
+      // If multiple receivers, cycle through them
+      if (receiverNames && receiverNames.length > 1) {
+        setReceiverIdx(idx => (idx + 1) % receiverNames.length);
+      }
+      setType('sender');
+    }
+  };
   return (
     <div className='message'>
         <div className="messageContainer">
@@ -18,7 +38,7 @@ const Message = () => {
                         </div>
 
                         <div className="messageContainerDivLeftContainerSwitch">
-                            <div className="messageContainerDivLeftContainerSwitchContainer">
+                            <div className="messageContainerDivLeftContainerSwitchContainer" onClick={handleSwitch} style={{cursor:'pointer'}}>
                                 <GoArrowSwitch className='messageContainerDivLeftContainerSwitchContainerIcon' />
                             </div>
                         </div>
@@ -26,7 +46,7 @@ const Message = () => {
                 </div>
 
                 {/* Right Part */}
-                <div className="messageContainerDivRight">
+                <div className={`messageContainerDivRight${isActive ? ' active' : ''}`}>
                     <div className="messageContainerDivRightContainer">
                         {/* Top Part */}
                         <div className="messageContainerDivRightContainerTop">
@@ -37,7 +57,7 @@ const Message = () => {
                                         <div className="messageContainerDivRightContainerTopContainerLeftContainerOne">
                                             <div className="messageContainerDivRightContainerTopContainerLeftContainerOneContainer">
                                                 <p className="messageContainerDivRightContainerTopContainerLeftContainerOneContainerText">
-                                                    test
+                                                    {displayName || displayRole}
                                                 </p>
                                             </div>
                                         </div>
@@ -64,7 +84,13 @@ const Message = () => {
                             <div className="messageContainerDivRightContainerBottomContainer">
                                 <TextareaAutosize
                                   className='messageContainerDivRightContainerBottomContainerTextarea'
-                                  minRows={1}
+                                  value={text}
+                                  onChange={e => {
+                                    setText(e.target.value);
+                                    if (onChange) onChange(e.target.value);
+                                  }}
+                                  onFocus={() => setFocused(true)}
+                                  onBlur={() => setFocused(false)}
                                   placeholder="Type your message..."
                                 />
                             </div>

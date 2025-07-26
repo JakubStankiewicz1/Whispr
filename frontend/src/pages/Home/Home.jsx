@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './home.css';
 import LeftSidebar from '../../components/leftSidebar/LeftSidebar.jsx';
+import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
-const home = () => {
+const Home = () => {
+  const [senderName, setSenderName] = useState('');
+  const [messages, setMessages] = useState([{ id: Date.now() + Math.random(), text: '' }]);
   return (
     <div className='home'>
-        <LeftSidebar />
+        <LeftSidebar senderName={senderName} setSenderName={setSenderName} messages={messages} setMessages={setMessages} />
+        <RightSidebar senderName={senderName} messages={messages} />
     </div>
   )
 }
 
-export default home
+export default Home
