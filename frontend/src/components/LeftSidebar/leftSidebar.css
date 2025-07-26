@@ -203,3 +203,16 @@
     height: 1px;
     background-color: #000;
 }
+
+
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon {
+    width: 18px;
+    height: 18px;
+}

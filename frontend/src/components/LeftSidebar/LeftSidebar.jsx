@@ -9,6 +9,7 @@ import Participant from '../Participant/Participant';
 import { FiPlus, FiX } from "react-icons/fi";
 import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
+import { LuDot } from "react-icons/lu";
 
 
 const LeftSidebar = () => {
@@ -422,7 +423,145 @@ const LeftSidebar = () => {
                     </div>
                     {openSections.instructions && (
                       <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwo">
-                        <p>sdaf dsf dsafasdf dsfa sdafsdaf</p>
+                        <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainer">
+
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Click "Add Message" to create a new message
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Click on any message text to edit it inline
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Click on avatars to cycle through users
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Click on timestamps to change them
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Changes are saved automatically
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+                        </div>
                       </div>
                     )}
                   </div>
