@@ -9,7 +9,6 @@ import Participant from '../Participant/Participant';
 import { FiPlus, FiX } from "react-icons/fi";
 import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
-import { LuDot } from "react-icons/lu";
 
 
 const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
@@ -231,6 +230,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                                             const val = e.target.value;
                                             setReceiverNames(prev => prev.map((n, i) => i === idx ? val : n));
                                           }}
+                                          isCompact={receivers.length > 1}
                                         />
                                         {receivers.length > 1 && (
                                           <button
@@ -462,7 +462,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               {/* Left Part */}
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                  <div className="leftSidebarDot" />
                                 </div>
                               </div>
 
@@ -486,7 +486,11 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               {/* Left Part */}
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
+                                  <div className="leftSidebarDot" />
+                                  {/* <div className="leftSidebarDot" /> */}
+                                  {/* <div className="leftSidebarDot" /> */}
+                                  {/* <div className="leftSidebarDot" /> */}
                                 </div>
                               </div>
 
@@ -513,7 +517,8 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               {/* Left Part */}
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
+                                  <div className="leftSidebarDot" />
                                 </div>
                               </div>
 
@@ -541,7 +546,8 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               {/* Left Part */}
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
+                                  <div className="leftSidebarDot" />
                                 </div>
                               </div>
 
@@ -569,7 +575,8 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               {/* Left Part */}
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' />
+                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
+                                  <div className="leftSidebarDot" />
                                 </div>
                               </div>
 
@@ -596,6 +603,13 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                 </div>
 
 
+        </div>
+      </div>
+
+      {/* Line */}
+      <div className="leftSidebarDivier">
+        <div className="leftSidebarDivierContainer">
+          <div className="leftSidebarDivierContainerLine" />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-.participant {
+.participantReceiver {
     width: 100%;
     height: 66px;
 
@@ -7,7 +7,7 @@
     border-radius: 10px;
 }
 
-.participantContainer {
+.participantReceiverContainer {
     width: 92%;
     margin: 0 auto;
     height: 100%;
@@ -19,16 +19,21 @@
     /* background-color: red; */
 }
 
+.participantReceiverContainerCompact {
+    justify-content: flex-start;
+    gap: 10px;
+}
 
 
-.participantContainerLeftContainer {
+
+.participantReceiverContainerLeftContainer {
     width: 40px;
     height: 40px;
     background-color: #E5E7EB;
     border-radius: 50%;
 }
 
-.participantContainerLeftContainerDiv {
+.participantReceiverContainerLeftContainerDiv {
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,13 +42,13 @@
     justify-content: center;
 }
 
-.participantContainerLeftContainerDivIcon {
+.participantReceiverContainerLeftContainerDivIcon {
     width: 17px;
     height: 17px;
     color: #6A7282;
 }
 
-.participantContainerRight {
+.participantReceiverContainerRight {
     width: 100%;
 
     /* background-color: red; */
@@ -52,7 +57,12 @@
     justify-content: flex-end;
 }
 
-.participantContainerRightContainerInput {
+.participantReceiverContainerRightCompact {
+    width: auto;
+    justify-content: flex-start;
+}
+
+.participantReceiverContainerRightContainerInput {
     height: 40px;
     width: 340px;
     border-radius: 8px;
@@ -61,16 +71,20 @@
     border: 1px solid #E2E8F0;
 }
 
-.participantContainerRightContainerInput:focus {
+.participantReceiverContainerRightContainerInputCompact {
+    width: 150px !important;
+}
+
+.participantReceiverContainerRightContainerInput:focus {
     outline: none;
     /* border: 1px solid #6B7280; */
     border: 1px solid #90A1B9;
 }
 
-
-
-
-
+.participantReceiverContainerRightContainerInputCompact:focus {
+    outline: none;
+    border: 1px solid #90A1B9;
+}
 
 
 

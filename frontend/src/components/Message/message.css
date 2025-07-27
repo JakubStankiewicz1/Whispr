@@ -105,7 +105,7 @@
 }
 
 .messageContainerDivRight.active {
-    min-height: 115px;
+    min-height: 125px;
 }
 
 .messageContainerDivRightContainer {
@@ -120,6 +120,7 @@
     /* justify-content: space-between; */
     gap: 10px;
     background-color: lightcyan;
+    margin-top: 15px;
 }
 
 .messageContainerDivRightContainerTop {
@@ -162,6 +163,10 @@
     justify-content: center;
 }
 
+/* .messageContainerDivRightContainerBottomContainer textarea {
+    padding-bottom: 10px;
+} */
+
 .messageContainerDivRightContainerBottomContainerTextarea {
     width: 100%;
     min-height: 32px;
@@ -178,7 +183,7 @@
     display: flex;
     /* align-items: center; */
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 5px;
     /* Wyśrodkowanie tekstu w pionie */
     padding-top: 5px;
     padding-left: 5px;

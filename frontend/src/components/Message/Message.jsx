@@ -17,13 +17,25 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNam
   const displayRole = type === 'sender' ? 'Sender' : 'Receiver';
   const handleSwitch = () => {
     if (type === 'sender') {
+      // Przechodzimy do pierwszego receivera
       setType('receiver');
+      setReceiverIdx(0);
     } else {
-      // If multiple receivers, cycle through them
+      // Jesteśmy na receiverze, sprawdzamy czy to ostatni receiver
       if (receiverNames && receiverNames.length > 1) {
-        setReceiverIdx(idx => (idx + 1) % receiverNames.length);
+        if (receiverIdx < receiverNames.length - 1) {
+          // Przechodzimy do następnego receivera
+          setReceiverIdx(receiverIdx + 1);
+        } else {
+          // To ostatni receiver, wracamy do sendera
+          setType('sender');
+          setReceiverIdx(0);
+        }
+      } else {
+        // Tylko jeden receiver, wracamy do sendera
+        setType('sender');
+        setReceiverIdx(0);
       }
-      setType('sender');
     }
   };
   return (

@@ -1,7 +1,20 @@
+/* Kropka do instrukcji w sidebarze */
+.leftSidebarDot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #4A5565;
+    display: inline-block;
+    margin-right: 8px;
+}
 .leftSidebar {
-    width: 472px;
-    /* height: 100vh; */
-    border-right: 1px solid #000;
+    width: 700px !important;
+    /* min-height: 100vh; */
+    /* height: 100%; */
+    /* background-color: lightgreen; */
+    /* border-right: 3px solid blueviolet; */
+    display: flex;
+    flex-direction: row;
 }
 
 .leftSidebarContainer {
@@ -41,18 +54,22 @@
 
 
 .leftSidebarContainerTopContainerRightContainerOneContainerButton {
-    background-color: #000;
+    background-color: #0F172B;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 5px 10px;
+    gap: 2px;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 
 .leftSidebarContainerTopContainerRightContainerOneContainerButtonTwoText {
-    color: #ffffff;
+    color: #F8FAEF;
     white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .leftSidebarContainerTopContainerRightContainerDivider {
@@ -62,7 +79,7 @@
 .leftSidebarContainerTopContainerRightContainerDividerLine {
     width: 100%;
     height: 1px;
-    background-color: #000;
+    background-color: #E2E8F0;
 }
 
 
@@ -104,6 +121,10 @@
 .leftSidebarContainerTopContainerRightContainerOneContainerOneContainerDivText {
     display: flex;
     white-space: nowrap;
+    color: #0F172B;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .leftSidebarContainerTopContainerRightContainerOneContainerTwoContainer {
@@ -118,6 +139,9 @@
 
 .leftSidebarContainerTopContainerLeftContainerText {
     font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #020618;
 }
 
 
@@ -126,6 +150,7 @@
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainerIcon,
 .leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainerIcon {
     transform: rotate(180deg);
+    color: #62748E
 }
 
 
@@ -141,6 +166,11 @@
     /* background-color: lightcyan; */
     width: 90%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: red; */
+    gap: 8.4px;
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainer,
@@ -171,6 +201,7 @@
 .leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwoContainerText {
     font-size: 16px;
     font-weight: 600;
+    color: #000000;
 }
 
 
@@ -201,7 +232,7 @@
 .leftSidebarContainerTopContainerRightContainerDividerTwoLine {
     width: 100%;
     height: 1px;
-    background-color: #000;
+    background-color: #E2E8F0;
 }
 
 
@@ -215,4 +246,32 @@
 .leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon {
     width: 18px;
     height: 18px;
+}
+
+.leftSidebarDivier {
+    width: 1px;
+    height: 100vh;
+    background-color: #E2E8F0;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerOneContainerIcon,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerOneContainerIcon,
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerOneContainerIcon {
+    color: #020618;
+}
+
+.leftSidebarContainerTopContainerRightContainerOneContainerTwoContainerInfo {
+    color: #6A7282;
+    width: 17px;
+    height: 17px;
+}
+
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText,
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText,
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText,
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #4A5565;
 }

@@ -52,9 +52,14 @@
     justify-content: flex-end;
 }
 
+.participantContainerRightContainer input {
+    width: 340px;
+}
+
 .participantContainerRightContainerInput {
     height: 40px;
-    width: 290px; /* zmniejszona szerokość, aby X nie nachodził na input */
+    /* width: 100px; zmniejszona szerokość, aby X nie nachodził na input */
+    width: 100%;
     border-radius: 8px;
 
     border: none;
