@@ -1,0 +1,205 @@
+.message {
+    width: 100%;
+    /* border: 1px solid #000000; */
+    min-height: 90px;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    /* background-color: purple; */
+}
+
+.messageContainer {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: blue; */
+}
+
+.messageContainerDiv {
+    width: 92%;
+    /* margin: 0 auto; */
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    gap: 15px;
+    /* background-color: red; */
+}
+
+.messageContainerDivLeft {
+    /* width: 100%; */
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageContainerDivLeftContainer {
+    width: 40px;
+    height: 40px;
+    background-color: #E5E7EB;
+    border-radius: 50%;
+}
+
+.messageContainerDivLeftContainerUser {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageContainerDivLeftContainerUserIcon {
+    width: 17px;
+    height: 17px;
+    color: #6A7282;
+}
+
+.messageContainerDivLeftContainerSwitch {
+    position: absolute;
+    transform: translateX(22px) translateY(-10px);
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; */
+}
+
+.messageContainerDivLeftContainerSwitchContainer {
+    width: 17px;
+    height: 17px;
+    /* background-color: #ffffff; */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageContainerDivLeftContainerSwitchContainerIcon {
+    width: 12px;
+    height: 12px;
+    color: #533641;
+}
+
+.messageContainerDivRight {
+    width: 100%;
+    /* height: 100%; */
+    /* background-color: blue; */
+}
+
+.messageContainerDivRightContainer {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.messageContainerDivRightContainerTop {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.messageContainerDivRightContainerTopContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messageContainerDivRightContainerTopContainerLeftContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.messageContainerDivRightContainerBottom {
+    width: 100%;
+    /* height: 100%; */
+    /* background-color: green; */
+}
+
+.messageContainerDivRightContainerBottomContainer {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageContainerDivRightContainerBottomContainerTextarea {
+    width: 100%;
+    min-height: 32px;
+    /* height: 32px; */
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 15px;
+    resize: none;
+    box-shadow: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: #222;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    /* Wyśrodkowanie tekstu w pionie */
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.messageContainerDivRightContainerBottomContainerTextarea:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 2px #bae6fd;
+    background: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100px;
+}
+
+.messageContainerDivRightContainerBottomContainerTextarea::placeholder {
+    /* color: #a3a3a3;
+    opacity: 1;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 32px;
+    vertical-align: middle; */
+}
+
+.messageContainerDivRightContainerTopContainerRightContainerIcon {
+    color: #FB2C36;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+}
