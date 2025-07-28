@@ -1,4 +1,82 @@
 .rightSidebar {
-    width: 100%;
-    /* background-color: red; */
+  flex: 1;
+  height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
+
+.rightSidebarOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rightSidebarOverlayBackground {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.rightSidebarOverlayWatermark {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.rightSidebarOverlayWatermarkText {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.08);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.rightSidebarOverlayWatermarkLink {
+  font-size: 12px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.rightSidebarOverlayWatermarkLink:hover {
+  text-decoration: underline;
+}
+
+.rightSidebarContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+  padding-bottom: 80px; /* Space for navigation bar */
+}
+
+.rightSidebarContent {
+  width: 90%;
+  height: 80%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Bar */

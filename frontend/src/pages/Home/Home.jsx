@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './home.css';
-import LeftSidebar from '../../components/leftSidebar/LeftSidebar.jsx';
+import LeftSidebar from '../../components/LeftSidebar/LeftSidebar.jsx';
 import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
 const Home = () => {

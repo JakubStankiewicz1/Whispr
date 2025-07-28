@@ -4,37 +4,42 @@
     height: 4px;
     border-radius: 50%;
     background-color: #4A5565;
-    display: inline-block;
-    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 0px;
 }
 .leftSidebar {
-    width: 700px !important;
+    width: 468px !important;
     /* min-height: 100vh; */
     /* height: 100%; */
     /* background-color: lightgreen; */
     /* border-right: 3px solid blueviolet; */
     display: flex;
     flex-direction: row;
+    align-items: stretch; /* Wszystkie elementy mają tę samą wysokość */
 }
 
 .leftSidebarContainer {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
+    align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
 }
 
 .leftSidebarContainerTop {
     width: 100%;
     /* background-color: lightblue; */
     height: 65px;
+    display: flex;
+    align-items: center;
 }
 
 .leftSidebarContainerTopContainer {
     width: 100%;
     height: 100%;
-
     /* background-color: lightgreen; */
     width: 88%;
     margin: 0 auto;
@@ -42,6 +47,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    min-height: 65px; /* Stała wysokość */
 }
 
 .leftSidebarContainerTopContainerRightContainerOneContainer {
@@ -74,6 +80,9 @@
 
 .leftSidebarContainerTopContainerRightContainerDivider {
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 1px;
 }
 
 .leftSidebarContainerTopContainerRightContainerDividerLine {
@@ -150,7 +159,23 @@
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainerIcon,
 .leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainerIcon {
     transform: rotate(180deg);
-    color: #62748E
+    color: #62748E;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Idealne wyrównanie dla kontenerów strzałek */
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerContainer,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainer,
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
 }
 
 
@@ -168,9 +193,9 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-
+    align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
     /* background-color: red; */
-    gap: 8.4px;
+    gap: 8px; /* Ujednolicony odstęp */
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainer,
@@ -181,8 +206,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 48px; /* Stała wysokość dla wszystkich elementów */
     /* background-color: red; */
 }
 
@@ -192,8 +218,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 12px;
+    height: 24px; /* Stała wysokość dla ikon i tekstu */
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerTwoContainerText,
@@ -202,6 +229,9 @@
     font-size: 16px;
     font-weight: 600;
     color: #000000;
+    line-height: 24px; /* Idealne wyrównanie z ikonami */
+    display: flex;
+    align-items: center;
 }
 
 
@@ -215,18 +245,26 @@
     align-items: center;
     justify-content: center;
     border-radius: 30%;
+    flex-shrink: 0; /* Zapobiega zmniejszaniu */
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainerDivText,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainerDivText {
     font-size: 14px;
     font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 
 .leftSidebarContainerTopContainerRightContainerDividerTwo {
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 1px;
 }
 
 .leftSidebarContainerTopContainerRightContainerDividerTwoLine {
@@ -239,8 +277,9 @@
 .leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
-    /* justify-content: center; */
+    align-items: center;
+    min-height: 24px;
+    gap: 8px;
 }
 
 .leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon {
@@ -248,16 +287,58 @@
     height: 18px;
 }
 
+/* Idealne wyrównanie dla kontenerów kropek */
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Idealne wyrównanie dla kontenerów tekstu w instrukcjach */
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 24px;
+    flex: 1;
+}
+
 .leftSidebarDivier {
     width: 1px;
     height: 100vh;
     background-color: #E2E8F0;
+    display: flex;
+    align-items: stretch;
+}
+
+.leftSidebarDivierContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.leftSidebarDivierContainerLine {
+    width: 100%;
+    height: 100%;
+    background-color: #E2E8F0;
+    display: flex;
+    align-items: stretch;
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerOneContainerIcon,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerOneContainerIcon,
 .leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerOneContainerIcon {
     color: #020618;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .leftSidebarContainerTopContainerRightContainerOneContainerTwoContainerInfo {
@@ -274,4 +355,211 @@
     font-weight: 400;
     line-height: 16px;
     color: #4A5565;
+    display: flex;
+    align-items: center;
+    height: 16px;
+}
+
+
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOneContainerText,
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerOneContainerText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #364153;
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerTwoContainerIcon,
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwoContainerIcon {
+    color: #99A1AF;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: -3px; Dodatkowe zmniejszenie odstępu */
+}
+
+
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    min-height: 32px; /* Stała wysokość dla sekcji wewnętrznych */
+    /* Jeśli chcesz tło, odkomentuj poniżej */
+    /* background-color: lightcoral; */
+}
+
+/* Zmniejsz odstęp między tekstem a ikoną */
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOneContainer {
+    margin-right: -5px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerOneContainer {
+    margin-right: -5px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+/* Dodatkowe style dla lepszego wyglądu */
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwoContainer,
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerTwoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainer,
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDiv {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwo {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOne {
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+/* Idealne wyrównanie dla kontenerów accordion */
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwo,
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwo,
+.leftSidebarContainerTopContainerRightContainerFourContainerTwo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
+}
+
+/* Idealne wyrównanie dla kontenerów wewnętrznych accordion */
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainer,
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwoContainer,
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+}
+
+/* --- Add Button Modern Style --- */
+.leftSidebarAddButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  /* padding: 0 16px; */
+  height: 32px;
+  width: 132px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s, background 0.15s;
+  box-shadow: 0 1px 2px 0 rgba(16,30,54,0.03);
+  outline: none;
+  /* user-select: none; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leftSidebarAddButton:hover, .leftSidebarAddButton:focus {
+  border-color: #90A1B9;
+  background: #f8fafc;
+  box-shadow: 0 2px 8px 0 rgba(16,30,54,0.08);
+}
+.leftSidebarAddButtonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 18px; */
+  width: 17px;
+    height: 17px;
+  color: #020618;
+}
+.leftSidebarAddButtonText {
+  /* font-size: 15px; */
+  /* font-weight: 500; */
+  /* color: #222; */
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #020618;
+}
+
+
+
+
+
+
+
+
+
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottom {
+    /* background-color: lightblue; */
+    width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainer {
+    /* background-color: red; */
+    width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDiv {
+    /* background-color: blue; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottom {
+    width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainer {
+    width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButton {
+    width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
 }

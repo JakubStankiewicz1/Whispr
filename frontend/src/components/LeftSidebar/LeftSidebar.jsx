@@ -267,23 +267,10 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottom">
                                   <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainer">
                                     <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDiv">
-                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButton" onClick={handleAddReceiver} style={{cursor:'pointer'}}>
-                                        <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainer">
-                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerOne">
-                                            <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerOneContainer">
-                                              <FiPlus className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerOneContainerIcon" />
-                                            </div>
-                                          </div>
-
-                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerTwo">
-                                            <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerTwoContainer">
-                                              <p className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDivButtonContainerTwoContainerText">
-                                                Add Receiver
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
+                                      <button className="leftSidebarAddButton" onClick={handleAddReceiver}>
+                                        <span className="leftSidebarAddButtonIcon"><FiPlus /></span>
+                                        <span className="leftSidebarAddButtonText">Add Receiver</span>
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
@@ -381,22 +368,10 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                             <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButton">
                               <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDiv">
                                 {/* Left Part */}
-                                <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivLeft">
-                                  <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivLeftContainer">
-                                    <FiPlus className='leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivLeftContainerIcon' />
-                                  </div>
-                                </div>
-
-                                {/* Right Part */}
-                                <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRight">
-                                  <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainer">
-                                  <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainer" onClick={handleAddMessage} style={{cursor:'pointer'}}>
-                                    <p className="leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottomContainerButtonDivRightContainerText">
-                                      Add Message
-                                    </p>
-                                  </div>
-                                  </div>
-                                </div>
+                                <button className="leftSidebarAddButton" onClick={handleAddMessage}>
+                                  <span className="leftSidebarAddButtonIcon"><FiPlus /></span>
+                                  <span className="leftSidebarAddButtonText">Add Message</span>
+                                </button>
                               </div>
                             </div>
                           </div>

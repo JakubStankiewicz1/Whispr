@@ -1,7 +1,280 @@
 .messengerDesktop {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-    height: 100%;
+.messengerDesktopContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
 
-    background-color: red;
+/* Header */
+.messengerDesktopHeader {
+  width: 100%;
+  height: 65px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.messengerDesktopHeaderContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.messengerDesktopHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.messengerDesktopHeaderAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messengerDesktopHeaderAvatarText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.messengerDesktopHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.messengerDesktopHeaderName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.messengerDesktopHeaderStatus {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Messages Area */
+.messengerDesktopMessages {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.messengerDesktopMessagesContainer {
+  padding: 20px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Date Separator */
+.messengerDesktopDateSeparator {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.messengerDesktopDateText {
+  font-size: 12px;
+  color: #94a3b8;
+  background-color: #f8f9fa;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Messages List */
+.messengerDesktopMessagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.messengerDesktopMessage {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.messengerDesktopMessageBubble {
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.messengerDesktopMessageText {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Input Bar */
+.messengerDesktopInput {
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.messengerDesktopInputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.messengerDesktopInputLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.messengerDesktopInputButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: background-color 0.2s;
+}
+
+.messengerDesktopInputButton:hover {
+  background-color: #f1f5f9;
+}
+
+.messengerDesktopInputIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.messengerDesktopInputCenter {
+  flex: 1;
+}
+
+.messengerDesktopInputField {
+  width: 100%;
+  min-height: 40px;
+  max-height: 120px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  background-color: #ffffff;
+  line-height: 1.4;
+}
+
+.messengerDesktopInputField:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.messengerDesktopInputField::placeholder {
+  color: #94a3b8;
+}
+
+.messengerDesktopInputRight {
+  display: flex;
+  align-items: center;
+}
+
+.messengerDesktopSendButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #ffffff;
+}
+
+.messengerDesktopSendButton:hover {
+  background-color: #2563eb;
+}
+
+.messengerDesktopSendIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Scrollbar Styling */
+.messengerDesktopMessages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messengerDesktopMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messengerDesktopMessages::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.messengerDesktopMessages::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .messengerDesktopHeader {
+    padding: 0 16px;
+  }
+  
+  .messengerDesktopMessagesContainer {
+    padding: 16px;
+  }
+  
+  .messengerDesktopInput {
+    padding: 12px 16px;
+  }
+  
+  .messengerDesktopMessageBubble {
+    max-width: 85%;
+  }
 }
