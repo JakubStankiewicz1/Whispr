@@ -4,5 +4,14 @@
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
+  transition: width 0.3s ease;
+}
+
+.home--desktop {
+  width: 100vw;
+}
+
+.home--mobile {
+  width: 100vw;
 }

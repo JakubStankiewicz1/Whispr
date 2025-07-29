@@ -31,7 +31,12 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
   };
 
   const handleAddMessage = () => {
-    setMessages(prev => [...prev, { id: Date.now() + Math.random(), text: '' }]);
+    setMessages(prev => [...prev, { 
+      id: Date.now() + Math.random(), 
+      text: '',
+      type: 'sender',
+      sender: senderName
+    }]);
   };
   const handleAccordion = (section) => {
     setOpenSections((prev) => ({
@@ -353,8 +358,14 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                             defaultType={msg.type || 'sender'}
                             _senderNameVersion={senderName}
                             value={msg.text}
-                            onChange={val => {
-                              setMessages(prev => prev.map((m, i) => i === idx ? { ...m, text: val } : m));
+                            onChange={messageData => {
+                              setMessages(prev => prev.map((m, i) => i === idx ? { 
+                                ...m, 
+                                text: messageData.text,
+                                type: messageData.type,
+                                sender: messageData.sender,
+                                receiverIdx: messageData.receiverIdx
+                              } : m));
                             }}
                           />
                         ))}

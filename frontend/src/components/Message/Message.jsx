@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import './message.css';
 import { FiUser } from "react-icons/fi";
 import { GoArrowSwitch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 
-import { useEffect } from 'react';
 const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNameVersion, value, onChange }) => {
   const [text, setText] = useState(value || "");
   const [focused, setFocused] = useState(false);
   const [type, setType] = useState(defaultType); // 'sender' or 'receiver'
   const [receiverIdx, setReceiverIdx] = useState(0);
-  useEffect(() => { setText(value || ""); }, [value, _senderNameVersion]);
+  
+  // Use ref to store the latest onChange function
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+  
+  useEffect(() => { 
+    setText(value || ""); 
+  }, [value, _senderNameVersion]);
+  
+  // Update the message data with type information when type changes
+  useEffect(() => {
+    const messageData = {
+      text: text,
+      type: type,
+      sender: type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '',
+      receiverIdx: type === 'receiver' ? receiverIdx : 0
+    };
+    
+    if (onChangeRef.current) {
+      onChangeRef.current(messageData);
+    }
+  }, [text, type, receiverIdx, senderName, receiverNames]);
+  
   const isActive = focused || text;
   const displayName = type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '';
   const displayRole = type === 'sender' ? 'Sender' : 'Receiver';
+  
   const handleSwitch = () => {
     if (type === 'sender') {
       // Przechodzimy do pierwszego receivera
@@ -38,6 +60,7 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNam
       }
     }
   };
+  
   return (
     <div className='message'>
         <div className="messageContainer">
@@ -99,7 +122,6 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNam
                                   value={text}
                                   onChange={e => {
                                     setText(e.target.value);
-                                    if (onChange) onChange(e.target.value);
                                   }}
                                   onFocus={() => setFocused(true)}
                                   onBlur={() => setFocused(false)}

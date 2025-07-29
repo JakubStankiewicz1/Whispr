@@ -5,11 +5,17 @@ import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
 const Home = () => {
   const [senderName, setSenderName] = useState('');
-  const [messages, setMessages] = useState([{ id: Date.now() + Math.random(), text: '' }]);
+  const [messages, setMessages] = useState([{ 
+    id: Date.now() + Math.random(), 
+    text: '',
+    type: 'sender',
+    sender: ''
+  }]);
+  const [selectedDevice, setSelectedDevice] = useState('desktop');
   return (
-    <div className='home'>
+    <div className={`home home--${selectedDevice}`}>
         <LeftSidebar senderName={senderName} setSenderName={setSenderName} messages={messages} setMessages={setMessages} />
-        <RightSidebar senderName={senderName} messages={messages} />
+        <RightSidebar senderName={senderName} messages={messages} selectedDevice={selectedDevice} setSelectedDevice={setSelectedDevice} />
     </div>
   )
 }

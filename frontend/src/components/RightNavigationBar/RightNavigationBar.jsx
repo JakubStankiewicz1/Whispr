@@ -4,9 +4,7 @@ import { BsMessenger } from 'react-icons/bs';
 import { FiChevronDown, FiMonitor, FiPhone, FiSettings, FiBarChart2, FiPlay, FiDownload } from 'react-icons/fi';
 import { LuSmartphone } from "react-icons/lu";
 
-const RightNavigationBar = () => {
-  // Możesz przekazać selectedDevice i setSelectedDevice jako props jeśli chcesz sterować z rodzica
-  const [selectedDevice, setSelectedDevice] = React.useState('desktop');
+const RightNavigationBar = ({ selectedDevice, setSelectedDevice }) => {
   return (
     <div className="rightNavigationBar">
       <div className="rightNavigationBarContainer">
@@ -67,10 +65,16 @@ const RightNavigationBar = () => {
           </button>
         </div>
 
+
+
+
         {/* NEW Label */}
-        <div className="rightNavigationBarNewLabel">
+        {/* <div className="rightNavigationBarNewLabel">
           <span className="rightNavigationBarNewText">NEW</span>
-        </div>
+        </div> */}
+
+
+
       </div>
     </div>
   )

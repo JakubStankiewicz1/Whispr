@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import './messengerDesktop.css';
 import { FiPlus, FiImage, FiSmile } from 'react-icons/fi';
 import { IoSend } from 'react-icons/io5';
+import { TbFileSmile } from "react-icons/tb";
+import { GoPlusCircle } from "react-icons/go";
+import { FiPlusCircle } from "react-icons/fi";
 
-const MessengerDesktop = ({ senderName, messages }) => {
+const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) => {
   const [inputMessage, setInputMessage] = useState('');
 
   const handleSendMessage = () => {
@@ -20,8 +23,22 @@ const MessengerDesktop = ({ senderName, messages }) => {
     }
   };
 
+  // Helper function to determine if message is from sender
+  const isMessageFromSender = (message) => {
+    // If message has a type property, use it
+    if (message.type) {
+      return message.type === 'sender';
+    }
+    // If message has a sender property, use it
+    if (message.sender) {
+      return message.sender === senderName;
+    }
+    // Default: assume it's from sender if no specific info
+    return true;
+  };
+
   return (
-    <div className='messengerDesktop'>
+    <div className={`messengerDesktop messengerDesktop--${selectedDevice}`}>
       <div className="messengerDesktopContainer">
         {/* Header */}
         <div className="messengerDesktopHeader">
@@ -50,15 +67,18 @@ const MessengerDesktop = ({ senderName, messages }) => {
 
             {/* Messages */}
             <div className="messengerDesktopMessagesList">
-              {messages && messages.length > 0 && messages.map((msg, idx) => (
-                <div key={msg.id} className="messengerDesktopMessage">
-                  <div className="messengerDesktopMessageBubble">
-                    <span className="messengerDesktopMessageText">
-                      {msg.text || 'test'}
-                    </span>
+              {messages && messages.length > 0 && messages.map((msg, idx) => {
+                const isFromSender = isMessageFromSender(msg);
+                return (
+                  <div key={msg.id} className={`messengerDesktopMessage ${isFromSender ? 'messengerDesktopMessage--sender' : 'messengerDesktopMessage--receiver'}`}>
+                    <div className={`messengerDesktopMessageBubble ${isFromSender ? 'messengerDesktopMessageBubble--sender' : 'messengerDesktopMessageBubble--receiver'}`}>
+                      <span className="messengerDesktopMessageText">
+                        {msg.text || 'test'}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -68,13 +88,13 @@ const MessengerDesktop = ({ senderName, messages }) => {
           <div className="messengerDesktopInputContainer">
             <div className="messengerDesktopInputLeft">
               <button className="messengerDesktopInputButton">
-                <FiPlus className="messengerDesktopInputIcon" />
+                <FiPlusCircle   className="messengerDesktopInputIcon" />
               </button>
               <button className="messengerDesktopInputButton">
                 <FiImage className="messengerDesktopInputIcon" />
               </button>
               <button className="messengerDesktopInputButton">
-                <FiSmile className="messengerDesktopInputIcon" />
+                <TbFileSmile  className="messengerDesktopInputIcon" />
               </button>
             </div>
             
