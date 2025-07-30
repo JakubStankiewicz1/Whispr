@@ -22,11 +22,16 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
   const [receiverNames, setReceiverNames] = useState(['']);
+  
+  // Images state
+  const [senderImage, setSenderImage] = useState('');
+  const [receiverImages, setReceiverImages] = useState(['']);
   const handleRemoveReceiver = (id) => {
     if (receivers.length > 1) {
       const idx = receivers.findIndex(r => r === id);
       setReceivers((prev) => prev.filter((r) => r !== id));
       setReceiverNames((prev) => prev.filter((_, i) => i !== idx));
+      setReceiverImages((prev) => prev.filter((_, i) => i !== idx));
     }
   };
 
@@ -76,6 +81,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
   const handleAddReceiver = () => {
     setReceivers((prev) => [...prev, Date.now() + Math.random()]);
     setReceiverNames((prev) => [...prev, '']);
+    setReceiverImages((prev) => [...prev, '']);
   };
 
   return (
@@ -223,7 +229,12 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
 
                               <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwo">
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwoContainer">
-                                  <Participant senderName={senderName} setSenderName={setSenderName} />
+                                  <Participant 
+                                    senderName={senderName} 
+                                    setSenderName={setSenderName} 
+                                    senderImage={senderImage}
+                                    setSenderImage={setSenderImage}
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -264,6 +275,10 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                                             setReceiverNames(prev => prev.map((n, i) => i === idx ? val : n));
                                           }}
                                           isCompact={receivers.length > 1}
+                                          receiverImage={receiverImages[idx]}
+                                          setReceiverImage={(image) => {
+                                            setReceiverImages(prev => prev.map((img, i) => i === idx ? image : img));
+                                          }}
                                         />
                                         {receivers.length > 1 && (
                                           <button

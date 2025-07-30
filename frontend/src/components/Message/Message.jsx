@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import './message.css';
 import { FiUser } from "react-icons/fi";
@@ -15,23 +15,26 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
   
+  // Memoize the message data to prevent unnecessary updates
+  const messageData = useCallback(() => ({
+    text: text,
+    type: type,
+    sender: type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '',
+    receiverIdx: type === 'receiver' ? receiverIdx : 0
+  }), [text, type, receiverIdx, senderName, receiverNames]);
+  
   useEffect(() => { 
     setText(value || ""); 
   }, [value]);
   
   // Update the message data with type information when type changes
   useEffect(() => {
-    const messageData = {
-      text: text,
-      type: type,
-      sender: type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '',
-      receiverIdx: type === 'receiver' ? receiverIdx : 0
-    };
-    
+    // Only call onChange if the component is mounted and onChange exists
     if (onChangeRef.current) {
-      onChangeRef.current(messageData);
+      const currentMessageData = messageData();
+      onChangeRef.current(currentMessageData);
     }
-  }, [text, type, receiverIdx, senderName, receiverNames]);
+  }, [messageData]);
   
   const isActive = focused || text;
   const displayName = type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '';
