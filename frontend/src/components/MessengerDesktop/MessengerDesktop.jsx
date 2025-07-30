@@ -67,7 +67,7 @@ const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) 
 
             {/* Messages */}
             <div className="messengerDesktopMessagesList">
-              {messages && messages.length > 0 && messages.map((msg, idx) => {
+              {messages && messages.length > 0 && messages.map((msg) => {
                 const isFromSender = isMessageFromSender(msg);
                 return (
                   <div key={msg.id} className={`messengerDesktopMessage ${isFromSender ? 'messengerDesktopMessage--sender' : 'messengerDesktopMessage--receiver'}`}>

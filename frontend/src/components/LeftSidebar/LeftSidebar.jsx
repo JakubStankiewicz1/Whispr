@@ -31,11 +31,39 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
   };
 
   const handleAddMessage = () => {
+    // Określamy jaki typ wiadomości powinien być następny
+    let nextType = 'sender';
+    let nextReceiverIdx = 0;
+    
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      
+      if (lastMessage.type === 'sender') {
+        // Ostatnia wiadomość była od sendera, następna powinna być od pierwszego receivera
+        if (receiverNames.length > 0 && receiverNames[0].trim()) {
+          nextType = 'receiver';
+          nextReceiverIdx = 0;
+        }
+      } else if (lastMessage.type === 'receiver') {
+        // Ostatnia wiadomość była od receivera, sprawdzamy czy to ostatni receiver
+        if (lastMessage.receiverIdx < receiverNames.length - 1) {
+          // To nie ostatni receiver, następna wiadomość od następnego receivera
+          nextType = 'receiver';
+          nextReceiverIdx = lastMessage.receiverIdx + 1;
+        } else {
+          // To ostatni receiver, następna wiadomość od sendera
+          nextType = 'sender';
+          nextReceiverIdx = 0;
+        }
+      }
+    }
+    
     setMessages(prev => [...prev, { 
       id: Date.now() + Math.random(), 
       text: '',
-      type: 'sender',
-      sender: senderName
+      type: nextType,
+      sender: senderName,
+      receiverIdx: nextReceiverIdx
     }]);
   };
   const handleAccordion = (section) => {
@@ -356,7 +384,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                             senderName={senderName}
                             receiverNames={receiverNames}
                             defaultType={msg.type || 'sender'}
-                            _senderNameVersion={senderName}
+                            defaultReceiverIdx={msg.receiverIdx || 0}
                             value={msg.text}
                             onChange={messageData => {
                               setMessages(prev => prev.map((m, i) => i === idx ? { 

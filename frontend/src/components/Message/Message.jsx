@@ -5,11 +5,11 @@ import { FiUser } from "react-icons/fi";
 import { GoArrowSwitch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 
-const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNameVersion, value, onChange }) => {
+const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onChange, defaultReceiverIdx = 0 }) => {
   const [text, setText] = useState(value || "");
   const [focused, setFocused] = useState(false);
   const [type, setType] = useState(defaultType); // 'sender' or 'receiver'
-  const [receiverIdx, setReceiverIdx] = useState(0);
+  const [receiverIdx, setReceiverIdx] = useState(defaultReceiverIdx);
   
   // Use ref to store the latest onChange function
   const onChangeRef = useRef(onChange);
@@ -17,7 +17,7 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', _senderNam
   
   useEffect(() => { 
     setText(value || ""); 
-  }, [value, _senderNameVersion]);
+  }, [value]);
   
   // Update the message data with type information when type changes
   useEffect(() => {

@@ -196,6 +196,38 @@
     align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
     /* background-color: red; */
     gap: 8px; /* Ujednolicony odstęp */
+    max-height: calc(100vh - 120px); /* Maksymalna wysokość z uwzględnieniem top part */
+    overflow-y: auto; /* Włączamy scroll */
+    overflow-x: hidden; /* Ukrywamy horizontal scroll */
+    padding-right: 0; /* Usuwamy padding, scrollbar będzie przy krawędzi */
+    position: relative; /* Dodajemy position relative */
+}
+
+/* Custom Scrollbar Styles */
+.leftSidebarContainerBottom::-webkit-scrollbar {
+    width: 8px; /* Zwiększamy szerokość */
+}
+
+.leftSidebarContainerBottom::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+.leftSidebarContainerBottom::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    border: 1px solid #E2E8F0; /* Dodajemy delikatną ramkę */
+}
+
+.leftSidebarContainerBottom::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Firefox scrollbar */
+.leftSidebarContainerBottom {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainer,
