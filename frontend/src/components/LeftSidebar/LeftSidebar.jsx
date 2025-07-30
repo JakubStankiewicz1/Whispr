@@ -11,7 +11,7 @@ import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
 
 
-const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
+const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receiverNames, setReceiverNames, receiverImages, setReceiverImages }) => {
   // Accordion state (multi-open)
   const [openSections, setOpenSections] = useState({
     participants: false,
@@ -21,11 +21,9 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
 
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
-  const [receiverNames, setReceiverNames] = useState(['']);
   
   // Images state
   const [senderImage, setSenderImage] = useState('');
-  const [receiverImages, setReceiverImages] = useState(['']);
   const handleRemoveReceiver = (id) => {
     if (receivers.length > 1) {
       const idx = receivers.findIndex(r => r === id);
@@ -160,7 +158,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
 
 
 
-
+                <div className="leftSidebarContainerBottomContainer">
 
 
 
@@ -230,9 +228,9 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                               <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwo">
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerTwoContainer">
                                   <Participant 
-                                    senderName={senderName} 
+                                    senderName={senderName || ''} 
                                     setSenderName={setSenderName} 
-                                    senderImage={senderImage}
+                                    senderImage={senderImage || ''}
                                     setSenderImage={setSenderImage}
                                   />
                                 </div>
@@ -269,13 +267,13 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                                     {receivers.map((id, idx) => (
                                       <div key={id} style={{marginBottom: '10px', position: 'relative'}}>
                                         <ParticipantReceiver
-                                          value={receiverNames[idx]}
+                                          value={receiverNames[idx] || ''}
                                           onChange={e => {
                                             const val = e.target.value;
                                             setReceiverNames(prev => prev.map((n, i) => i === idx ? val : n));
                                           }}
                                           isCompact={receivers.length > 1}
-                                          receiverImage={receiverImages[idx]}
+                                          receiverImage={receiverImages[idx] || ''}
                                           setReceiverImage={(image) => {
                                             setReceiverImages(prev => prev.map((img, i) => i === idx ? image : img));
                                           }}
@@ -396,11 +394,11 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                         {messages.map((msg, idx) => (
                           <Message
                             key={msg.id}
-                            senderName={senderName}
-                            receiverNames={receiverNames}
+                            senderName={senderName || ''}
+                            receiverNames={receiverNames || []}
                             defaultType={msg.type || 'sender'}
                             defaultReceiverIdx={msg.receiverIdx || 0}
-                            value={msg.text}
+                            value={msg.text || ''}
                             onChange={messageData => {
                               setMessages(prev => prev.map((m, i) => i === idx ? { 
                                 ...m, 
@@ -410,6 +408,8 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                                 receiverIdx: messageData.receiverIdx
                               } : m));
                             }}
+                            senderImage={senderImage || ''}
+                            receiverImages={receiverImages || []}
                           />
                         ))}
                         
@@ -629,6 +629,9 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages }) => {
                       </div>
                     )}
                   </div>
+                </div>
+
+
                 </div>
 
 

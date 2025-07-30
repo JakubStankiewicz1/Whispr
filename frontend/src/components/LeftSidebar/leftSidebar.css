@@ -203,6 +203,12 @@
     position: relative; /* Dodajemy position relative */
 }
 
+
+.leftSidebarContainerBottomContainer {
+    width: 90%;
+    margin: 0 auto;
+}
+
 /* Custom Scrollbar Styles */
 .leftSidebarContainerBottom::-webkit-scrollbar {
     width: 12px; /* Zwiększamy szerokość do 12px */

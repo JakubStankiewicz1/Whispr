@@ -5,8 +5,9 @@ import { IoSend } from 'react-icons/io5';
 import { TbFileSmile } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
 
-const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) => {
+const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop' }) => {
   const [inputMessage, setInputMessage] = useState('');
 
   const handleSendMessage = () => {
@@ -37,6 +38,30 @@ const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) 
     return true;
   };
 
+  // Get the first receiver name for the header
+  const getFirstReceiverName = () => {
+    if (receiverNames && receiverNames.length > 0 && receiverNames[0].trim()) {
+      return receiverNames[0];
+    }
+    return 'Receiver';
+  };
+
+  // Get the first receiver image for the header
+  const getFirstReceiverImage = () => {
+    if (receiverImages && receiverImages.length > 0 && receiverImages[0]) {
+      return receiverImages[0];
+    }
+    return null;
+  };
+
+  // Get the first letter of the receiver name for avatar (fallback)
+  const getReceiverInitial = () => {
+    const name = getFirstReceiverName();
+    return name.charAt(0).toUpperCase();
+  };
+
+  const firstReceiverImage = getFirstReceiverImage();
+
   return (
     <div className={`messengerDesktop messengerDesktop--${selectedDevice}`}>
       <div className="messengerDesktopContainer">
@@ -45,11 +70,24 @@ const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) 
           <div className="messengerDesktopHeaderContainer">
             <div className="messengerDesktopHeaderLeft">
               <div className="messengerDesktopHeaderAvatar">
-                <span className="messengerDesktopHeaderAvatarText">t</span>
+                {firstReceiverImage ? (
+                  <img 
+                    src={firstReceiverImage} 
+                    alt="Profile" 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '50%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                ) : (
+                  <span className="messengerDesktopHeaderAvatarText">{getReceiverInitial()}</span>
+                )}
               </div>
               <div className="messengerDesktopHeaderInfo">
                 <h3 className="messengerDesktopHeaderName">
-                  {senderName || 'testsf'}
+                  {getFirstReceiverName()}
                 </h3>
                 <p className="messengerDesktopHeaderStatus">Active now</p>
               </div>
@@ -67,13 +105,56 @@ const MessengerDesktop = ({ senderName, messages, selectedDevice = 'desktop' }) 
 
             {/* Messages */}
             <div className="messengerDesktopMessagesList">
-              {messages && messages.length > 0 && messages.map((msg) => {
+              {messages && messages.length > 0 && messages.map((msg, idx) => {
                 const isFromSender = isMessageFromSender(msg);
+                
+                // Check if previous message is from the same person
+                const prevMessage = idx > 0 ? messages[idx - 1] : null;
+                const isPrevFromSamePerson = prevMessage && isMessageFromSender(prevMessage) === isFromSender;
+                
+                // Check if next message is from the same person
+                const nextMessage = idx < messages.length - 1 ? messages[idx + 1] : null;
+                const isNextFromSamePerson = nextMessage && isMessageFromSender(nextMessage) === isFromSender;
+                
+                // Determine border radius classes
+                let borderRadiusClass = '';
+                if (isFromSender) {
+                  // Sender messages (right side)
+                  if (!isPrevFromSamePerson && !isNextFromSamePerson) {
+                    // Single message
+                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-single';
+                  } else if (!isPrevFromSamePerson && isNextFromSamePerson) {
+                    // First message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-first';
+                  } else if (isPrevFromSamePerson && !isNextFromSamePerson) {
+                    // Last message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-last';
+                  } else {
+                    // Middle message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-middle';
+                  }
+                } else {
+                  // Receiver messages (left side)
+                  if (!isPrevFromSamePerson && !isNextFromSamePerson) {
+                    // Single message
+                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-single';
+                  } else if (!isPrevFromSamePerson && isNextFromSamePerson) {
+                    // First message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-first';
+                  } else if (isPrevFromSamePerson && !isNextFromSamePerson) {
+                    // Last message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-last';
+                  } else {
+                    // Middle message in group
+                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-middle';
+                  }
+                }
+                
                 return (
                   <div key={msg.id} className={`messengerDesktopMessage ${isFromSender ? 'messengerDesktopMessage--sender' : 'messengerDesktopMessage--receiver'}`}>
-                    <div className={`messengerDesktopMessageBubble ${isFromSender ? 'messengerDesktopMessageBubble--sender' : 'messengerDesktopMessageBubble--receiver'}`}>
+                    <div className={`messengerDesktopMessageBubble ${borderRadiusClass}`}>
                       <span className="messengerDesktopMessageText">
-                        {msg.text || 'test'}
+                        {String(msg.text || 'test')}
                       </span>
                     </div>
                   </div>

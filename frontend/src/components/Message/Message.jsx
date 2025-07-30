@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import './message.css';
 import { FiUser } from "react-icons/fi";
 import { GoArrowSwitch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 
-const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onChange, defaultReceiverIdx = 0 }) => {
+const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onChange, defaultReceiverIdx = 0, senderImage, receiverImages = [] }) => {
   const [text, setText] = useState(value || "");
   const [focused, setFocused] = useState(false);
   const [type, setType] = useState(defaultType); // 'sender' or 'receiver'
@@ -15,30 +15,35 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
   
-  // Memoize the message data to prevent unnecessary updates
-  const messageData = useCallback(() => ({
-    text: text,
-    type: type,
-    sender: type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '',
-    receiverIdx: type === 'receiver' ? receiverIdx : 0
-  }), [text, type, receiverIdx, senderName, receiverNames]);
-  
   useEffect(() => { 
     setText(value || ""); 
   }, [value]);
   
-  // Update the message data with type information when type changes
-  useEffect(() => {
-    // Only call onChange if the component is mounted and onChange exists
+  // Helper function to call onChange with current data
+  const callOnChange = () => {
     if (onChangeRef.current) {
-      const currentMessageData = messageData();
+      const currentMessageData = {
+        text: text,
+        type: type,
+        sender: type === 'sender' ? (senderName || '') : (receiverNames && receiverNames[receiverIdx]) || '',
+        receiverIdx: type === 'receiver' ? receiverIdx : 0
+      };
       onChangeRef.current(currentMessageData);
     }
-  }, [messageData]);
+  };
   
   const isActive = focused || text;
-  const displayName = type === 'sender' ? senderName : (receiverNames && receiverNames[receiverIdx]) || '';
+  const displayName = type === 'sender' ? (senderName || 'Sender') : (receiverNames && receiverNames[receiverIdx]) || 'Receiver';
   const displayRole = type === 'sender' ? 'Sender' : 'Receiver';
+  
+  // Get the appropriate image based on type and receiver index
+  const getCurrentImage = () => {
+    if (type === 'sender') {
+      return senderImage || null;
+    } else {
+      return receiverImages[receiverIdx] || null;
+    }
+  };
   
   const handleSwitch = () => {
     if (type === 'sender') {
@@ -62,7 +67,26 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
         setReceiverIdx(0);
       }
     }
+    // Call onChange after state changes
+    setTimeout(callOnChange, 0);
   };
+  
+  const handleTextChange = (e) => {
+    const newText = e.target.value;
+    setText(newText);
+    // Call onChange immediately for text changes
+    if (onChangeRef.current) {
+      const currentMessageData = {
+        text: newText,
+        type: type,
+        sender: type === 'sender' ? (senderName || '') : (receiverNames && receiverNames[receiverIdx]) || '',
+        receiverIdx: type === 'receiver' ? receiverIdx : 0
+      };
+      onChangeRef.current(currentMessageData);
+    }
+  };
+  
+  const currentImage = getCurrentImage();
   
   return (
     <div className='message'>
@@ -72,7 +96,15 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
                 <div className="messageContainerDivLeft">
                     <div className="messageContainerDivLeftContainer">
                         <div className="messageContainerDivLeftContainerUser">
-                            <FiUser className='messageContainerDivLeftContainerUserIcon' />
+                            {currentImage ? (
+                              <img 
+                                src={currentImage} 
+                                alt="Profile" 
+                                className="messageContainerDivLeftContainerUserImage"
+                              />
+                            ) : (
+                              <FiUser className='messageContainerDivLeftContainerUserIcon' />
+                            )}
                         </div>
 
                         <div className="messageContainerDivLeftContainerSwitch">
@@ -95,7 +127,7 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
                                         <div className="messageContainerDivRightContainerTopContainerLeftContainerOne">
                                             <div className="messageContainerDivRightContainerTopContainerLeftContainerOneContainer">
                                                 <p className="messageContainerDivRightContainerTopContainerLeftContainerOneContainerText">
-                                                    {displayName || displayRole}
+                                                    {String(displayName || displayRole)}
                                                 </p>
                                             </div>
                                         </div>
@@ -123,9 +155,7 @@ const Message = ({ senderName, receiverNames, defaultType = 'sender', value, onC
                                 <TextareaAutosize
                                   className='messageContainerDivRightContainerBottomContainerTextarea'
                                   value={text}
-                                  onChange={e => {
-                                    setText(e.target.value);
-                                  }}
+                                  onChange={handleTextChange}
                                   onFocus={() => setFocused(true)}
                                   onBlur={() => setFocused(false)}
                                   placeholder="Type your message..."
