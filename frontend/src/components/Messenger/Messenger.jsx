@@ -7,7 +7,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 
-const Messenger = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop' }) => {
+const Messenger = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop', chatType = 'single', groupName = '', groupImage = '', darkMode = false, showHeader = true, showFooter = true }) => {
   const [inputMessage, setInputMessage] = useState('');
 
   const handleSendMessage = () => {
@@ -38,7 +38,7 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
     return true;
   };
 
-  // Get the first receiver name for the header
+  // Get the first receiver name for the header (single chat)
   const getFirstReceiverName = () => {
     if (receiverNames && receiverNames.length > 0 && receiverNames[0].trim()) {
       return receiverNames[0];
@@ -46,7 +46,7 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
     return 'Receiver';
   };
 
-  // Get the first receiver image for the header
+  // Get the first receiver image for the header (single chat)
   const getFirstReceiverImage = () => {
     if (receiverImages && receiverImages.length > 0 && receiverImages[0]) {
       return receiverImages[0];
@@ -60,40 +60,67 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
     return name.charAt(0).toUpperCase();
   };
 
-  const firstReceiverImage = getFirstReceiverImage();
+  // Get header info based on chat type
+  const getHeaderName = () => {
+    if (chatType === 'group') {
+      return groupName || 'Group Chat';
+    }
+    return getFirstReceiverName();
+  };
+
+  const getHeaderImage = () => {
+    if (chatType === 'group') {
+      return groupImage || null;
+    }
+    return getFirstReceiverImage();
+  };
+
+  const getHeaderInitial = () => {
+    if (chatType === 'group') {
+      const name = getHeaderName();
+      return name.charAt(0).toUpperCase();
+    }
+    return getReceiverInitial();
+  };
+
+  const headerImage = getHeaderImage();
 
   return (
-    <div className={`messenger messenger--${selectedDevice}`}>
+    <div className={`messenger messenger--${selectedDevice} ${darkMode ? 'messenger--dark' : ''}`}>
       <div className="messengerContainer">
         {/* Header */}
-        <div className="messengerHeader">
-          <div className="messengerHeaderContainer">
-            <div className="messengerHeaderLeft">
-              <div className="messengerHeaderAvatar">
-                {firstReceiverImage ? (
-                  <img
-                    src={firstReceiverImage}
-                    alt="Profile"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '50%',
-                      objectFit: 'cover'
-                    }}
-                  />
-                ) : (
-                  <span className="messengerHeaderAvatarText">{getReceiverInitial()}</span>
-                )}
-              </div>
-              <div className="messengerHeaderInfo">
-                <h3 className="messengerHeaderName">
-                  {getFirstReceiverName()}
-                </h3>
-                <p className="messengerHeaderStatus">Active now</p>
+        {showHeader && (
+          <div className="messengerHeader">
+            <div className="messengerHeaderContainer">
+              <div className="messengerHeaderLeft">
+                <div className="messengerHeaderAvatar">
+                  {headerImage ? (
+                    <img
+                      src={headerImage}
+                      alt="Profile"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                  ) : (
+                    <span className="messengerHeaderAvatarText">{getHeaderInitial()}</span>
+                  )}
+                </div>
+                <div className="messengerHeaderInfo">
+                  <h3 className="messengerHeaderName">
+                    {getHeaderName()}
+                  </h3>
+                  <p className="messengerHeaderStatus">
+                    {chatType === 'group' ? `${receiverNames.filter(name => name.trim()).length} members` : 'Active now'}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Message Area */}
         <div className="messengerMessages">
@@ -165,41 +192,43 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
         </div>
 
         {/* Input Bar */}
-        <div className="messengerInput">
-          <div className="messengerInputContainer">
-            <div className="messengerInputLeft">
-              <button className="messengerInputButton">
-                <FiPlusCircle   className="messengerInputIcon" />
-              </button>
-              <button className="messengerInputButton">
-                <FiImage className="messengerInputIcon" />
-              </button>
-              <button className="messengerInputButton">
-                <TbFileSmile  className="messengerInputIcon" />
-              </button>
-            </div>
+        {showFooter && (
+          <div className="messengerInput">
+            <div className="messengerInputContainer">
+              <div className="messengerInputLeft">
+                <button className="messengerInputButton">
+                  <FiPlusCircle   className="messengerInputIcon" />
+                </button>
+                <button className="messengerInputButton">
+                  <FiImage className="messengerInputIcon" />
+                </button>
+                <button className="messengerInputButton">
+                  <TbFileSmile  className="messengerInputIcon" />
+                </button>
+              </div>
 
-            <div className="messengerInputCenter">
-              <textarea
-                className="messengerInputField"
-                placeholder="Type a message..."
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={handleKeyPress}
-                rows="1"
-              />
-            </div>
+              <div className="messengerInputCenter">
+                <textarea
+                  className="messengerInputField"
+                  placeholder="Type a message..."
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  rows="1"
+                />
+              </div>
 
-            <div className="messengerInputRight">
-              <button
-                className="messengerSendButton"
-                onClick={handleSendMessage}
-              >
-                <IoSend className="messengerSendIcon" />
-              </button>
+              <div className="messengerInputRight">
+                <button
+                  className="messengerSendButton"
+                  onClick={handleSendMessage}
+                >
+                  <IoSend className="messengerSendIcon" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

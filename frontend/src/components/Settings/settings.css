@@ -1,0 +1,126 @@
+.settings {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.settingsContainer {
+  padding: 24px;
+}
+
+.settingsHeader {
+  margin-bottom: 24px;
+}
+
+.settingsHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.settingsCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.settingsCloseButton:hover {
+  background-color: #f1f5f9;
+}
+
+.settingsCloseIcon {
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+}
+
+.settingsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.settingsSubtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settingsItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.settingsItemLabel {
+  display: flex;
+  align-items: center;
+}
+
+.settingsItemText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.settingsItemToggle {
+  display: flex;
+  align-items: center;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #e2e8f0;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.toggleSwitch.active {
+  background-color: #3b82f6;
+}
+
+.toggleSwitchKnob {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggleSwitch.active .toggleSwitchKnob {
+  transform: translateX(20px);
+}
+
+.toggleSwitch:hover {
+  background-color: #cbd5e1;
+}
+
+.toggleSwitch.active:hover {
+  background-color: #2563eb;
+} 

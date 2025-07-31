@@ -37,12 +37,11 @@
 .messengerHeader {
   width: 100%;
   height: 65px;
-  background-color: green;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   padding: 0 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .messengerHeaderContainer {
@@ -367,4 +366,80 @@
   .messengerMessageBubble {
     max-width: 85%;
   }
+}
+
+/* Dark Mode */
+.messenger--dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.messenger--dark .messengerContainer {
+  background-color: #1a1a1a;
+}
+
+.messenger--dark .messengerHeader {
+  background-color: #2d2d2d;
+  border-bottom-color: #404040;
+}
+
+.messenger--dark .messengerHeaderName {
+  color: #ffffff;
+}
+
+.messenger--dark .messengerHeaderStatus {
+  color: #a0a0a0;
+}
+
+.messenger--dark .messengerHeaderAvatarText {
+  color: #a0a0a0;
+}
+
+.messenger--dark .messengerMessages {
+  background-color: #1a1a1a;
+}
+
+.messenger--dark .messengerMessagesContainer {
+  background-color: #1a1a1a;
+}
+
+.messenger--dark .messengerDateText {
+  background-color: #2d2d2d;
+  color: #a0a0a0;
+}
+
+.messenger--dark .messengerMessageBubble--receiver {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.messenger--dark .messengerMessageBubble--receiver-single,
+.messenger--dark .messengerMessageBubble--receiver-first,
+.messenger--dark .messengerMessageBubble--receiver-middle,
+.messenger--dark .messengerMessageBubble--receiver-last {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.messenger--dark .messengerInput {
+  background-color: #2d2d2d;
+  border-top-color: #404040;
+}
+
+.messenger--dark .messengerInputField {
+  background-color: #1a1a1a;
+  border-color: #404040;
+  color: #ffffff;
+}
+
+.messenger--dark .messengerInputField::placeholder {
+  color: #a0a0a0;
+}
+
+.messenger--dark .messengerInputButton {
+  color: #a0a0a0;
+}
+
+.messenger--dark .messengerInputButton:hover {
+  background-color: #404040;
 }

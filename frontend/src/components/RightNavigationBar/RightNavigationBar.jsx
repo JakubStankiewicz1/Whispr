@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './rightNavigationBar.css';
+import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone } from 'react-icons/fi';
 import { BsMessenger } from 'react-icons/bs';
-import { FiChevronDown, FiMonitor, FiPhone, FiSettings, FiBarChart2, FiPlay, FiDownload } from 'react-icons/fi';
+import Settings from '../Settings/Settings';
 import { LuSmartphone } from "react-icons/lu";
 
-const RightNavigationBar = ({ selectedDevice, setSelectedDevice }) => {
+const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter }) => {
+  const [showSettings, setShowSettings] = useState(false);
+
+  // Close settings when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const settingsPanel = document.querySelector('.settingsPanel');
+      const settingsButton = document.querySelector('.rightNavigationBarActionButton');
+      
+      if (showSettings && settingsPanel && settingsButton) {
+        if (!settingsPanel.contains(event.target) && !settingsButton.contains(event.target)) {
+          setShowSettings(false);
+        }
+      }
+    };
+
+    if (showSettings) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showSettings]);
+
   return (
     <div className="rightNavigationBar">
       <div className="rightNavigationBarContainer">
@@ -51,7 +76,7 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice }) => {
 
         {/* Action Icons */}
         <div className="rightNavigationBarActions">
-          <button className="rightNavigationBarActionButton">
+          <button className="rightNavigationBarActionButton" onClick={() => setShowSettings(!showSettings)}>
             <FiSettings className="rightNavigationBarActionIcon" />
           </button>
           <button className="rightNavigationBarActionButton">
@@ -76,6 +101,24 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice }) => {
 
 
       </div>
+
+      {/* Settings Panel */}
+      {showSettings && (
+        <>
+          <div className="settingsOverlay" onClick={() => setShowSettings(false)} />
+          <div className="settingsPanel">
+            <Settings 
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              showFooter={showFooter}
+              setShowFooter={setShowFooter}
+              onClose={() => setShowSettings(false)}
+            />
+          </div>
+        </>
+      )}
     </div>
   )
 }

@@ -9,9 +9,10 @@ import Participant from '../Participant/Participant';
 import { FiPlus, FiX } from "react-icons/fi";
 import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
+import Group from '../Group/Group';
 
 
-const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receiverNames, setReceiverNames, receiverImages, setReceiverImages }) => {
+const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receiverNames, setReceiverNames, receiverImages, setReceiverImages, chatType, setChatType, groupName, setGroupName, groupImage, setGroupImage }) => {
   // Accordion state (multi-open)
   const [openSections, setOpenSections] = useState({
     participants: false,
@@ -255,11 +256,60 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
 
                                     <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerTwo">
                                       <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerTwoContainer">
-                                        <AiOutlineInfoCircle className='leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerTwoContainerIcon' />
+                                        <div className="chatTypeToggle">
+                                          <button 
+                                            className={`toggleButton ${chatType === 'single' ? 'active' : ''}`}
+                                            onClick={() => setChatType('single')}
+                                          >
+                                            Single
+                                          </button>
+                                          <button 
+                                            className={`toggleButton ${chatType === 'group' ? 'active' : ''}`}
+                                            onClick={() => setChatType('group')}
+                                          >
+                                            Group
+                                          </button>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+
+                                {/* Group Section - only show when chatType === 'group' */}
+                                {chatType === 'group' && (
+                                  <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroup">
+                                    <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainer">
+                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTop">
+                                        <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainer">
+                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOne">
+                                            <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOneContainer">
+                                              <p className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOneContainerText">
+                                                Group
+                                              </p>
+                                            </div>
+                                          </div>
+
+                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwo">
+                                            <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwoContainer">
+                                              <AiOutlineInfoCircle className='leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwoContainerIcon' />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerBottom">
+                                        <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerBottomContainer">
+                                          <Group
+                                            groupName={groupName || ''}
+                                            setGroupName={setGroupName}
+                                            groupImage={groupImage || ''}
+                                            setGroupImage={setGroupImage}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
 
                                 {/* Middle Part */}
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivMiddle">
@@ -644,6 +694,9 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
           <div className="leftSidebarDivierContainerLine" />
         </div>
       </div>
+
+      {/* Settings Panel */}
+      {/* Removed settings panel as per edit hint */}
     </div>
   )
 }
