@@ -208,6 +208,7 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                           {/* Top Part */}
                           <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTop">
                             <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainer">
+
                               <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOne">
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainer">
                                   <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOne">
@@ -246,11 +247,21 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                                 {/* Top Part */}
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTop">
                                   <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainer">
-                                    <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerOne">
-                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerOneContainer">
-                                        <p className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivTopContainerOneContainerText">
-                                          Receiver
-                                        </p>
+                                    <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOne">
+                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainer">
+                                        <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOne">
+                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOneContainer">
+                                            <p className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerOneContainerText">
+                                              Receiver
+                                            </p>
+                                          </div>
+                                        </div>
+
+                                        <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwo">
+                                          <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwoContainer">
+                                            <AiOutlineInfoCircle className='leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerTopContainerOneContainerTwoContainerIcon' />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
 
