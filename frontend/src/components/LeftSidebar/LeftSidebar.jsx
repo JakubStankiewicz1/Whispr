@@ -25,6 +25,45 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
   
   // Images state
   const [senderImage, setSenderImage] = useState('');
+
+  // Funkcje do obliczania liczby uczestników i wiadomości
+  const getParticipantsCount = () => {
+    let count = 0;
+    
+    // Dodaj sendera jeśli ma nazwę
+    if (senderName && senderName.trim()) {
+      count++;
+    }
+    
+    // Dodaj receiverów którzy mają nazwy
+    if (receiverNames) {
+      count += receiverNames.filter(name => name && name.trim()).length;
+    }
+    
+    return count;
+  };
+
+  const getMessagesCount = () => {
+    return messages ? messages.length : 0;
+  };
+
+  // Funkcje do określania klas CSS dla numerków
+  const getParticipantsCountClass = () => {
+    const count = getParticipantsCount();
+    if (count === 0) return 'count-empty';
+    if (count <= 2) return 'count-low';
+    if (count <= 5) return 'count-medium';
+    return 'count-high';
+  };
+
+  const getMessagesCountClass = () => {
+    const count = getMessagesCount();
+    if (count === 0) return 'count-empty';
+    if (count <= 3) return 'count-low';
+    if (count <= 8) return 'count-medium';
+    return 'count-high';
+  };
+
   const handleRemoveReceiver = (id) => {
     if (receivers.length > 1) {
       const idx = receivers.findIndex(r => r === id);
@@ -184,10 +223,10 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                               </div>
                             </div>
                             <div className="leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThree">
-                              <div className="leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainer">
+                              <div className={`leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainer ${getParticipantsCountClass()}`} title={`${getParticipantsCount()} participant${getParticipantsCount() !== 1 ? 's' : ''}`}>
                                 <div className="leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainerDiv">
                                   <p className="leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainerDivText">
-                                    2
+                                    {getParticipantsCount()}
                                   </p>
                                 </div>
                               </div>
@@ -431,10 +470,10 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                               </div>
                             </div>
                             <div className="leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThree">
-                              <div className="leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainer">
+                              <div className={`leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainer ${getMessagesCountClass()}`} title={`${getMessagesCount()} message${getMessagesCount() !== 1 ? 's' : ''}`}>
                                 <div className="leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainerDiv">
                                   <p className="leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainerDivText">
-                                    2
+                                    {getMessagesCount()}
                                   </p>
                                 </div>
                               </div>

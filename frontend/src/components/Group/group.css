@@ -1,16 +1,28 @@
 .group {
   width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
+  height: 66px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.group:hover {
+  border-color: #CBD5E1;
 }
 
 .groupContainer {
-  width: 100%;
+  width: 92%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.groupContainerLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .groupContainerLeftContainer {
@@ -21,21 +33,30 @@
 .groupContainerLeftContainerDiv {
   width: 40px;
   height: 40px;
+  background-color: #E5E7EB;
   border-radius: 50%;
-  background-color: #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
   position: relative;
 }
 
+.groupContainerLeftContainerDiv:hover {
+  background-color: #D1D5DB;
+}
+
 .groupContainerLeftContainerDivIcon {
-  width: 20px;
-  height: 20px;
-  color: #64748b;
+  width: 17px;
+  height: 17px;
+  color: #6A7282;
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.groupContainerLeftContainerDiv:hover .groupContainerLeftContainerDivIcon {
+  color: #4B5563;
 }
 
 .groupContainerLeftContainerDivImage {
@@ -44,7 +65,7 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease;
 }
 
 .groupContainerLeftContainerDivImage:hover {
@@ -57,8 +78,8 @@
   right: -5px;
   width: 20px;
   height: 20px;
+  background-color: #EF4444;
   border-radius: 50%;
-  background-color: #ef4444;
   color: white;
   border: none;
   cursor: pointer;
@@ -68,7 +89,8 @@
   font-size: 14px;
   font-weight: bold;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  z-index: 10;
 }
 
 .groupContainerLeftContainerDiv:hover .groupContainerLeftContainerDivRemoveButton {
@@ -76,48 +98,46 @@
 }
 
 .groupContainerLeftContainerDivRemoveButtonIcon {
-  font-size: 12px;
-  line-height: 1;
+  width: 12px;
+  height: 12px;
+  color: white;
 }
 
 .groupContainerLeftContainerDivRemoveButton:hover {
-  background-color: #dc2626;
+  background-color: #DC2626;
 }
 
 .groupContainerRight {
-  flex: 1;
+  width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .groupContainerRightContainer {
-  width: 100%;
-}
-
-.groupContainerRightContainer input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 14px;
-  color: #1e293b;
+  width: 340px;
 }
 
 .groupContainerRightContainerInput {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #E2E8F0;
   border-radius: 8px;
   font-size: 14px;
   color: #1e293b;
   background-color: #ffffff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
 }
 
 .groupContainerRightContainerInput:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   outline: none;
+}
+
+.groupContainerRightContainerInput:hover {
+  border-color: #CBD5E1;
 }
 
 .groupContainerRightContainerInput::placeholder {

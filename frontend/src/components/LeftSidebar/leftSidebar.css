@@ -284,6 +284,33 @@
     justify-content: center;
     border-radius: 30%;
     flex-shrink: 0; /* Zapobiega zmniejszaniu */
+    transition: background-color 0.3s ease;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainer:hover,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerThreeContainer:hover {
+    background-color: #E2E8F0;
+}
+
+/* Style dla różnych klas numerków */
+.count-empty {
+    background-color: #F1F5F9;
+    color: #94A3B8;
+}
+
+.count-low {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.count-medium {
+    background-color: #FEF3C7;
+    color: #D97706;
+}
+
+.count-high {
+    background-color: #FEE2E2;
+    color: #DC2626;
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerThreeContainerDivText,
@@ -294,8 +321,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    animation: countPulse 0.5s ease-out;
 }
 
+@keyframes countPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 
 .leftSidebarContainerTopContainerRightContainerDividerTwo {
@@ -639,6 +679,83 @@
 .toggleButton:hover:not(.active) {
   background-color: #e2e8f0;
   color: #1e293b;
+}
+
+/* Group Section Styles */
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroup {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainer {
+  width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTop {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOne {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOneContainer {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerOneContainerText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #364153;
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwo {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerTopContainerTwoContainerIcon {
+  color: #99A1AF;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerBottom {
+  width: 100%;
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivGroupContainerBottomContainer {
+  width: 100%;
 }
 
 /* Settings */

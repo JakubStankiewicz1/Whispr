@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import './participant.css';
 import { FiUser } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
