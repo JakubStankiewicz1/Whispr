@@ -333,6 +333,23 @@ const Messenger = ({
                     
                     {/* Message */}
                     <div className={`messengerMessage ${isFromSender ? 'messengerMessage--sender' : 'messengerMessage--receiver'}`}>
+                      {/* User Avatar for Receiver Messages */}
+                      {!isFromSender && (
+                        <div className="messengerMessageAvatar">
+                          {getFirstReceiverImage() ? (
+                            <img 
+                              src={getFirstReceiverImage()} 
+                              alt="User avatar" 
+                              className="messengerMessageAvatarImage"
+                            />
+                          ) : (
+                            <div className="messengerMessageAvatarFallback">
+                              <FiUser className="messengerMessageAvatarIcon" />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      
                       <div className={`messengerMessageBubble ${borderRadiusClass}`}>
                         {/* Message Images */}
                         {msg.images && msg.images.length > 0 && (

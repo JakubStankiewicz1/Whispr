@@ -590,3 +590,54 @@
 .messenger--dark .messengerInputButton:hover {
   background-color: #404040;
 }
+
+/* Message Avatar Styles */
+.messengerMessageAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e6eb;
+  overflow: hidden;
+}
+
+.messengerMessageAvatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.messengerMessageAvatarFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e6eb;
+  border-radius: 50%;
+}
+
+.messengerMessageAvatarIcon {
+  width: 16px;
+  height: 16px;
+  color: #65676b;
+}
+
+/* Update message layout to accommodate avatar */
+.messengerMessage--receiver {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+
+.messengerMessage--sender {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}

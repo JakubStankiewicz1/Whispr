@@ -5,12 +5,14 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { FiCalendar } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 
 import Participant from '../Participant/Participant';
-import { FiPlus, FiX } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
 import Group from '../Group/Group';
+import AboutUs from '../AboutUs/AboutUs';
 
 
 const LeftSidebar = ({ 
@@ -41,11 +43,24 @@ const LeftSidebar = ({
     globalDateSettings: false
   });
 
+  // Pop-up state
+  const [showAboutPopup, setShowAboutPopup] = useState(false);
+
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
   
   // Images state
   const [senderImage, setSenderImage] = useState('');
+
+  // Funkcja do obsługi kliknięcia na ikonę info
+  const handleInfoClick = () => {
+    setShowAboutPopup(true);
+  };
+
+  // Funkcja do zamykania pop-up
+  const handleClosePopup = () => {
+    setShowAboutPopup(false);
+  };
 
   // Funkcje do obliczania liczby uczestników i wiadomości
   const getParticipantsCount = () => {
@@ -152,7 +167,8 @@ const LeftSidebar = ({
   };
 
   return (
-    <div className='leftSidebar'>
+    <>
+      <div className='leftSidebar'>
       <div className="leftSidebarContainer">
         {/* Top Part */}
         <div className="leftSidebarContainerTop">
@@ -198,7 +214,11 @@ const LeftSidebar = ({
 
                     <div className="leftSidebarContainerTopContainerRightContainerOneContainerTwo">
                       <div className="leftSidebarContainerTopContainerRightContainerOneContainerTwoContainer">
-                        <AiOutlineInfoCircle className='leftSidebarContainerTopContainerRightContainerOneContainerTwoContainerInfo' />
+                        <AiOutlineInfoCircle 
+                          className='leftSidebarContainerTopContainerRightContainerOneContainerTwoContainerInfo' 
+                          onClick={handleInfoClick}
+                          style={{cursor: 'pointer'}}
+                        />
                       </div>
                     </div>
 
@@ -930,6 +950,9 @@ const LeftSidebar = ({
       {/* Settings Panel */}
       {/* Removed settings panel as per edit hint */}
     </div>
+
+    <AboutUs open={showAboutPopup} onClose={handleClosePopup} />
+  </>
   )
 }
 

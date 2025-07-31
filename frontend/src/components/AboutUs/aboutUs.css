@@ -1,0 +1,118 @@
+.aboutUsOverlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.35);
+  z-index: 1000;
+  animation: aboutUsFadeIn 0.2s;
+}
+
+.aboutUsModal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  min-width: 340px;
+  max-width: 95vw;
+  width: 420px;
+  padding: 32px 28px 20px 28px;
+  z-index: 1001;
+  animation: aboutUsSlideIn 0.25s cubic-bezier(.4,1.4,.6,1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.aboutUsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.aboutUsTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.aboutUsCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.aboutUsCloseButton:hover {
+  background: #f1f5f9;
+}
+.aboutUsCloseIcon {
+  width: 22px;
+  height: 22px;
+  color: #64748b;
+}
+
+.aboutUsContent {
+  margin-bottom: 8px;
+}
+.aboutUsSubtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 18px;
+}
+.aboutUsChangelog {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.aboutUsVersionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+}
+.aboutUsVersionNumber {
+  color: #3b82f6;
+  font-weight: 700;
+}
+.aboutUsVersionDate {
+  color: #94a3b8;
+  font-size: 0.95em;
+  font-weight: 400;
+}
+.aboutUsVersionFeatures {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  color: #475569;
+  font-size: 0.98em;
+}
+.aboutUsFooter {
+  margin-top: 10px;
+  text-align: center;
+}
+.aboutUsFooterText {
+  color: #64748b;
+  font-size: 0.97em;
+}
+.aboutUsFooterLink {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+.aboutUsFooterLink:hover {
+  text-decoration: underline;
+}
+
+@keyframes aboutUsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes aboutUsSlideIn {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.97);}
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1);}
+} 
