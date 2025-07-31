@@ -34,6 +34,7 @@
 .rightNavigationBarLeft {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .rightNavigationBarLogo {
@@ -224,4 +225,90 @@
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+/* Platform Dropdown Styles */
+.platformDropdown {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e1e5e9;
+  min-width: 280px;
+  z-index: 1000;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.platformDropdownContent {
+  padding: 8px 0;
+}
+
+.platformItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.platformItem:hover {
+  background-color: #f8f9fa;
+}
+
+.platformIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.platformIconSvg {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+.platformName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c1e21;
+}
+
+.platformCheckmark {
+  color: #65676b;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.addPlatform {
+  border-top: 1px solid #e1e5e9;
+  margin-top: 4px;
+  padding-top: 12px;
+}
+
+.addPlatformIcon {
+  background-color: #e4e6eb !important;
+}
+
+.addPlatformIcon .platformIconSvg {
+  color: #65676b;
+}
+
+/* Rotate dropdown arrow when open */
+.rightNavigationBarDropdown.rotated {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.rightNavigationBarDropdown {
+  transition: transform 0.2s ease;
 }

@@ -207,6 +207,526 @@
     min-height: 64px;
 }
 
+/* Message Images Container */
+.messageImagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.messageImageWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.messageImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.messageImage:hover {
+  opacity: 0.8;
+}
+
+.messageImageRemoveButton {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(239, 68, 68, 0.9);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  z-index: 10;
+}
+
+.messageImageWrapper:hover .messageImageRemoveButton {
+  opacity: 1;
+}
+
+.messageImageRemoveButtonIcon {
+  width: 12px;
+  height: 12px;
+  color: white;
+}
+
+.messageImageRemoveButton:hover {
+  background-color: #dc2626;
+}
+
+/* Message Input Section */
+.messageInputSection {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.messageContainerDivRightContainerBottomContainerTextarea {
+  flex: 1;
+  width: 100%;
+  min-height: 32px;
+  /* border: none; */
+  outline: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 15px;
+  resize: none;
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222;
+  /* border: 1px solid red; */
+  display: flex;
+  /* align-items: center; */
+  padding-top: 0;
+  padding-bottom: 5px;
+  /* Wyśrodkowanie tekstu w pionie */
+  padding-top: 5px;
+  padding-left: 5px;
+  border: 1px solid black;
+}
+
+.messageImageUploadButton {
+  width: 32px;
+  height: 32px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.messageImageUploadButton:hover {
+  background-color: #e2e8f0;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.messageImageUploadButtonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Date Container Styles */
+.messageDateContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.messageDateContainer:hover {
+  background-color: #f1f5f9;
+}
+
+.messageDateIcon {
+  width: 14px;
+  height: 14px;
+  color: #64748b;
+}
+
+.messageDateText {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Emoji Button Styles */
+.messageEmojiButton {
+  width: 32px;
+  height: 32px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.messageEmojiButton:hover {
+  background-color: #e2e8f0;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.messageEmojiButtonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Emoji Picker Modal Styles */
+.messageEmojiPicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.messageEmojiPickerContent {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: scaleIn 0.2s ease-out;
+}
+
+.messageEmojiPickerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.messageEmojiPickerHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.messageEmojiPickerClose {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.messageEmojiPickerClose:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.messageEmojiPickerGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  padding: 16px 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.messageEmojiPickerItem {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.messageEmojiPickerItem:hover {
+  background-color: #f1f5f9;
+}
+
+/* Date Picker Modal Styles */
+.messageDatePicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.messageDatePickerContent {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: scaleIn 0.2s ease-out;
+}
+
+.messageDatePickerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.messageDatePickerHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.messageDatePickerClose {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.messageDatePickerClose:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.messageDatePickerBody {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+.messageDatePickerDateSection,
+.messageDatePickerTimeSection {
+  flex: 1;
+}
+
+.messageDatePickerDateSection h4,
+.messageDatePickerTimeSection h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.messageDatePickerCalendar {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.messageDatePickerCalendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.messageDatePickerCalendarNav {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.messageDatePickerCalendarNav:hover {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.messageDatePickerCalendarTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.messageDatePickerCalendarDays {
+  padding: 12px;
+}
+
+.messageDatePickerCalendarDaysHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.messageDatePickerCalendarDayHeader {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 8px 4px;
+}
+
+.messageDatePickerCalendarDaysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.messageDatePickerCalendarDay {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.messageDatePickerCalendarDay:hover:not(:disabled) {
+  background-color: #f1f5f9;
+}
+
+.messageDatePickerCalendarDay.selected {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.messageDatePickerCalendarDay.today {
+  border: 2px solid #3b82f6;
+}
+
+.messageDatePickerCalendarDay.other-month {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.messageDatePickerTimeInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #374151;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.messageDatePickerTimeInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.messageDatePickerFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.messageDatePickerCancel,
+.messageDatePickerSave {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.messageDatePickerCancel {
+  background-color: #ffffff;
+  color: #374151;
+}
+
+.messageDatePickerCancel:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.messageDatePickerSave {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.messageDatePickerSave:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 
 .messageContainerDivRightContainerTopContainerRightContainerIcon {
@@ -214,4 +734,191 @@
     width: 17px;
     height: 17px;
     cursor: pointer;
+}
+
+/* Date Options Button Styles */
+.messageDateOptionsButton {
+    width: 24px;
+    height: 24px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+}
+
+.messageDateOptionsButton:hover {
+    background-color: #e2e8f0;
+    color: #475569;
+    border-color: #cbd5e1;
+}
+
+.messageDateOptionsIcon {
+    width: 12px;
+    height: 12px;
+}
+
+/* Date Options Modal Styles */
+.messageDateOptions {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.messageDateOptionsContent {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 400px;
+    max-width: 90vw;
+    animation: scaleIn 0.3s ease-out;
+}
+
+.messageDateOptionsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.messageDateOptionsHeader h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.messageDateOptionsClose {
+    width: 32px;
+    height: 32px;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 6px;
+    color: #6b7280;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.messageDateOptionsClose:hover {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.messageDateOptionsBody {
+    padding: 20px 24px;
+}
+
+.messageDateOptionsItem {
+    margin-bottom: 16px;
+}
+
+.messageDateOptionsItem:last-child {
+    margin-bottom: 0;
+}
+
+.messageDateOptionsLabel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.messageDateOptionsCheckbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+
+.messageDateOptionsText {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.messageDateOptionsSelect {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.messageDateOptionsSelect:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.messageDateOptionsPreview {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.messageDateOptionsPreviewLabel {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.messageDateOptionsPreviewText {
+    display: block;
+    font-size: 14px;
+    color: #374151;
+    font-family: 'Courier New', monospace;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+}
+
+.messageDateOptionsFooter {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.messageDateOptionsCancel {
+    padding: 8px 16px;
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.messageDateOptionsCancel:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
 }

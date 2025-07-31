@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './home.css';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar.jsx';
 import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
@@ -11,7 +11,15 @@ const Home = () => {
     id: Date.now() + Math.random(),
     text: '',
     type: 'sender',
-    sender: ''
+    sender: '',
+    images: [],
+    date: new Date(),
+    dateDisplaySettings: { // Domyślne ustawienia (będą zastąpione przez globalDateSettings)
+      showDate: true,
+      showTime: true,
+      showYear: true,
+      format: 'short'
+    }
   }]);
   const [selectedDevice, setSelectedDevice] = useState('desktop');
   
@@ -24,6 +32,20 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [showFooter, setShowFooter] = useState(true);
+  const [forceDateDisplay, setForceDateDisplay] = useState(false); // Nowa opcja wymuszenia daty
+  const [globalDateSettings, setGlobalDateSettings] = useState({ // Globalne ustawienia formatowania dat
+    showDate: true,
+    showTime: true,
+    showYear: true,
+    format: 'short'
+  });
+
+  // Aktualizuj początkową wiadomość gdy zmienią się globalne ustawienia
+  useEffect(() => {
+    setMessages(prev => prev.map((msg, idx) => 
+      idx === 0 ? { ...msg, dateDisplaySettings: globalDateSettings } : msg
+    ));
+  }, [globalDateSettings]);
 
   return (
     <div className={`home home--${selectedDevice}`}>
@@ -42,6 +64,10 @@ const Home = () => {
           setGroupName={setGroupName}
           groupImage={groupImage}
           setGroupImage={setGroupImage}
+          forceDateDisplay={forceDateDisplay}
+          setForceDateDisplay={setForceDateDisplay}
+          globalDateSettings={globalDateSettings}
+          setGlobalDateSettings={setGlobalDateSettings}
         />
         <RightSidebar 
           senderName={senderName} 
@@ -59,6 +85,8 @@ const Home = () => {
           setShowHeader={setShowHeader}
           showFooter={showFooter}
           setShowFooter={setShowFooter}
+          forceDateDisplay={forceDateDisplay}
+          globalDateSettings={globalDateSettings}
         />
     </div>
   )

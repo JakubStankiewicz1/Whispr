@@ -6,9 +6,30 @@ import { TbFileSmile } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
+import { IoCloseOutline } from "react-icons/io5";
 
-const Messenger = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop', chatType = 'single', groupName = '', groupImage = '', darkMode = false, showHeader = true, showFooter = true }) => {
+const Messenger = ({ 
+  senderName, 
+  receiverNames, 
+  receiverImages, 
+  messages, 
+  selectedDevice = 'desktop', 
+  chatType = 'single', 
+  groupName = '', 
+  groupImage = '', 
+  darkMode = false, 
+  showHeader = true, 
+  showFooter = true,
+  forceDateDisplay = false, // Nowa opcja wymuszenia wyświetlania daty
+  globalDateSettings = { // Globalne ustawienia formatowania dat
+    showDate: true,
+    showTime: true,
+    showYear: true,
+    format: 'short'
+  }
+}) => {
   const [inputMessage, setInputMessage] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleSendMessage = () => {
     if (inputMessage.trim()) {
@@ -22,6 +43,14 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
       e.preventDefault();
       handleSendMessage();
     }
+  };
+
+  const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
   };
 
   // Helper function to determine if message is from sender
@@ -83,6 +112,114 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
     return getReceiverInitial();
   };
 
+  // Helper function to format date for display
+  const formatMessageDate = (date, dateDisplaySettings = null) => {
+    if (!date) return '';
+    
+    const messageDate = new Date(date);
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    // Użyj ustawień z wiadomości lub globalnych ustawień
+    const settings = dateDisplaySettings || globalDateSettings;
+    
+    // Jeśli mamy ustawienia formatowania, użyj ich
+    if (settings) {
+      let formattedDate = '';
+      let formattedTime = '';
+
+      // Format date based on settings
+      if (settings.showDate) {
+        if (settings.format === 'short') {
+          formattedDate = messageDate.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            ...(settings.showYear && { year: 'numeric' })
+          }).replace(/\//g, '.');
+        } else if (settings.format === 'long') {
+          formattedDate = messageDate.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+        } else {
+          // Custom format
+          formattedDate = messageDate.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            ...(settings.showYear && { year: 'numeric' })
+          });
+        }
+      }
+
+      // Format time if needed
+      if (settings.showTime) {
+        // Extract time from the date
+        const hours = messageDate.getHours().toString().padStart(2, '0');
+        const minutes = messageDate.getMinutes().toString().padStart(2, '0');
+        const seconds = messageDate.getSeconds().toString().padStart(2, '0');
+        formattedTime = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // Combine date and time
+      if (formattedDate && formattedTime) {
+        return `${formattedDate}, ${formattedTime}`;
+      } else if (formattedDate) {
+        return formattedDate;
+      } else if (formattedTime) {
+        return formattedTime;
+      }
+
+      return '';
+    }
+    
+    // Fallback do oryginalnej logiki jeśli nie ma ustawień
+    // Check if it's today
+    if (messageDate.toDateString() === today.toDateString()) {
+      return 'Today';
+    }
+    
+    // Check if it's yesterday
+    if (messageDate.toDateString() === yesterday.toDateString()) {
+      return 'Yesterday';
+    }
+    
+    // Check if it's this year
+    if (messageDate.getFullYear() === today.getFullYear()) {
+      return messageDate.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric' 
+      });
+    }
+    
+    // Different year
+    return messageDate.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
+  // Helper function to check if we need to show date separator
+  const shouldShowDateSeparator = (currentMessage, previousMessage) => {
+    // Jeśli wymuszenie jest włączone, zawsze pokazuj separator
+    if (forceDateDisplay) return true;
+    
+    if (!currentMessage || !previousMessage) return true;
+    
+    const currentDate = new Date(currentMessage.date || currentMessage.timestamp || Date.now());
+    const previousDate = new Date(previousMessage.date || previousMessage.timestamp || Date.now());
+    
+    return currentDate.toDateString() !== previousDate.toDateString();
+  };
+
+  // Helper function to get message date
+  const getMessageDate = (message) => {
+    return message.date || message.timestamp || new Date();
+  };
+
   const headerImage = getHeaderImage();
 
   return (
@@ -125,18 +262,24 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
         {/* Message Area */}
         <div className="messengerMessages">
           <div className="messengerMessagesContainer">
-            {/* Date Separator */}
-            <div className="messengerDateSeparator">
-              <span className="messengerDateText">Jul 28, 2025</span>
-            </div>
-
-            {/* Messages */}
+            {/* Messages with Date Separators */}
             <div className="messengerMessagesList">
               {messages && messages.length > 0 && messages.map((msg, idx) => {
                 const isFromSender = isMessageFromSender(msg);
                 
-                // Check if previous message is from the same person
+                // Sprawdzamy czy wiadomość ma treść (tekst lub obrazy)
+                const hasContent = (msg.text && msg.text.trim()) || (msg.images && msg.images.length > 0);
+                
+                // Jeśli wiadomość nie ma treści, nie wyświetlamy jej
+                if (!hasContent) {
+                  return null;
+                }
+                
+                // Check if we need to show date separator
                 const prevMessage = idx > 0 ? messages[idx - 1] : null;
+                const shouldShowSeparator = shouldShowDateSeparator(msg, prevMessage);
+                
+                // Check if previous message is from the same person
                 const isPrevFromSamePerson = prevMessage && isMessageFromSender(prevMessage) === isFromSender;
                 
                 // Check if next message is from the same person
@@ -178,13 +321,44 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
                 }
                 
                 return (
-                  <div key={msg.id} className={`messengerMessage ${isFromSender ? 'messengerMessage--sender' : 'messengerMessage--receiver'}`}>
-                    <div className={`messengerMessageBubble ${borderRadiusClass}`}>
-                      <span className="messengerMessageText">
-                        {String(msg.text || 'test')}
-                      </span>
+                  <React.Fragment key={msg.id}>
+                    {/* Date Separator */}
+                    {shouldShowSeparator && (
+                      <div className="messengerDateSeparator">
+                        <span className="messengerDateText">
+                          {formatMessageDate(getMessageDate(msg), msg.dateDisplaySettings)}
+                        </span>
+                      </div>
+                    )}
+                    
+                    {/* Message */}
+                    <div className={`messengerMessage ${isFromSender ? 'messengerMessage--sender' : 'messengerMessage--receiver'}`}>
+                      <div className={`messengerMessageBubble ${borderRadiusClass}`}>
+                        {/* Message Images */}
+                        {msg.images && msg.images.length > 0 && (
+                          <div className="messengerMessageImages">
+                            {msg.images.map((image, imgIdx) => (
+                              <div key={imgIdx} className="messengerMessageImageWrapper">
+                                <img 
+                                  src={image.src} 
+                                  alt="Message attachment" 
+                                  className="messengerMessageImage"
+                                  onClick={() => handleImageClick(image.src)}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Message Text */}
+                        {msg.text && msg.text.trim() && (
+                          <span className="messengerMessageText">
+                            {String(msg.text)}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -230,6 +404,22 @@ const Messenger = ({ senderName, receiverNames, receiverImages, messages, select
           </div>
         )}
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="messengerImageModal" onClick={closeImageModal}>
+          <div className="messengerImageModalContent" onClick={(e) => e.stopPropagation()}>
+            <button className="messengerImageModalClose" onClick={closeImageModal}>
+              <IoCloseOutline className="messengerImageModalCloseIcon" />
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Full size image" 
+              className="messengerImageModalImage"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

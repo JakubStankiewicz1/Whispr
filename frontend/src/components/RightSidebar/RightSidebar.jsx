@@ -5,7 +5,30 @@ import RightNavigationBar from '../RightNavigationBar/RightNavigationBar';
 import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone } from 'react-icons/fi';
 import { BsMessenger } from 'react-icons/bs';
 
-const RightSidebar = ({ senderName, receiverNames, receiverImages, messages, selectedDevice, setSelectedDevice, chatType, groupName, groupImage, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter }) => {
+const RightSidebar = ({ 
+  senderName, 
+  receiverNames, 
+  receiverImages, 
+  messages, 
+  selectedDevice, 
+  setSelectedDevice, 
+  chatType, 
+  groupName, 
+  groupImage, 
+  darkMode, 
+  setDarkMode, 
+  showHeader, 
+  setShowHeader, 
+  showFooter, 
+  setShowFooter,
+  forceDateDisplay = false, // Nowa opcja wymuszenia daty
+  globalDateSettings = { // Globalne ustawienia formatowania dat
+    showDate: true,
+    showTime: true,
+    showYear: true,
+    format: 'short'
+  }
+}) => {
   return (
     <div className={`rightSidebar rightSidebar--${selectedDevice}`}>
       <div className="rightSidebarContainer">
@@ -22,6 +45,8 @@ const RightSidebar = ({ senderName, receiverNames, receiverImages, messages, sel
             darkMode={darkMode}
             showHeader={showHeader}
             showFooter={showFooter}
+            forceDateDisplay={forceDateDisplay}
+            globalDateSettings={globalDateSettings}
           />
         </div>
       </div>

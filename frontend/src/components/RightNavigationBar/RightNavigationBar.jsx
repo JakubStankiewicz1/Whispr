@@ -1,12 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './rightNavigationBar.css';
-import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone } from 'react-icons/fi';
+import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone, FiPlus } from 'react-icons/fi';
 import { BsMessenger } from 'react-icons/bs';
 import Settings from '../Settings/Settings';
 import { LuSmartphone } from "react-icons/lu";
+import { FaDiscord, FaInstagram, FaReddit, FaSnapchat, FaTelegram, FaTiktok, FaWeixin, FaWhatsapp, FaXTwitter } from 'react-icons/fa6';
+import { SiSignal, SiSlack, SiTinder } from 'react-icons/si';
+import { IoLogoIonitron } from 'react-icons/io5';
 
 const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter }) => {
   const [showSettings, setShowSettings] = useState(false);
+  const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Platform data
+  const platforms = [
+    { name: 'Discord', icon: FaDiscord, color: '#5865F2' },
+    { name: 'iMessage', icon: IoLogoIonitron, color: '#000000' },
+    { name: 'Instagram', icon: FaInstagram, color: '#E4405F' },
+    { name: 'Messenger', icon: BsMessenger, color: '#0084FF' },
+    { name: 'Reddit', icon: FaReddit, color: '#FF4500' },
+    { name: 'Signal', icon: SiSignal, color: '#3A76F0' },
+    { name: 'Slack', icon: SiSlack, color: '#4A154B' },
+    { name: 'Snapchat', icon: FaSnapchat, color: '#FFFC00' },
+    { name: 'Telegram', icon: FaTelegram, color: '#0088CC' },
+    { name: 'TikTok', icon: FaTiktok, color: '#000000' },
+    { name: 'Tinder', icon: SiTinder, color: '#FF6B6B' },
+    { name: 'WeChat', icon: FaWeixin, color: '#07C160' },
+    { name: 'WhatsApp', icon: FaWhatsapp, color: '#25D366' },
+    { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000' }
+  ];
 
   // Close settings when clicking outside
   useEffect(() => {
@@ -30,21 +53,70 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
     };
   }, [showSettings]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Sprawdź czy kliknięcie było poza dropdown i poza RightNavigationBar
+      const navigationBar = document.querySelector('.rightNavigationBar');
+      const dropdown = dropdownRef.current;
+      
+      if (dropdown && navigationBar) {
+        // Jeśli kliknięcie było poza dropdown i poza całą nawigacją
+        if (!dropdown.contains(event.target) && !navigationBar.contains(event.target)) {
+          setShowPlatformDropdown(false);
+        }
+      }
+    };
+
+    if (showPlatformDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showPlatformDropdown]);
+
+  const handlePlatformClick = () => {
+    setShowPlatformDropdown(!showPlatformDropdown);
+  };
+
   return (
     <div className="rightNavigationBar">
       <div className="rightNavigationBarContainer">
 
-
-
-
-
         {/* Left Section */}
         <div className="rightNavigationBarLeft">
-          <div className="rightNavigationBarLogo">
+          <div className="rightNavigationBarLogo" onClick={handlePlatformClick} style={{cursor: 'pointer'}}>
             <BsMessenger className="rightNavigationBarLogoIcon" />
             <span className="rightNavigationBarLogoText">Messenger</span>
-            <FiChevronDown className="rightNavigationBarDropdown" />
+            <FiChevronDown className={`rightNavigationBarDropdown ${showPlatformDropdown ? 'rotated' : ''}`} />
           </div>
+
+          {/* Platform Dropdown */}
+          {showPlatformDropdown && (
+            <div className="platformDropdown" ref={dropdownRef}>
+              <div className="platformDropdownContent">
+                {platforms.map((platform, index) => (
+                  <div key={index} className="platformItem">
+                    <div className="platformIcon" style={{ backgroundColor: platform.color }}>
+                      <platform.icon className="platformIconSvg" />
+                    </div>
+                    <span className="platformName">{platform.name}</span>
+                    {platform.name === 'Messenger' && (
+                      <div className="platformCheckmark">✓</div>
+                    )}
+                  </div>
+                ))}
+                <div className="platformItem addPlatform">
+                  <div className="platformIcon addPlatformIcon">
+                    <FiPlus className="platformIconSvg" />
+                  </div>
+                  <span className="platformName">Add platform</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
 

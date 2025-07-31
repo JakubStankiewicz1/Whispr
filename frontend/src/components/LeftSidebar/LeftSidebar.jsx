@@ -4,6 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
+import { FiCalendar } from "react-icons/fi";
 
 import Participant from '../Participant/Participant';
 import { FiPlus, FiX } from "react-icons/fi";
@@ -12,12 +13,32 @@ import Message from '../Message/Message';
 import Group from '../Group/Group';
 
 
-const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receiverNames, setReceiverNames, receiverImages, setReceiverImages, chatType, setChatType, groupName, setGroupName, groupImage, setGroupImage }) => {
+const LeftSidebar = ({ 
+  senderName, 
+  setSenderName, 
+  messages, 
+  setMessages, 
+  receiverNames, 
+  setReceiverNames, 
+  receiverImages, 
+  setReceiverImages, 
+  chatType, 
+  setChatType, 
+  groupName, 
+  setGroupName, 
+  groupImage, 
+  setGroupImage,
+  forceDateDisplay,
+  setForceDateDisplay,
+  globalDateSettings,
+  setGlobalDateSettings
+}) => {
   // Accordion state (multi-open)
   const [openSections, setOpenSections] = useState({
     participants: false,
     messages: false,
-    instructions: false
+    instructions: false,
+    globalDateSettings: false
   });
 
   // Receivers state
@@ -106,7 +127,15 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
       text: '',
       type: nextType,
       sender: senderName,
-      receiverIdx: nextReceiverIdx
+      receiverIdx: nextReceiverIdx,
+      images: [], // Dodajemy pole images
+      date: new Date(), // Dodajemy aktualną datę
+      dateDisplaySettings: globalDateSettings || { // Używamy globalnych ustawień
+        showDate: true,
+        showTime: true,
+        showYear: true,
+        format: 'short'
+      }
     }]);
   };
   const handleAccordion = (section) => {
@@ -445,9 +474,151 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                   <div className="leftSidebarContainerTopContainerRightContainerDividerTwoLine" />
                 </div>
 
+                {/* Global Date Settings Accordion */}
+                <div className="leftSidebarContainerTopContainerRightContainerFive">
+                  <div className="leftSidebarContainerTopContainerRightContainerFiveContainer">
+                    <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOne" onClick={() => handleAccordion('globalDateSettings')} style={{cursor:'pointer'}}>
+                      <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainer">
+                        {/* Left Part */}
+                        <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeft">
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainer">
+                            <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOne">
+                              <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainer">
+                                <FiCalendar className='leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainerIcon' />
+                              </div>
+                            </div>
+                            <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwo">
+                              <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainer">
+                                <p className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainerText">
+                                  Global Date Settings
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Right Part */}
+                        <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRight">
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainer">
+                            <IoIosArrowUp className='leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainerIcon' style={{transition:'transform 0.2s', transform: openSections.globalDateSettings ? 'rotate(0deg)' : 'rotate(180deg)'}} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {openSections.globalDateSettings && (
+                      <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwo">
+                        <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainer">
+                          {/* Show Date Toggle */}
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItem">
+                            <label className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemLabel">
+                              <input
+                                type="checkbox"
+                                checked={globalDateSettings.showDate}
+                                onChange={(e) => setGlobalDateSettings(prev => ({...prev, showDate: e.target.checked}))}
+                                className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemCheckbox"
+                              />
+                              <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemText">Show Date</span>
+                            </label>
+                          </div>
 
+                          {/* Show Time Toggle */}
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItem">
+                            <label className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemLabel">
+                              <input
+                                type="checkbox"
+                                checked={globalDateSettings.showTime}
+                                onChange={(e) => setGlobalDateSettings(prev => ({...prev, showTime: e.target.checked}))}
+                                className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemCheckbox"
+                              />
+                              <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemText">Show Time</span>
+                            </label>
+                          </div>
 
+                          {/* Show Year Toggle */}
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItem">
+                            <label className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemLabel">
+                              <input
+                                type="checkbox"
+                                checked={globalDateSettings.showYear}
+                                onChange={(e) => setGlobalDateSettings(prev => ({...prev, showYear: e.target.checked}))}
+                                className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemCheckbox"
+                              />
+                              <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemText">Show Year</span>
+                            </label>
+                          </div>
 
+                          {/* Format Selection */}
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItem">
+                            <label className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemLabel">
+                              <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemText">Format:</span>
+                              <select
+                                value={globalDateSettings.format}
+                                onChange={(e) => setGlobalDateSettings(prev => ({...prev, format: e.target.value}))}
+                                className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItemSelect"
+                              >
+                                <option value="short">Short (31.07)</option>
+                                <option value="long">Long (Thursday, July 31, 2025)</option>
+                                <option value="custom">Custom (Jul 31)</option>
+                              </select>
+                            </label>
+                          </div>
+
+                          {/* Preview */}
+                          <div className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerPreview">
+                            <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerPreviewLabel">Preview:</span>
+                            <span className="leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerPreviewText">
+                              {(() => {
+                                const testDate = new Date();
+                                const hours = testDate.getHours().toString().padStart(2, '0');
+                                const minutes = testDate.getMinutes().toString().padStart(2, '0');
+                                const seconds = testDate.getSeconds().toString().padStart(2, '0');
+                                const time = `${hours}:${minutes}:${seconds}`;
+                                
+                                let formattedDate = '';
+                                if (globalDateSettings.showDate) {
+                                  if (globalDateSettings.format === 'short') {
+                                    formattedDate = testDate.toLocaleDateString('en-GB', {
+                                      day: '2-digit',
+                                      month: '2-digit',
+                                      ...(globalDateSettings.showYear && { year: 'numeric' })
+                                    }).replace(/\//g, '.');
+                                  } else if (globalDateSettings.format === 'long') {
+                                    formattedDate = testDate.toLocaleDateString('en-US', {
+                                      weekday: 'long',
+                                      year: 'numeric',
+                                      month: 'long',
+                                      day: 'numeric'
+                                    });
+                                  } else {
+                                    formattedDate = testDate.toLocaleDateString('en-GB', {
+                                      day: '2-digit',
+                                      month: 'short',
+                                      ...(globalDateSettings.showYear && { year: 'numeric' })
+                                    });
+                                  }
+                                }
+
+                                const formattedTime = globalDateSettings.showTime ? time : '';
+
+                                if (formattedDate && formattedTime) {
+                                  return `${formattedDate}, ${formattedTime}`;
+                                } else if (formattedDate) {
+                                  return formattedDate;
+                                } else if (formattedTime) {
+                                  return formattedTime;
+                                }
+                                return 'No date/time shown';
+                              })()}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="leftSidebarContainerTopContainerRightContainerDividerThree">
+                  <div className="leftSidebarContainerTopContainerRightContainerDividerThreeLine" />
+                </div>
 
                 {/* Messages Accordion */}
                 <div className="leftSidebarContainerTopContainerRightContainerThree">
@@ -505,11 +676,22 @@ const LeftSidebar = ({ senderName, setSenderName, messages, setMessages, receive
                                 text: messageData.text,
                                 type: messageData.type,
                                 sender: messageData.sender,
-                                receiverIdx: messageData.receiverIdx
+                                receiverIdx: messageData.receiverIdx,
+                                images: messageData.images || [],
+                                date: messageData.date,
+                                dateDisplaySettings: messageData.dateDisplaySettings, // Dodaję ustawienia formatowania
+                                forceDateDisplay: messageData.forceDateDisplay
                               } : m));
+                              
+                              // Jeśli forceDateDisplay się zmieniło, zaktualizuj globalną opcję
+                              if (messageData.forceDateDisplay !== undefined) {
+                                setForceDateDisplay(messageData.forceDateDisplay);
+                              }
                             }}
                             senderImage={senderImage || ''}
                             receiverImages={receiverImages || []}
+                            forceDateDisplay={forceDateDisplay}
+                            globalDateSettings={globalDateSettings}
                           />
                         ))}
                         
