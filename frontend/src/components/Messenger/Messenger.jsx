@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './messengerDesktop.css';
+import './messenger.css';
 import { FiPlus, FiImage, FiSmile } from 'react-icons/fi';
 import { IoSend } from 'react-icons/io5';
 import { TbFileSmile } from "react-icons/tb";
@@ -7,7 +7,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 
-const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop' }) => {
+const Messenger = ({ senderName, receiverNames, receiverImages, messages, selectedDevice = 'desktop' }) => {
   const [inputMessage, setInputMessage] = useState('');
 
   const handleSendMessage = () => {
@@ -63,17 +63,17 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
   const firstReceiverImage = getFirstReceiverImage();
 
   return (
-    <div className={`messengerDesktop messengerDesktop--${selectedDevice}`}>
-      <div className="messengerDesktopContainer">
+    <div className={`messenger messenger--${selectedDevice}`}>
+      <div className="messengerContainer">
         {/* Header */}
-        <div className="messengerDesktopHeader">
-          <div className="messengerDesktopHeaderContainer">
-            <div className="messengerDesktopHeaderLeft">
-              <div className="messengerDesktopHeaderAvatar">
+        <div className="messengerHeader">
+          <div className="messengerHeaderContainer">
+            <div className="messengerHeaderLeft">
+              <div className="messengerHeaderAvatar">
                 {firstReceiverImage ? (
-                  <img 
-                    src={firstReceiverImage} 
-                    alt="Profile" 
+                  <img
+                    src={firstReceiverImage}
+                    alt="Profile"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -82,29 +82,29 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
                     }}
                   />
                 ) : (
-                  <span className="messengerDesktopHeaderAvatarText">{getReceiverInitial()}</span>
+                  <span className="messengerHeaderAvatarText">{getReceiverInitial()}</span>
                 )}
               </div>
-              <div className="messengerDesktopHeaderInfo">
-                <h3 className="messengerDesktopHeaderName">
+              <div className="messengerHeaderInfo">
+                <h3 className="messengerHeaderName">
                   {getFirstReceiverName()}
                 </h3>
-                <p className="messengerDesktopHeaderStatus">Active now</p>
+                <p className="messengerHeaderStatus">Active now</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Message Area */}
-        <div className="messengerDesktopMessages">
-          <div className="messengerDesktopMessagesContainer">
+        <div className="messengerMessages">
+          <div className="messengerMessagesContainer">
             {/* Date Separator */}
-            <div className="messengerDesktopDateSeparator">
-              <span className="messengerDesktopDateText">Jul 28, 2025</span>
+            <div className="messengerDateSeparator">
+              <span className="messengerDateText">Jul 28, 2025</span>
             </div>
 
             {/* Messages */}
-            <div className="messengerDesktopMessagesList">
+            <div className="messengerMessagesList">
               {messages && messages.length > 0 && messages.map((msg, idx) => {
                 const isFromSender = isMessageFromSender(msg);
                 
@@ -122,38 +122,38 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
                   // Sender messages (right side)
                   if (!isPrevFromSamePerson && !isNextFromSamePerson) {
                     // Single message
-                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-single';
+                    borderRadiusClass = 'messengerMessageBubble--sender-single';
                   } else if (!isPrevFromSamePerson && isNextFromSamePerson) {
                     // First message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-first';
+                    borderRadiusClass = 'messengerMessageBubble--sender-first';
                   } else if (isPrevFromSamePerson && !isNextFromSamePerson) {
                     // Last message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-last';
+                    borderRadiusClass = 'messengerMessageBubble--sender-last';
                   } else {
                     // Middle message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--sender-middle';
+                    borderRadiusClass = 'messengerMessageBubble--sender-middle';
                   }
                 } else {
                   // Receiver messages (left side)
                   if (!isPrevFromSamePerson && !isNextFromSamePerson) {
                     // Single message
-                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-single';
+                    borderRadiusClass = 'messengerMessageBubble--receiver-single';
                   } else if (!isPrevFromSamePerson && isNextFromSamePerson) {
                     // First message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-first';
+                    borderRadiusClass = 'messengerMessageBubble--receiver-first';
                   } else if (isPrevFromSamePerson && !isNextFromSamePerson) {
                     // Last message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-last';
+                    borderRadiusClass = 'messengerMessageBubble--receiver-last';
                   } else {
                     // Middle message in group
-                    borderRadiusClass = 'messengerDesktopMessageBubble--receiver-middle';
+                    borderRadiusClass = 'messengerMessageBubble--receiver-middle';
                   }
                 }
                 
                 return (
-                  <div key={msg.id} className={`messengerDesktopMessage ${isFromSender ? 'messengerDesktopMessage--sender' : 'messengerDesktopMessage--receiver'}`}>
-                    <div className={`messengerDesktopMessageBubble ${borderRadiusClass}`}>
-                      <span className="messengerDesktopMessageText">
+                  <div key={msg.id} className={`messengerMessage ${isFromSender ? 'messengerMessage--sender' : 'messengerMessage--receiver'}`}>
+                    <div className={`messengerMessageBubble ${borderRadiusClass}`}>
+                      <span className="messengerMessageText">
                         {String(msg.text || 'test')}
                       </span>
                     </div>
@@ -165,23 +165,23 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
         </div>
 
         {/* Input Bar */}
-        <div className="messengerDesktopInput">
-          <div className="messengerDesktopInputContainer">
-            <div className="messengerDesktopInputLeft">
-              <button className="messengerDesktopInputButton">
-                <FiPlusCircle   className="messengerDesktopInputIcon" />
+        <div className="messengerInput">
+          <div className="messengerInputContainer">
+            <div className="messengerInputLeft">
+              <button className="messengerInputButton">
+                <FiPlusCircle   className="messengerInputIcon" />
               </button>
-              <button className="messengerDesktopInputButton">
-                <FiImage className="messengerDesktopInputIcon" />
+              <button className="messengerInputButton">
+                <FiImage className="messengerInputIcon" />
               </button>
-              <button className="messengerDesktopInputButton">
-                <TbFileSmile  className="messengerDesktopInputIcon" />
+              <button className="messengerInputButton">
+                <TbFileSmile  className="messengerInputIcon" />
               </button>
             </div>
-            
-            <div className="messengerDesktopInputCenter">
+
+            <div className="messengerInputCenter">
               <textarea
-                className="messengerDesktopInputField"
+                className="messengerInputField"
                 placeholder="Type a message..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
@@ -189,13 +189,13 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
                 rows="1"
               />
             </div>
-            
-            <div className="messengerDesktopInputRight">
-              <button 
-                className="messengerDesktopSendButton"
+
+            <div className="messengerInputRight">
+              <button
+                className="messengerSendButton"
                 onClick={handleSendMessage}
               >
-                <IoSend className="messengerDesktopSendIcon" />
+                <IoSend className="messengerSendIcon" />
               </button>
             </div>
           </div>
@@ -205,4 +205,4 @@ const MessengerDesktop = ({ senderName, receiverNames, receiverImages, messages,
   )
 }
 
-export default MessengerDesktop
+export default Messenger

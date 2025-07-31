@@ -1,4 +1,4 @@
-.messengerDesktop {
+.messenger {
   width: 100%;
   height: 100%;
   display: flex;
@@ -11,19 +11,19 @@
   max-width: 100%;
 }
 
-.messengerDesktop--desktop {
+.messenger--desktop {
   width: 100%;
   max-width: 100%;
 }
 
-.messengerDesktop--mobile {
+.messenger--mobile {
   width: 50%;
   min-width: 320px;
   max-width: 500px;
   margin: 0 auto;
 }
 
-.messengerDesktopContainer {
+.messengerContainer {
   width: 100%;
   height: 100%;
   display: flex;
@@ -34,7 +34,7 @@
 }
 
 /* Header */
-.messengerDesktopHeader {
+.messengerHeader {
   width: 100%;
   height: 65px;
   background-color: green;
@@ -45,19 +45,19 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.messengerDesktopHeaderContainer {
+.messengerHeaderContainer {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.messengerDesktopHeaderLeft {
+.messengerHeaderLeft {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.messengerDesktopHeaderAvatar {
+.messengerHeaderAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -68,19 +68,19 @@
   flex-shrink: 0;
 }
 
-.messengerDesktopHeaderAvatarText {
+.messengerHeaderAvatarText {
   font-size: 18px;
   font-weight: 600;
   color: #64748b;
 }
 
-.messengerDesktopHeaderInfo {
+.messengerHeaderInfo {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.messengerDesktopHeaderName {
+.messengerHeaderName {
   font-size: 16px;
   font-weight: 600;
   color: #1e293b;
@@ -88,7 +88,7 @@
   line-height: 1.2;
 }
 
-.messengerDesktopHeaderStatus {
+.messengerHeaderStatus {
   font-size: 13px;
   color: #64748b;
   margin: 0;
@@ -96,14 +96,14 @@
 }
 
 /* Messages Area */
-.messengerDesktopMessages {
+.messengerMessages {
   flex: 1;
   overflow-y: auto;
   background-color: #ffffff;
   position: relative;
 }
 
-.messengerDesktopMessagesContainer {
+.messengerMessagesContainer {
   padding: 20px;
   min-height: 100%;
   display: flex;
@@ -112,13 +112,13 @@
 }
 
 /* Date Separator */
-.messengerDesktopDateSeparator {
+.messengerDateSeparator {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-.messengerDesktopDateText {
+.messengerDateText {
   font-size: 12px;
   color: #94a3b8;
   background-color: #f8f9fa;
@@ -128,29 +128,29 @@
 }
 
 /* Messages List */
-.messengerDesktopMessagesList {
+.messengerMessagesList {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.messengerDesktopMessage {
+.messengerMessage {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 8px;
 }
 
 /* Sender message (right side) */
-.messengerDesktopMessage--sender {
+.messengerMessage--sender {
   justify-content: flex-end;
 }
 
 /* Receiver message (left side) */
-.messengerDesktopMessage--receiver {
+.messengerMessage--receiver {
   justify-content: flex-start;
 }
 
-.messengerDesktopMessageBubble {
+.messengerMessageBubble {
   background-color: #3b82f6;
   color: #ffffff;
   padding: 8px 12px;
@@ -161,77 +161,77 @@
 }
 
 /* Sender bubble (blue, right side) */
-.messengerDesktopMessageBubble--sender {
+.messengerMessageBubble--sender {
   background-color: #3b82f6;
   color: #ffffff;
   border-bottom-right-radius: 4px;
 }
 
 /* Sender message variants */
-.messengerDesktopMessageBubble--sender-single {
+.messengerMessageBubble--sender-single {
   background-color: #3b82f6;
   color: #ffffff;
   border-radius: 18px;
 }
 
-.messengerDesktopMessageBubble--sender-first {
+.messengerMessageBubble--sender-first {
   background-color: #3b82f6;
   color: #ffffff;
   border-radius: 18px 18px 4px 18px;
 }
 
-.messengerDesktopMessageBubble--sender-middle {
+.messengerMessageBubble--sender-middle {
   background-color: #3b82f6;
   color: #ffffff;
   border-radius: 18px 8px 8px 18px;
 }
 
-.messengerDesktopMessageBubble--sender-last {
+.messengerMessageBubble--sender-last {
   background-color: #3b82f6;
   color: #ffffff;
   border-radius: 18px 4px 18px 18px;
 }
 
 /* Receiver bubble (gray, left side) */
-.messengerDesktopMessageBubble--receiver {
+.messengerMessageBubble--receiver {
   background-color: #f1f5f9;
   color: #1e293b;
   border-bottom-left-radius: 4px;
 }
 
 /* Receiver message variants */
-.messengerDesktopMessageBubble--receiver-single {
+.messengerMessageBubble--receiver-single {
   background-color: #f1f5f9;
   color: #1e293b;
   border-radius: 18px;
 }
 
-.messengerDesktopMessageBubble--receiver-first {
+.messengerMessageBubble--receiver-first {
   background-color: #f1f5f9;
   color: #1e293b;
   border-radius: 18px 18px 18px 4px;
 }
 
-.messengerDesktopMessageBubble--receiver-middle {
+.messengerMessageBubble--receiver-middle {
   background-color: #f1f5f9;
   color: #1e293b;
   border-radius: 8px 18px 18px 8px;
 }
 
-.messengerDesktopMessageBubble--receiver-last {
+.messengerMessageBubble--receiver-last {
   background-color: #f1f5f9;
   color: #1e293b;
   border-radius: 4px 18px 18px 18px;
 }
 
-.messengerDesktopMessageText {
+.messengerMessageText {
   font-size: 14px;
   line-height: 1.4;
   margin: 0;
 }
 
 /* Input Bar */
-.messengerDesktopInput {
+.messengerInput {
   width: 100%;
   background-color: #ffffff;
   border-top: 1px solid #e2e8f0;
@@ -240,20 +240,20 @@
   align-items: center;
 }
 
-.messengerDesktopInputContainer {
+.messengerInputContainer {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.messengerDesktopInputLeft {
+.messengerInputLeft {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.messengerDesktopInputButton {
+.messengerInputButton {
   width: 32px;
   height: 32px;
   border: none;
@@ -267,20 +267,20 @@
   transition: background-color 0.2s;
 }
 
-.messengerDesktopInputButton:hover {
+.messengerInputButton:hover {
   background-color: #f1f5f9;
 }
 
-.messengerDesktopInputIcon {
+.messengerInputIcon {
   width: 18px;
   height: 18px;
 }
 
-.messengerDesktopInputCenter {
+.messengerInputCenter {
   flex: 1;
 }
 
-.messengerDesktopInputField {
+.messengerInputField {
   width: 100%;
   min-height: 40px;
   max-height: 120px;
@@ -295,21 +295,21 @@
   line-height: 1.4;
 }
 
-.messengerDesktopInputField:focus {
+.messengerInputField:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-.messengerDesktopInputField::placeholder {
+.messengerInputField::placeholder {
   color: #94a3b8;
 }
 
-.messengerDesktopInputRight {
+.messengerInputRight {
   display: flex;
   align-items: center;
 }
 
-.messengerDesktopSendButton {
+.messengerSendButton {
   width: 40px;
   height: 40px;
   border: none;
@@ -323,48 +323,48 @@
   color: #ffffff;
 }
 
-.messengerDesktopSendButton:hover {
+.messengerSendButton:hover {
   background-color: #2563eb;
 }
 
-.messengerDesktopSendIcon {
+.messengerSendIcon {
   width: 18px;
   height: 18px;
 }
 
 /* Scrollbar Styling */
-.messengerDesktopMessages::-webkit-scrollbar {
+.messengerMessages::-webkit-scrollbar {
   width: 6px;
 }
 
-.messengerDesktopMessages::-webkit-scrollbar-track {
+.messengerMessages::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.messengerDesktopMessages::-webkit-scrollbar-thumb {
+.messengerMessages::-webkit-scrollbar-thumb {
   background-color: #cbd5e1;
   border-radius: 3px;
 }
 
-.messengerDesktopMessages::-webkit-scrollbar-thumb:hover {
+.messengerMessages::-webkit-scrollbar-thumb:hover {
   background-color: #94a3b8;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .messengerDesktopHeader {
+  .messengerHeader {
     padding: 0 16px;
   }
   
-  .messengerDesktopMessagesContainer {
+  .messengerMessagesContainer {
     padding: 16px;
   }
   
-  .messengerDesktopInput {
+  .messengerInput {
     padding: 12px 16px;
   }
   
-  .messengerDesktopMessageBubble {
+  .messengerMessageBubble {
     max-width: 85%;
   }
 }
