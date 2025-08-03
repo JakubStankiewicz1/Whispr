@@ -246,12 +246,16 @@ const Message = ({
           day: 'numeric'
         });
       } else {
-        // Custom format
-        formattedDate = date.toLocaleDateString('en-GB', {
-          day: '2-digit',
-          month: 'short',
-          ...(dateDisplaySettings.showYear && { year: 'numeric' })
-        });
+        // Custom format - "Aug 7, 2025"
+        const month = date.toLocaleDateString('en-US', { month: 'short' });
+        const day = date.getDate();
+        const year = dateDisplaySettings.showYear ? date.getFullYear() : '';
+        
+        if (dateDisplaySettings.showYear) {
+          formattedDate = `${month} ${day}, ${year}`;
+        } else {
+          formattedDate = `${month} ${day}`;
+        }
       }
     }
 
@@ -405,14 +409,22 @@ const Message = ({
                                                     <span className="messageDateText">
                                                         {formatDateWithSettings(selectedDate, selectedTime)}
                                                     </span>
+                                                    {/* <button 
+                                                        className="messageDateOptionsButton"
+                                                        onClick={handleDateOptionsClick}
+                                                        title="Date display options"
+                                                    >
+                                                        <FiSettings className="messageDateOptionsIcon" />
+                                                    </button> */}
                                                 </div>
+
                                                 <button 
-                                                    className="messageDateOptionsButton"
-                                                    onClick={handleDateOptionsClick}
-                                                    title="Date display options"
-                                                >
-                                                    <FiSettings className="messageDateOptionsIcon" />
-                                                </button>
+                                                        className="messageDateOptionsButton"
+                                                        onClick={handleDateOptionsClick}
+                                                        title="Date display options"
+                                                    >
+                                                        <FiSettings className="messageDateOptionsIcon" />
+                                                    </button>
                                             </div>
                                         </div>
                                     </div>

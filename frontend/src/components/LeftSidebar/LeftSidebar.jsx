@@ -496,6 +496,21 @@ const LeftSidebar = ({
                   <div className="leftSidebarContainerTopContainerRightContainerDividerTwoLine" />
                 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
                 {/* Global Date Settings Accordion */}
                 <div className="leftSidebarContainerTopContainerRightContainerFive">
                   <div className="leftSidebarContainerTopContainerRightContainerFiveContainer">
@@ -611,11 +626,16 @@ const LeftSidebar = ({
                                       day: 'numeric'
                                     });
                                   } else {
-                                    formattedDate = testDate.toLocaleDateString('en-GB', {
-                                      day: '2-digit',
-                                      month: 'short',
-                                      ...(globalDateSettings.showYear && { year: 'numeric' })
-                                    });
+                                    // Custom format - "Aug 7, 2025"
+                                    const month = testDate.toLocaleDateString('en-US', { month: 'short' });
+                                    const day = testDate.getDate();
+                                    const year = globalDateSettings.showYear ? testDate.getFullYear() : '';
+                                    
+                                    if (globalDateSettings.showYear) {
+                                      formattedDate = `${month} ${day}, ${year}`;
+                                    } else {
+                                      formattedDate = `${month} ${day}`;
+                                    }
                                   }
                                 }
 
@@ -637,6 +657,17 @@ const LeftSidebar = ({
                     )}
                   </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
 
                 <div className="leftSidebarContainerTopContainerRightContainerDividerThree">
                   <div className="leftSidebarContainerTopContainerRightContainerDividerThreeLine" />
@@ -681,6 +712,10 @@ const LeftSidebar = ({
                         </div>
                       </div>
                     </div>
+
+                    
+
+
                     {openSections.messages && (
                       <div className="leftSidebarContainerTopContainerRightContainerThreeContainerTwo">
                         {/* Usunięto pojedynczy Message, renderujemy tylko te z mapy */}

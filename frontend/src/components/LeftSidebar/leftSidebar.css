@@ -1,14 +1,22 @@
 /* Kropka do instrukcji w sidebarze */
 .leftSidebarDot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #4A5565;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-right: 0px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #99A1AF;
+  margin-right: 0;
+  font-size: 18px;
+  border: 2.5px solid #99A1AF;
+  box-sizing: border-box;
+  transition: opacity 0.15s;
+}
+.leftSidebarDot:hover {
+  opacity: 0.7;
 }
 .leftSidebar {
     width: 468px !important;
@@ -817,6 +825,12 @@
   }
 }
 
+
+.leftSidebarContainerTopContainerRightContainerFive {
+  /* background-color: red; */
+  width: 100%;
+}
+
 /* Global Date Settings Styles */
 .leftSidebarContainerTopContainerRightContainerFiveContainerTwoContainerItem {
   margin-bottom: 16px;
@@ -908,27 +922,36 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 65px;
+  /* min-height: 65px; */
+  height: 48px;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainer {
   width: 100%;
   height: 100%;
-  width: 88%;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
+  justify-content: ;
   align-items: center;
-  justify-content: space-between;
-  min-height: 65px;
+  /* background-color: blue; */
+  /* width: 88%; */
+  /* margin: 0 auto; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* min-height: 65px; */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeft {
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  /* background-color: green; */
+  justify-content: flex-start;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainer {
@@ -937,7 +960,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
+  /* gap: 15px; */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOne {
@@ -949,22 +972,24 @@
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainer {
-  width: 100%;
-  height: 100%;
+  width: 32px;
+  height: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: #F1F5F9;
+  justify-content: flex-start;
+  /* background-color: #F1F5F9; */
   border-radius: 8px;
+  /* background-color: blue; */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainerIcon {
-  width: 18px;
-  height: 18px;
-  color: #64748B;
+    color: #020618;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwo {
@@ -973,6 +998,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: -7.3px;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainer {
@@ -981,14 +1007,18 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: 8px;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainerText {
-  color: #1E293B;
+  /* color: #1E293B; */
   white-space: nowrap;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 24px; /* Idealne wyrównanie z ikonami */
+    display: flex;
+    align-items: center;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRight {
@@ -997,6 +1027,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainer {
@@ -1011,9 +1042,13 @@
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainerIcon {
-  width: 18px;
-  height: 18px;
-  color: #64748B;
+    transform: rotate(180deg);
+    color: #62748E;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerTwo {

@@ -4,23 +4,39 @@ import LeftSidebar from '../../components/LeftSidebar/LeftSidebar.jsx';
 import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
 const Home = () => {
-  const [senderName, setSenderName] = useState('');
-  const [receiverNames, setReceiverNames] = useState(['']);
+  const [senderName, setSenderName] = useState('You');
+  const [receiverNames, setReceiverNames] = useState(['Frinted']);
   const [receiverImages, setReceiverImages] = useState(['']);
-  const [messages, setMessages] = useState([{
-    id: Date.now() + Math.random(),
-    text: '',
-    type: 'sender',
-    sender: '',
-    images: [],
-    date: new Date(),
-    dateDisplaySettings: { // Domyślne ustawienia (będą zastąpione przez globalDateSettings)
-      showDate: true,
-      showTime: true,
-      showYear: true,
-      format: 'short'
+  const [messages, setMessages] = useState([
+    {
+      id: Date.now() + Math.random(),
+      text: "Hello, how are you?",
+      type: 'sender',
+      sender: 'You',
+      images: [],
+      date: new Date(),
+      dateDisplaySettings: {
+        showDate: true,
+        showTime: true,
+        showYear: true,
+        format: 'short'
+      }
+    },
+    {
+      id: Date.now() + Math.random() + 1,
+      text: "I'm glad, thank you!",
+      type: 'receiver',
+      sender: 'Friend',
+      images: [],
+      date: new Date(),
+      dateDisplaySettings: {
+        showDate: true,
+        showTime: true,
+        showYear: true,
+        format: 'short'
+      }
     }
-  }]);
+  ]);
   const [selectedDevice, setSelectedDevice] = useState('desktop');
   
   // New state for group chat functionality
@@ -32,8 +48,8 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [showFooter, setShowFooter] = useState(true);
-  const [forceDateDisplay, setForceDateDisplay] = useState(false); // Nowa opcja wymuszenia daty
-  const [globalDateSettings, setGlobalDateSettings] = useState({ // Globalne ustawienia formatowania dat
+  const [forceDateDisplay, setForceDateDisplay] = useState(false);
+  const [globalDateSettings, setGlobalDateSettings] = useState({
     showDate: true,
     showTime: true,
     showYear: true,

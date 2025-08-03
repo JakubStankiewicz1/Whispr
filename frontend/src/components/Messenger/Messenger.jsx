@@ -145,12 +145,16 @@ const Messenger = ({
             day: 'numeric'
           });
         } else {
-          // Custom format
-          formattedDate = messageDate.toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            ...(settings.showYear && { year: 'numeric' })
-          });
+          // Custom format - "Aug 7, 2025"
+          const month = messageDate.toLocaleDateString('en-US', { month: 'short' });
+          const day = messageDate.getDate();
+          const year = settings.showYear ? messageDate.getFullYear() : '';
+          
+          if (settings.showYear) {
+            formattedDate = `${month} ${day}, ${year}`;
+          } else {
+            formattedDate = `${month} ${day}`;
+          }
         }
       }
 

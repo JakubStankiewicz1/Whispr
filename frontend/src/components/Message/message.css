@@ -336,8 +336,8 @@
 .messageDateContainer {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
+  gap: 8px;
+  padding: 4px 0;
   border-radius: 6px;
   transition: background-color 0.2s ease;
 }
@@ -738,10 +738,10 @@
 
 /* Date Options Button Styles */
 .messageDateOptionsButton {
-    width: 24px;
-    height: 24px;
-    background-color: #f1f5f9;
-    border: 1px solid #e2e8f0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
     border-radius: 4px;
     color: #64748b;
     cursor: pointer;
@@ -750,12 +750,12 @@
     justify-content: center;
     transition: all 0.2s ease;
     margin-left: 8px;
+    padding: 2px;
 }
 
 .messageDateOptionsButton:hover {
     background-color: #e2e8f0;
     color: #475569;
-    border-color: #cbd5e1;
 }
 
 .messageDateOptionsIcon {
@@ -921,4 +921,11 @@
 .messageDateOptionsCancel:hover {
     background-color: #e5e7eb;
     border-color: #9ca3af;
+}
+
+.messageContainerDivRightContainerTopContainerLeftContainerTwoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
