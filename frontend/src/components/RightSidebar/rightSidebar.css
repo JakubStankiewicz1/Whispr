@@ -82,11 +82,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: width 0.3s cubic-bezier(.4,2,.6,1);
 }
 
 /* Responsive styles for mobile device */
 .rightSidebar--mobile .rightSidebarContent {
-  width: auto;
+  width: 50%;
   max-width: 500px;
   min-width: 320px;
   margin: 0 auto;
