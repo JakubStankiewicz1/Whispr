@@ -459,16 +459,18 @@ const LeftSidebar = ({
                                 </div>
 
                                 {/* Bottom Part */}
-                                <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottom">
-                                  <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainer">
-                                    <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDiv">
-                                      <button className="leftSidebarAddButton" onClick={handleAddReceiver}>
-                                        <span className="leftSidebarAddButtonIcon"><FiPlus /></span>
-                                        <span className="leftSidebarAddButtonText">Add Receiver</span>
-                                      </button>
+                                {chatType === 'group' && (
+                                  <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottom">
+                                    <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainer">
+                                      <div className="leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainerBottomContainerDivBottomContainerDiv">
+                                        <button className="leftSidebarAddButton" onClick={handleAddReceiver}>
+                                          <span className="leftSidebarAddButtonIcon"><FiPlus /></span>
+                                          <span className="leftSidebarAddButtonText">Add Receiver</span>
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                                )}
                               </div>
                             </div>
                           </div>
