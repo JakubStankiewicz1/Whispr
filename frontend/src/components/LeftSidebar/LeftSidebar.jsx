@@ -153,6 +153,10 @@ const LeftSidebar = ({
       }
     }]);
   };
+
+  const handleRemoveMessage = (messageId) => {
+    setMessages(prev => prev.filter(msg => msg.id !== messageId));
+  };
   const handleAccordion = (section) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -745,6 +749,7 @@ const LeftSidebar = ({
                                 setForceDateDisplay(messageData.forceDateDisplay);
                               }
                             }}
+                            onRemove={() => handleRemoveMessage(msg.id)}
                             senderImage={senderImage || ''}
                             receiverImages={receiverImages || []}
                             forceDateDisplay={forceDateDisplay}

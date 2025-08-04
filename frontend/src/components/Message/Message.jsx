@@ -16,6 +16,7 @@ const Message = ({
   defaultType = 'sender', 
   value, 
   onChange, 
+  onRemove, // Nowa funkcja do usuwania wiadomości
   defaultReceiverIdx = 0, 
   senderImage, 
   receiverImages = [],
@@ -351,6 +352,12 @@ const Message = ({
     }
   };
 
+  const handleRemoveMessage = () => {
+    if (onRemove) {
+      onRemove();
+    }
+  };
+
   // Call onChange when images change
   useEffect(() => {
     callOnChange();
@@ -433,7 +440,12 @@ const Message = ({
                                 {/* Right Part */}
                                 <div className="messageContainerDivRightContainerTopContainerRight">
                                     <div className="messageContainerDivRightContainerTopContainerRightContainer">
-                                        <IoCloseOutline className='messageContainerDivRightContainerTopContainerRightContainerIcon' />
+                                        <IoCloseOutline 
+                                            className='messageContainerDivRightContainerTopContainerRightContainerIcon' 
+                                            onClick={handleRemoveMessage}
+                                            style={{cursor: 'pointer'}}
+                                            title="Remove message"
+                                        />
                                     </div>
                                 </div>
                             </div>

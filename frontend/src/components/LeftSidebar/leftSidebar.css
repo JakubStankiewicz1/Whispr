@@ -165,7 +165,8 @@
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerContainerIcon,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainerIcon,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainerIcon {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainerIcon,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainerIcon {
     transform: rotate(180deg);
     color: #62748E;
     width: 20px;
@@ -178,7 +179,8 @@
 /* Idealne wyrównanie dla kontenerów strzałek */
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerContainer,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainer,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainer {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainer,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -246,7 +248,8 @@
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneContainer,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainer,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainer {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainer,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOne {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -260,24 +263,28 @@
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainer,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainer,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainer {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainer,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
     height: 24px; /* Stała wysokość dla ikon i tekstu */
+    flex: 1; /* Zajmuje dostępną przestrzeń */
 }
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerTwoContainerText,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerTwoContainerText,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwoContainerText {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwoContainerText,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainerText {
     font-size: 16px;
     font-weight: 600;
     color: #000000;
     line-height: 24px; /* Idealne wyrównanie z ikonami */
     display: flex;
     align-items: center;
+    flex: 1; /* Zajmuje dostępną przestrzeń */
 }
 
 
@@ -344,6 +351,52 @@
     transform: scale(1);
   }
 }
+
+/* Wyrównanie ikon po prawej stronie */
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerRight,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRight,
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRight,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; /* Stała szerokość dla wszystkich ikon */
+    height: 24px; /* Stała wysokość dla wszystkich ikon */
+    flex-shrink: 0; /* Zapobiega zmniejszaniu */
+}
+
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerContainerIcon,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainerIcon,
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainerIcon,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainerIcon {
+    transform: rotate(180deg);
+    color: #62748E;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Idealne wyrównanie dla kontenerów strzałek */
+.leftSidebarContainerTopContainerRightContainerTwoContainerOneContainerContainer,
+.leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerRightContainer,
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerRightContainer,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+}
+
+
+
+
+
+
+
+
 
 
 .leftSidebarContainerTopContainerRightContainerDividerTwo {
@@ -418,7 +471,8 @@
 
 .leftSidebarContainerTopContainerRightContainerTwoContainerOneLeftContainerOneContainerIcon,
 .leftSidebarContainerTopContainerRightContainerThreeContainerOneContainerLeftContainerOneContainerIcon,
-.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerOneContainerIcon {
+.leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerOneContainerIcon,
+.leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainerIcon {
     color: #020618;
     width: 20px;
     height: 20px;
@@ -944,43 +998,38 @@
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeft {
-  /* width: 100%; */
-  /* height: 100%; */
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  /* background-color: green; */
   justify-content: flex-start;
+  gap: 12px;
+  height: 24px; /* Stała wysokość dla ikon i tekstu */
+  flex: 1; /* Zajmuje dostępną przestrzeń */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainer {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* gap: 15px; */
+  gap: 12px;
+  height: 24px;
+  flex: 1;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOne {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainer {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  /* background-color: #F1F5F9; */
+  justify-content: center;
   border-radius: 8px;
-  /* background-color: blue; */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerOneContainerIcon {
@@ -993,52 +1042,45 @@
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwo {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: -7.3px;
+  flex: 1;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainer {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 8px;
+  flex: 1;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerLeftContainerTwoContainerText {
-  /* color: #1E293B; */
   white-space: nowrap;
-    font-size: 16px;
-    font-weight: 600;
-    color: #000000;
-    line-height: 24px; /* Idealne wyrównanie z ikonami */
-    display: flex;
-    align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRight {
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-end
+  justify-content: center;
+  width: 24px; /* Stała szerokość dla wszystkich ikon */
+  height: 24px; /* Stała wysokość dla wszystkich ikon */
+  flex-shrink: 0; /* Zapobiega zmniejszaniu */
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainer {
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 .leftSidebarContainerTopContainerRightContainerFiveContainerOneContainerRightContainerIcon {

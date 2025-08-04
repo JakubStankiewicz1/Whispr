@@ -8,34 +8,34 @@ const Home = () => {
   const [receiverNames, setReceiverNames] = useState(['Frinted']);
   const [receiverImages, setReceiverImages] = useState(['']);
   const [messages, setMessages] = useState([
-    {
-      id: Date.now() + Math.random(),
-      text: "Hello, how are you?",
-      type: 'sender',
-      sender: 'You',
-      images: [],
-      date: new Date(),
-      dateDisplaySettings: {
-        showDate: true,
-        showTime: true,
-        showYear: true,
-        format: 'short'
+          {
+        id: Date.now() + Math.random(),
+        text: "Hello, how are you?",
+        type: 'sender',
+        sender: 'You',
+        images: [],
+        date: new Date(),
+        dateDisplaySettings: {
+          showDate: true,
+          showTime: false,
+          showYear: true,
+          format: 'custom'
+        }
+      },
+          {
+        id: Date.now() + Math.random() + 1,
+        text: "I'm glad, thank you!",
+        type: 'receiver',
+        sender: 'Friend',
+        images: [],
+        date: new Date(),
+        dateDisplaySettings: {
+          showDate: true,
+          showTime: false,
+          showYear: true,
+          format: 'custom'
+        }
       }
-    },
-    {
-      id: Date.now() + Math.random() + 1,
-      text: "I'm glad, thank you!",
-      type: 'receiver',
-      sender: 'Friend',
-      images: [],
-      date: new Date(),
-      dateDisplaySettings: {
-        showDate: true,
-        showTime: true,
-        showYear: true,
-        format: 'short'
-      }
-    }
   ]);
   const [selectedDevice, setSelectedDevice] = useState('desktop');
   
@@ -51,9 +51,9 @@ const Home = () => {
   const [forceDateDisplay, setForceDateDisplay] = useState(false);
   const [globalDateSettings, setGlobalDateSettings] = useState({
     showDate: true,
-    showTime: true,
+    showTime: false,
     showYear: true,
-    format: 'short'
+    format: 'custom'
   });
 
   // Aktualizuj początkową wiadomość gdy zmienią się globalne ustawienia
@@ -62,6 +62,56 @@ const Home = () => {
       idx === 0 ? { ...msg, dateDisplaySettings: globalDateSettings } : msg
     ));
   }, [globalDateSettings]);
+
+  // Funkcja do resetowania wszystkich ustawień do domyślnych
+  const handleResetToDefaults = () => {
+    setSenderName('You');
+    setReceiverNames(['Friend']);
+    setReceiverImages(['']);
+    setMessages([
+      {
+        id: Date.now() + Math.random(),
+        text: "Hello, how are you?",
+        type: 'sender',
+        sender: 'You',
+        images: [],
+        date: new Date(),
+        dateDisplaySettings: {
+          showDate: true,
+          showTime: false,
+          showYear: true,
+          format: 'custom'
+        }
+      },
+      {
+        id: Date.now() + Math.random() + 1,
+        text: "I'm glad, thank you!",
+        type: 'receiver',
+        sender: 'Friend',
+        images: [],
+        date: new Date(),
+        dateDisplaySettings: {
+          showDate: true,
+          showTime: false,
+          showYear: true,
+          format: 'custom'
+        }
+      }
+    ]);
+    setChatType('single');
+    setGroupName('');
+    setGroupImage('');
+    setDarkMode(false);
+    setShowHeader(true);
+    setShowFooter(true);
+    setForceDateDisplay(false);
+    setGlobalDateSettings({
+      showDate: true,
+      showTime: false,
+      showYear: true,
+      format: 'custom'
+    });
+  };
 
   return (
     <div className={`home home--${selectedDevice}`}>
@@ -103,6 +153,7 @@ const Home = () => {
           setShowFooter={setShowFooter}
           forceDateDisplay={forceDateDisplay}
           globalDateSettings={globalDateSettings}
+          onReset={handleResetToDefaults}
         />
     </div>
   )

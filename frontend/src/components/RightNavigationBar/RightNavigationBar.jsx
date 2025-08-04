@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './rightNavigationBar.css';
-import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone, FiPlus } from 'react-icons/fi';
+import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone, FiPlus, FiTrash2, FiX } from 'react-icons/fi';
 import { BsMessenger } from 'react-icons/bs';
 import Settings from '../Settings/Settings';
 import { LuSmartphone } from "react-icons/lu";
@@ -8,9 +8,10 @@ import { FaDiscord, FaInstagram, FaReddit, FaSnapchat, FaTelegram, FaTiktok, FaW
 import { SiSignal, SiSlack, SiTinder } from 'react-icons/si';
 import { IoLogoIonitron } from 'react-icons/io5';
 
-const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter }) => {
+const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter, onReset }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const dropdownRef = useRef(null);
 
   // Platform data
@@ -79,6 +80,21 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
 
   const handlePlatformClick = () => {
     setShowPlatformDropdown(!showPlatformDropdown);
+  };
+
+  const handleResetClick = () => {
+    setShowResetConfirm(true);
+  };
+
+  const handleConfirmReset = () => {
+    if (onReset) {
+      onReset();
+    }
+    setShowResetConfirm(false);
+  };
+
+  const handleCancelReset = () => {
+    setShowResetConfirm(false);
   };
 
   return (
@@ -160,6 +176,13 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
           <button className="rightNavigationBarActionButton">
             <FiDownload className="rightNavigationBarActionIcon" />
           </button>
+          <button 
+            className="rightNavigationBarActionButton" 
+            onClick={handleResetClick}
+            title="Reset to defaults"
+          >
+            <FiTrash2 className="rightNavigationBarActionIcon" data-icon="trash" />
+          </button>
         </div>
 
 
@@ -188,6 +211,33 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
               setShowFooter={setShowFooter}
               onClose={() => setShowSettings(false)}
             />
+          </div>
+        </>
+      )}
+
+      {/* Reset Confirmation Modal */}
+      {showResetConfirm && (
+        <>
+          <div className="resetConfirmOverlay" onClick={handleCancelReset} />
+          <div className="resetConfirmModal">
+            <div className="resetConfirmHeader">
+              <h3>Reset to Defaults</h3>
+              <button className="resetConfirmClose" onClick={handleCancelReset}>
+                <FiX />
+              </button>
+            </div>
+            <div className="resetConfirmContent">
+              <p>Are you sure you want to reset all messages and settings to their default values?</p>
+              <p>This action cannot be undone.</p>
+            </div>
+            <div className="resetConfirmFooter">
+              <button className="resetConfirmCancel" onClick={handleCancelReset}>
+                Cancel
+              </button>
+              <button className="resetConfirmConfirm" onClick={handleConfirmReset}>
+                Reset
+              </button>
+            </div>
           </div>
         </>
       )}

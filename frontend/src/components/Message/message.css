@@ -1,13 +1,15 @@
 .message {
     width: 100%;
     /* border: 1px solid #000000; */
-    min-height: 90px;
+    /* min-height: 90px; */
     border: 1.5px solid #E2E8F0;
     border-radius: 10px;
     display: flex;
-    align-items: center;
-    padding-bottom: 10px;
+    align-items: flex-start;
+    /* padding-bottom: 10px; */
     /* background-color: purple; */
+    padding: 15px;
+    /* background-color: lightcyan; */
 }
 
 .messageContainer {
@@ -16,12 +18,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     /* background-color: blue; */
 }
 
 .messageContainerDiv {
-    width: 92%;
+    width: 100%;
     /* margin: 0 auto; */
     display: flex;
     /* flex-direction: row; */
@@ -33,11 +35,12 @@
 
 .messageContainerDivLeft {
     /* width: 100%; */
-    height: 90px;
+    /* height: 90px; */
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 5px;
 }
 
 .messageContainerDivLeftContainer {
@@ -112,10 +115,6 @@
     /* margin-bottom: 10px; */
 }
 
-.messageContainerDivRight.active {
-    min-height: 125px;
-}
-
 .messageContainerDivRightContainer {
     width: 100%;
     /* height: 100%; */
@@ -126,9 +125,9 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* justify-content: space-between; */
-    gap: 10px;
+    gap: 8px;
     /* background-color: lightcyan; */
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 
 .messageContainerDivRightContainerTop {
@@ -156,6 +155,15 @@
     gap: 10px;
 }
 
+/* Style dla elementów tekstowych */
+.messageContainerDivRightContainerTopContainerLeftContainerOneContainerText {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.4;
+}
+
 .messageContainerDivRightContainerBottom {
     width: 100%;
     /* height: 100%; */
@@ -167,8 +175,8 @@
     /* height: 100%; */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
 }
 
 /* .messageContainerDivRightContainerBottomContainer textarea {
@@ -190,21 +198,20 @@
     /* border: 1px solid red; */
     display: flex;
     /* align-items: center; */
-    padding-top: 0;
-    padding-bottom: 5px;
-    /* Wyśrodkowanie tekstu w pionie */
-    padding-top: 5px;
-    padding-left: 5px;
-    border: 1px solid black;
+    padding: 8px 12px;
+    margin: 0;
+    /* border: 1px solid #e2e8f0; */
+    border: none;
+    line-height: 1.4;
+    border: 1px solid white;
 }
 
 .messageContainerDivRightContainerBottomContainerTextarea:focus {
-    border: none;
     outline: none;
-    /* box-shadow: 0 0 0 2px #bae6fd; */
-    border: 1px solid red;
+    border: 1px solid #3b82f6;
     background: transparent;
     min-height: 64px;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Message Images Container */
@@ -212,8 +219,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
-  padding: 8px;
+  margin: 0 0 12px 0;
+  padding: 12px;
   background-color: #f8fafc;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
@@ -237,7 +244,7 @@
 }
 
 .messageImage:hover {
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 .messageImageRemoveButton {
@@ -280,6 +287,11 @@
   align-items: flex-end;
   gap: 8px;
   width: 100%;
+  margin: 0 0 0 0;
+}
+
+.messageInputSection textarea {
+  border: none;
 }
 
 .messageContainerDivRightContainerBottomContainerTextarea {
@@ -319,10 +331,11 @@
   justify-content: center;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  margin: 0;
 }
 
 .messageImageUploadButton:hover {
-  background-color: #e2e8f0;
+  /* background-color: #e2e8f0; */
   color: #475569;
   border-color: #cbd5e1;
 }
@@ -337,13 +350,25 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 0;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  /* padding: 6px 8px; */
+  /* border-radius: 6px; */
+  transition: all 0.2s ease;
+  margin: 0;
+
+  /* background-color: #e2e8f0; */
 }
 
 .messageDateContainer:hover {
-  background-color: #f1f5f9;
+  /* background-color: #f1f5f9; */
+  color: black;
+}
+
+.messageDateContainer:hover .messageDateIcon {
+  color: black;
+}
+
+.messageDateContainer:hover .messageDateText {
+  color: black;
 }
 
 .messageDateIcon {
@@ -356,6 +381,7 @@
   font-size: 12px;
   color: #64748b;
   font-weight: 500;
+  margin: 0;
 }
 
 /* Emoji Button Styles */
@@ -372,10 +398,11 @@
   justify-content: center;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  margin: 0;
 }
 
 .messageEmojiButton:hover {
-  background-color: #e2e8f0;
+  /* background-color: #e2e8f0; */
   color: #475569;
   border-color: #cbd5e1;
 }
@@ -734,33 +761,46 @@
     width: 17px;
     height: 17px;
     cursor: pointer;
+    margin: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.messageContainerDivRightContainerTopContainerRightContainerIcon:hover {
+    color: #DC2626;
+    transform: scale(1.1);
 }
 
 /* Date Options Button Styles */
 .messageDateOptionsButton {
-    width: 20px;
-    height: 20px;
+    /* width: 20px; */
+    /* height: 20px; */
     background-color: transparent;
     border: none;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     color: #64748b;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    margin-left: 8px;
-    padding: 2px;
+    margin: 0;
+    /* padding: 2px; */
+
+    /* background-color: #e2e8f0; */
 }
 
 .messageDateOptionsButton:hover {
-    background-color: #e2e8f0;
-    color: #475569;
+    background-color: transparent;
+    color: black;
+}
+
+.messageDateOptionsButton:hover .messageDateOptionsIcon {
+    color: black;
 }
 
 .messageDateOptionsIcon {
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
 }
 
 /* Date Options Modal Styles */
@@ -927,5 +967,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
+}
+
+.messageContainerDivRightContainerTopContainerRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
 }

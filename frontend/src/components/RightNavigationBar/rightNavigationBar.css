@@ -18,7 +18,7 @@
 }
 
 .rightNavigationBarContainer {
-  width: 451px !important;
+  width: 500px !important;
   height: 54px;
   background-color: #ffffff;
   border-radius: 100px;
@@ -157,6 +157,16 @@
   background-color: #F1F5F9;
 }
 
+/* Special styles for reset button */
+.rightNavigationBarActionButton:has(.rightNavigationBarActionIcon[data-icon="trash"]) {
+  color: #EF4444;
+}
+
+.rightNavigationBarActionButton:has(.rightNavigationBarActionIcon[data-icon="trash"]):hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
 .rightNavigationBarActionIcon {
   width: 16px;
   height: 16px;
@@ -186,14 +196,14 @@
 /* Settings Panel */
 .settingsPanel {
   position: fixed;
-  top: 50%;
+  /* bottom: 80px; */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(62%) translateY(80%);
   z-index: 1000;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  animation: slideIn 0.2s ease-out;
+  animation: slideInFromBottom 0.2s ease-out;
 }
 
 .settingsOverlay {
@@ -202,9 +212,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   z-index: 999;
-  animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
@@ -216,14 +225,14 @@
   }
 }
 
-@keyframes slideIn {
+@keyframes slideInFromBottom {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translateX(62%) translateY(calc(80% + 20px));
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(62%) translateY(80%);
   }
 }
 
@@ -311,4 +320,123 @@
 
 .rightNavigationBarDropdown {
   transition: transform 0.2s ease;
+}
+
+/* Reset Confirmation Modal Styles */
+.resetConfirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.resetConfirmModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 90vw;
+  animation: slideIn 0.2s ease-out;
+}
+
+.resetConfirmHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.resetConfirmHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.resetConfirmClose {
+  width: 32px;
+  height: 32px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.resetConfirmClose:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.resetConfirmContent {
+  padding: 20px 24px;
+}
+
+.resetConfirmContent p {
+  margin: 0 0 12px 0;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.resetConfirmContent p:last-child {
+  margin-bottom: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.resetConfirmFooter {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.resetConfirmCancel {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetConfirmCancel:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.resetConfirmConfirm {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetConfirmConfirm:hover {
+  background-color: #dc2626;
 }

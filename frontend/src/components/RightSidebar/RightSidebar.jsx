@@ -27,7 +27,8 @@ const RightSidebar = ({
     showTime: true,
     showYear: true,
     format: 'short'
-  }
+  },
+  onReset = null // Funkcja do resetowania ustawień
 }) => {
   return (
     <div className={`rightSidebar rightSidebar--${selectedDevice}`}>
@@ -60,6 +61,7 @@ const RightSidebar = ({
         setShowHeader={setShowHeader}
         showFooter={showFooter}
         setShowFooter={setShowFooter}
+        onReset={onReset}
       />
     </div>
   )

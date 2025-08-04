@@ -9,9 +9,6 @@ const Settings = ({ darkMode, setDarkMode, showHeader, setShowHeader, showFooter
         <div className="settingsHeader">
           <div className="settingsHeaderTop">
             <h3 className="settingsTitle">Preview Settings</h3>
-            <button className="settingsCloseButton" onClick={onClose}>
-              <FiX className="settingsCloseIcon" />
-            </button>
           </div>
           <p className="settingsSubtitle">Customize how the preview looks</p>
         </div>
