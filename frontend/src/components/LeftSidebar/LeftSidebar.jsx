@@ -25,6 +25,8 @@ const LeftSidebar = ({
   setReceiverNames, 
   receiverImages, 
   setReceiverImages, 
+  receiverStatuses,
+  setReceiverStatuses,
   chatType, 
   setChatType, 
   groupName, 
@@ -137,6 +139,7 @@ const LeftSidebar = ({
       setReceivers((prev) => prev.filter((r) => r !== id));
       setReceiverNames((prev) => prev.filter((_, i) => i !== idx));
       setReceiverImages((prev) => prev.filter((_, i) => i !== idx));
+      setReceiverStatuses((prev) => prev.filter((_, i) => i !== idx));
     }
   };
 
@@ -199,6 +202,7 @@ const LeftSidebar = ({
     setReceivers((prev) => [...prev, Date.now() + Math.random()]);
     setReceiverNames((prev) => [...prev, '']);
     setReceiverImages((prev) => [...prev, '']);
+    setReceiverStatuses((prev) => [...prev, 'Active now']);
   };
 
   return (
@@ -460,6 +464,11 @@ const LeftSidebar = ({
                                           receiverImage={receiverImages[idx] || ''}
                                           setReceiverImage={(image) => {
                                             setReceiverImages(prev => prev.map((img, i) => i === idx ? image : img));
+                                          }}
+                                          showStatus={chatType === 'single'}
+                                          status={receiverStatuses[idx] || 'Active now'}
+                                          setStatus={(status) => {
+                                            setReceiverStatuses(prev => prev.map((s, i) => i === idx ? status : s));
                                           }}
                                         />
                                         {receivers.length > 1 && (

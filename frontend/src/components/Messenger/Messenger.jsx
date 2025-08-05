@@ -121,6 +121,14 @@ const Messenger = ({
     return getReceiverInitial();
   };
 
+  // Get header status based on chat type
+  const getHeaderStatus = () => {
+    if (chatType === 'group') {
+      return `${receiverNames.filter(name => name.trim()).length} members`;
+    }
+    return getFirstReceiverStatus();
+  };
+
   // Helper function to format date for display
   const formatMessageDate = (date, dateDisplaySettings = null) => {
     if (!date) return '';
@@ -264,7 +272,7 @@ const Messenger = ({
                     {getHeaderName()}
                   </h3>
                   <p className="messengerHeaderStatus">
-                    {chatType === 'group' ? `${receiverNames.filter(name => name.trim()).length} members` : getFirstReceiverStatus()}
+                    {getHeaderStatus()}
                   </p>
                 </div>
               </div>

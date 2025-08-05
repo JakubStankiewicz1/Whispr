@@ -42,12 +42,20 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.rightNavigationBarLogo:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
 }
 
 .rightNavigationBarLogoIcon {
   width: 16px;
   height: 16px;
-  color: #0866FF;
+  transition: color 0.2s ease;
 }
 
 .rightNavigationBarLogoText {
@@ -382,12 +390,14 @@
   left: 0;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid #e1e5e9;
-  min-width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E2E8F0;
+  width: 200px;
+  max-height: 400px;
   z-index: 1000;
   margin-bottom: 8px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .platformDropdownContent {
@@ -399,56 +409,96 @@
   align-items: center;
   padding: 12px 16px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
   position: relative;
+  border-radius: 8px;
+  margin: 0 8px;
 }
 
 .platformItem:hover {
   background-color: #f8f9fa;
+  transform: translateX(2px);
 }
 
 .platformIcon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 12px;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.platformItem:hover .platformIcon {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .platformIconSvg {
   width: 18px;
   height: 18px;
   color: white;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .platformName {
   flex: 1;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #1c1e21;
+  color: #1f2937;
+  transition: color 0.2s ease;
+}
+
+.platformItem:hover .platformName {
+  color: #111827;
 }
 
 .platformCheckmark {
-  color: #65676b;
+  color: #10b981;
   font-size: 16px;
   font-weight: 600;
+  margin-left: 8px;
 }
 
 .addPlatform {
-  border-top: 1px solid #e1e5e9;
-  margin-top: 4px;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 8px;
   padding-top: 12px;
 }
 
 .addPlatformIcon {
-  background-color: #e4e6eb !important;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%) !important;
+  border: 1px solid #d1d5db;
 }
 
 .addPlatformIcon .platformIconSvg {
-  color: #65676b;
+  color: #6b7280;
+}
+
+.addPlatform:hover .addPlatformIcon {
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%) !important;
+}
+
+/* Custom scrollbar for platform dropdown */
+.platformDropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.platformDropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.platformDropdown::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.platformDropdown::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 /* Rotate dropdown arrow when open */

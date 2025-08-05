@@ -1,10 +1,16 @@
 .participantReceiver {
     width: 100%;
-    height: 66px;
+    height: 80px;
 
     /* background-color: lightpink; */
     border: 1.5px solid #E2E8F0;
     border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.participantReceiver:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .participantReceiverContainer {
@@ -132,132 +138,242 @@
     max-width: none;
 }
 
-.participantReceiverContainerRightContainer input {
-    width: 100%;
+
+
+/* New Status Design */
+.participantReceiverContainerRightContainerContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 6px;
 }
 
 .participantReceiverContainerRightContainerInput {
-    height: 40px;
-    width: 100%;
-    border-radius: 8px;
-    border: none;
-    border: 1px solid #E2E8F0;
-    padding-left: 10px;
-    font-size: 14px;
-    color: #1e293b;
-    background-color: #ffffff;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    outline: none;
+  height: 36px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  border: 1px solid #E2E8F0;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
 }
 
 .participantReceiverContainerRightContainerInputCompact {
-    width: 90% !important;
+  width: 90% !important;
 }
 
 .participantReceiverContainerRightContainerInput:focus {
-    outline: none;
-    border: 1px solid #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .participantReceiverContainerRightContainerInputCompact:focus {
-    outline: none;
-    border: 1px solid #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .participantReceiverContainerRightContainerInput:hover {
-    border-color: #CBD5E1;
+  border-color: #CBD5E1;
 }
 
 .participantReceiverContainerRightContainerInput::placeholder {
-    color: #94a3b8;
+  color: #94a3b8;
 }
 
-.participantReceiverContainerRightContainerStatus {
-    font-size: 13px;
-    color: #64748b;
-    margin-top: 2px;
-    line-height: 1.2;
-    cursor: pointer;
-    position: relative;
-    user-select: none;
+.participantReceiverContainerRightContainerStatusSection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  /* padding: 6px 8px; */
+  /* border-radius: 6px; */
+  /* transition: all 0.2s ease; */
+  /* background: rgba(248, 250, 252, 0.8); */
+  /* border: 1px solid rgba(226, 232, 240, 0.5); */
+  width: fit-content;
+  position: relative;
+  outline: none;
+  border: none;
+  overflow: visible;
+
+  /* background-color: lightblue; */
 }
 
-.participantReceiverContainerRightContainerStatus:hover {
-    color: #3b82f6;
+.participantReceiverContainerRightContainerStatusSection:hover {
+  /* background: rgba(248, 250, 252, 1); */
+  /* transform: translateY(-1px); */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+  border: none;
+  outline: none;
 }
 
+.participantReceiverContainerRightContainerStatusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  /* box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9); */
+  position: relative;
+  border: none;
+  outline: none;
+
+  /* background-color: lightblue; */
+}
+
+.participantReceiverContainerRightContainerStatusText {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.participantReceiverContainerRightContainerStatusSection:hover .participantReceiverContainerRightContainerStatusText {
+  color: #374151;
+  border: none;
+  outline: none;
+}
+
+.participantReceiverContainerRightContainerStatusSection:hover .participantReceiverContainerRightContainerStatusDot {
+  border: none;
+  outline: none;
+}
+
+/* Status Dropdown */
 .participantReceiverContainerRightContainerStatusDropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    z-index: 1000;
-    min-width: 150px;
-    margin-top: 4px;
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  background: white;
+  /* border: 1px solid #e2e8f0; */
+  border-radius: 6px;
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); */
+  z-index: 1000;
+  min-width: 160px;
+  margin-top: 0;
+
+  /* background-color: lightblue; */
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-left: 7px;
+  /* padding-right: 5px; */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownItem {
-    padding: 8px 12px;
-    font-size: 13px;
-    color: #374151;
-    cursor: pointer;
-    transition: background-color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* padding: 8px 12px; */
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  border: none;
+  outline: none;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownItem:hover {
-    background-color: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownItem:first-child {
-    border-radius: 8px 8px 0 0;
+  border-radius: 6px 6px 0 0;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownItem:last-child {
-    border-radius: 0 0 8px 8px;
+  border-radius: 0 0 6px 6px;
+}
+
+.participantReceiverContainerRightContainerStatusDropdownItemDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownCustom {
-    padding: 8px 12px;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownCustomInput {
-    flex: 1;
-    padding: 6px 8px;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    font-size: 13px;
-    outline: none;
-    transition: border-color 0.15s;
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #F1F5F9;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.participantReceiverContainerRightContainerStatusDropdownItemText {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #4A5565;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownCustomInput:focus {
-    border-color: #3b82f6;
+  border-color: #E2E8F0;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownCustomButton {
-    padding: 6px 12px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.15s;
+  padding: 6px 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
 }
 
 .participantReceiverContainerRightContainerStatusDropdownCustomButton:hover {
-    background-color: #2563eb;
+  background-color: #2563eb;
 }
+
+/* Animations */
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes statusDropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
 
 
 
@@ -314,4 +430,9 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.participantReceiverContainerRightContainerStatusSection:hover .participantReceiverContainerRightContainerStatusSection {
+  border: none;
+  outline: none;
 }

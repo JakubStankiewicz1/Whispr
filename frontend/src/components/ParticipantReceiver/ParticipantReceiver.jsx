@@ -25,13 +25,13 @@ const ParticipantReceiver = ({
     'Active 2d ago',
     'Active 1w ago',
     'Offline',
-    'Custom'
+    // 'Custom'
   ];
 
   // Zamykanie dropdown po kliknięciu poza nim
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (showStatusDropdown && !event.target.closest('.participantReceiverContainerRightContainerStatus')) {
+      if (showStatusDropdown && !event.target.closest('.participantReceiverContainerRightContainerStatusSection')) {
         setShowStatusDropdown(false);
         setShowCustomInput(false);
       }
@@ -42,6 +42,18 @@ const ParticipantReceiver = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showStatusDropdown]);
+
+  const getStatusColor = (statusText) => {
+    if (statusText.includes('Active now')) return '#10b981';
+    if (statusText.includes('Active')) return '#f59e0b';
+    if (statusText.includes('Offline')) return '#6b7280';
+    return '#10b981'; // default green
+  };
+
+  const getStatusAnimation = (statusText) => {
+    if (statusText.includes('Active now')) return 'statusPulse 2s infinite';
+    return 'none';
+  };
 
   const handleImageClick = () => {
     fileInputRef.current.click();
@@ -126,50 +138,61 @@ const ParticipantReceiver = ({
                 {/* Right Part */}
                 <div className={`participantReceiverContainerRight ${isCompact ? 'participantReceiverContainerRightCompact' : ''}`}>
                     <div className="participantReceiverContainerRightContainer">
-                        <input 
-                          type="text" 
-                          placeholder='Receiver name' 
-                          className={`participantReceiverContainerRightContainerInput ${isCompact ? 'participantReceiverContainerRightContainerInputCompact' : ''}`}
-                          value={value} 
-                          onChange={onChange} 
-                        />
-                        {showStatus && !isCompact && (
-                          <div className="participantReceiverContainerRightContainerStatus" onClick={handleStatusClick}>
-                            {status}
-                            {setStatus && (
-                              <div className="participantReceiverContainerRightContainerStatusDropdown">
-                                {showStatusDropdown && statusOptions.map((option) => (
-                                  <div 
-                                    key={option} 
-                                    className="participantReceiverContainerRightContainerStatusDropdownItem"
-                                    onClick={() => handleStatusSelect(option)}
-                                  >
-                                    {option}
-                                  </div>
-                                ))}
-                                {showCustomInput && (
-                                  <div className="participantReceiverContainerRightContainerStatusDropdownCustom">
-                                    <input
-                                      type="text"
-                                      placeholder="Enter custom status..."
-                                      value={customStatus}
-                                      onChange={(e) => setCustomStatus(e.target.value)}
-                                      onKeyPress={handleCustomStatusKeyPress}
-                                      className="participantReceiverContainerRightContainerStatusDropdownCustomInput"
-                                      autoFocus
-                                    />
-                                    <button
-                                      onClick={handleCustomStatusSubmit}
-                                      className="participantReceiverContainerRightContainerStatusDropdownCustomButton"
-                                    >
-                                      Save
-                                    </button>
+                        <div className="participantReceiverContainerRightContainerContent">
+                            <input 
+                              type="text" 
+                              placeholder='Receiver name' 
+                              className={`participantReceiverContainerRightContainerInput ${isCompact ? 'participantReceiverContainerRightContainerInputCompact' : ''}`}
+                              value={value} 
+                              onChange={onChange} 
+                            />
+                            {showStatus && !isCompact && (
+                              <div className="participantReceiverContainerRightContainerStatusSection" onClick={handleStatusClick}>
+                                <div className="participantReceiverContainerRightContainerStatusDot" 
+                                     style={{ 
+                                       backgroundColor: getStatusColor(status),
+                                       animation: getStatusAnimation(status)
+                                     }}
+                                />
+                                <span className="participantReceiverContainerRightContainerStatusText">{status}</span>
+                                {setStatus && showStatusDropdown && (
+                                  <div className="participantReceiverContainerRightContainerStatusDropdown">
+                                    {statusOptions.map((option) => (
+                                      <div 
+                                        key={option} 
+                                        className="participantReceiverContainerRightContainerStatusDropdownItem"
+                                        onClick={() => handleStatusSelect(option)}
+                                      >
+                                        <div className="participantReceiverContainerRightContainerStatusDropdownItemDot" 
+                                             style={{ backgroundColor: getStatusColor(option) }}
+                                        />
+                                        <span className='participantReceiverContainerRightContainerStatusDropdownItemText'>{option}</span>
+                                      </div>
+                                    ))}
+                                    {showCustomInput && (
+                                      <div className="participantReceiverContainerRightContainerStatusDropdownCustom">
+                                        <input
+                                          type="text"
+                                          placeholder="Enter custom status..."
+                                          value={customStatus}
+                                          onChange={(e) => setCustomStatus(e.target.value)}
+                                          onKeyPress={handleCustomStatusKeyPress}
+                                          className="participantReceiverContainerRightContainerStatusDropdownCustomInput"
+                                          autoFocus
+                                        />
+                                        <button
+                                          onClick={handleCustomStatusSubmit}
+                                          className="participantReceiverContainerRightContainerStatusDropdownCustomButton"
+                                        >
+                                          Save
+                                        </button>
+                                      </div>
+                                    )}
                                   </div>
                                 )}
                               </div>
                             )}
-                          </div>
-                        )}
+                        </div>
                     </div>
                 </div>
             </div>

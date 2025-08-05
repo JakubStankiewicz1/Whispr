@@ -13,12 +13,12 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
   const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState('Messenger');
   const dropdownRef = useRef(null);
 
   // Platform data
   const platforms = [
     { name: 'Discord', icon: FaDiscord, color: '#5865F2' },
-    { name: 'iMessage', icon: IoLogoIonitron, color: '#000000' },
     { name: 'Instagram', icon: FaInstagram, color: '#E4405F' },
     { name: 'Messenger', icon: BsMessenger, color: '#0084FF' },
     { name: 'Reddit', icon: FaReddit, color: '#FF4500' },
@@ -148,6 +148,11 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
     setShowResetConfirm(false);
   };
 
+  const handlePlatformSelect = (platformName) => {
+    setSelectedPlatform(platformName);
+    setShowPlatformDropdown(false);
+  };
+
   return (
     <div className="rightNavigationBar">
       <div className="rightNavigationBarContainer">
@@ -155,8 +160,12 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
         {/* Left Section */}
         <div className="rightNavigationBarLeft">
           <div className="rightNavigationBarLogo" onClick={handlePlatformClick} style={{cursor: 'pointer'}}>
-            <BsMessenger className="rightNavigationBarLogoIcon" />
-            <span className="rightNavigationBarLogoText">Messenger</span>
+            {(() => {
+              const platform = platforms.find(p => p.name === selectedPlatform);
+              const IconComponent = platform ? platform.icon : BsMessenger;
+              return <IconComponent className="rightNavigationBarLogoIcon" style={{ color: platform ? platform.color : '#0084FF' }} />;
+            })()}
+            <span className="rightNavigationBarLogoText">{selectedPlatform}</span>
             <FiChevronDown className={`rightNavigationBarDropdown ${showPlatformDropdown ? 'rotated' : ''}`} />
           </div>
 
@@ -165,14 +174,16 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
             <div className="platformDropdown" ref={dropdownRef}>
               <div className="platformDropdownContent">
                 {platforms.map((platform, index) => (
-                  <div key={index} className="platformItem">
+                  <div key={index} className="platformItem" onClick={() => handlePlatformSelect(platform.name)}>
                     <div className="platformIcon" style={{ backgroundColor: platform.color }}>
                       <platform.icon className="platformIconSvg" />
                     </div>
                     <span className="platformName">{platform.name}</span>
-                    {platform.name === 'Messenger' && (
+
+                    {platform.name === selectedPlatform && (
                       <div className="platformCheckmark">✓</div>
                     )}
+
                   </div>
                 ))}
                 <div className="platformItem addPlatform">

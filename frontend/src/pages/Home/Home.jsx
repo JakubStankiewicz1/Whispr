@@ -5,7 +5,7 @@ import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
 const Home = () => {
   const [senderName, setSenderName] = useState('You');
-  const [receiverNames, setReceiverNames] = useState(['Frinted']);
+  const [receiverNames, setReceiverNames] = useState(['Friend']);
   const [receiverImages, setReceiverImages] = useState(['']);
   const [receiverStatuses, setReceiverStatuses] = useState(['Active now']);
   const [messages, setMessages] = useState([
