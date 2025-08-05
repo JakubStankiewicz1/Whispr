@@ -1,7 +1,7 @@
 .aboutUsOverlay {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.45);
   z-index: 1000;
   animation: aboutUsFadeIn 0.2s;
 }
@@ -11,18 +11,20 @@
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  border-radius: 16px;
+  border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  min-width: 340px;
-  max-width: 95vw;
-  width: 420px;
-  height: 400px;
-  padding: 32px 28px 20px 28px;
+  /* min-width: 340px; */
+  /* max-width: 95vw; */
+  /* width: 420px; */
+  /* height: 400px; */
+  width: 512px;
+  height: 408px;
+  padding: 24px 26px 20px 26px;
   z-index: 1001;
   animation: aboutUsSlideIn 0.25s cubic-bezier(.4,1.4,.6,1);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 6px;
   overflow: hidden;
 }
 
@@ -30,30 +32,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 
 .aboutUsTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  /* font-size: 1.5rem; */
+  /* font-weight: 700; */
+  /* color: #1e293b; */
   margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #020618;
 }
 
 .aboutUsCloseButton {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 50%;
+  /* padding: 4px; */
+  /* border-radius: 50%; */
   transition: background 0.15s;
 }
-.aboutUsCloseButton:hover {
-  background: #f1f5f9;
+.aboutUsCloseButton:hover .aboutUsCloseIcon {
+  color: #1e293b;
 }
 .aboutUsCloseIcon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   color: #64748b;
 }
 
@@ -63,11 +69,30 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 8px;
+  transition: padding-right 0.3s ease;
 }
+
+/* Auto-hide scrollbar functionality */
+.aboutUsContent.scrollbar-hidden {
+  padding-right: 0;
+}
+
+.aboutUsContent.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+}
+
+.aboutUsContent.scrollbar-visible::-webkit-scrollbar {
+  width: 6px;
+}
+
 .aboutUsSubtitle {
-  font-size: 1rem;
-  color: #64748b;
+  /* font-size: 1rem; */
+  /* color: #64748b; */
   margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #62748E;
 }
 .aboutUsChangelog {
   display: flex;
@@ -81,35 +106,74 @@
   font-size: 1rem;
   font-weight: 600;
   color: #334155;
+
+  border-bottom: 1px solid #E5E7EB;
 }
 .aboutUsVersionNumber {
-  color: #3b82f6;
-  font-weight: 700;
+  /* color: #3b82f6; */
+  /* font-weight: 700; */
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #020618;
 }
 .aboutUsVersionDate {
-  color: #94a3b8;
-  font-size: 0.95em;
-  font-weight: 400;
+  /* color: #94a3b8; */
+  /* font-size: 0.95em; */
+  /* font-weight: 400; */
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #6A7282;
 }
+
 .aboutUsVersionFeatures {
   margin: 8px 0 0 0;
   padding-left: 18px;
-  color: #475569;
-  font-size: 0.98em;
+  /* color: #475569; */
+  /* font-size: 0.98em; */
+  /* color: blue; */
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #020618;
 }
+
 .aboutUsFooter {
   margin-top: 10px;
   text-align: center;
 }
 .aboutUsFooterText {
-  color: #64748b;
-  font-size: 0.97em;
+  /* color: #64748b; */
+  /* font-size: 0.97em; */
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6A7282;
 }
+
 .aboutUsFooterLink {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6A7282;
+  text-decoration: underline;
 }
+
+.aboutUsVersionText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #101828;
+}
+
+.aboutUsFooterLink:visited {
+  color: #6A7282;
+}
+
+/* Change color of underline */
+.aboutUsFooterLink
+
 .aboutUsFooterLink:hover {
   text-decoration: underline;
 }
@@ -126,6 +190,7 @@
 /* Custom scrollbar for AboutUs modal */
 .aboutUsContent::-webkit-scrollbar {
   width: 6px;
+  transition: width 0.3s ease;
 }
 
 .aboutUsContent::-webkit-scrollbar-track {
@@ -135,6 +200,7 @@
 .aboutUsContent::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 3px;
+  transition: background-color 0.2s ease;
 }
 
 .aboutUsContent::-webkit-scrollbar-thumb:hover {

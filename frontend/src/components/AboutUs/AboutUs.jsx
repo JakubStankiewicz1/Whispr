@@ -1,8 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './aboutUs.css';
 import { FiX } from "react-icons/fi";
 
 const AboutUs = ({ open, onClose }) => {
+  const [isScrollbarVisible, setIsScrollbarVisible] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
+  const timeoutRef = useRef(null);
+  const contentRef = useRef(null);
+
+  // Reset timer when user interacts
+  const resetTimer = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsScrollbarVisible(true);
+    
+    // Start new timer only if not hovering
+    if (!isHovering) {
+      timeoutRef.current = setTimeout(() => {
+        setIsScrollbarVisible(false);
+      }, 3000);
+    }
+  };
+
+  // Handle mouse enter
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+    setIsScrollbarVisible(true);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  // Handle mouse leave
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    // Start timer when mouse leaves
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsScrollbarVisible(false);
+    }, 3000);
+  };
+
+  // Handle scroll
+  const handleScroll = () => {
+    resetTimer();
+  };
+
+  // Handle touch/mouse events
+  const handleInteraction = () => {
+    resetTimer();
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Start timer when modal opens
+  useEffect(() => {
+    if (open) {
+      // Initial timer when modal opens
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        if (!isHovering) {
+          setIsScrollbarVisible(false);
+        }
+      }, 3000);
+    }
+  }, [open]);
+
   if (!open) return null;
 
   return (
@@ -15,9 +90,18 @@ const AboutUs = ({ open, onClose }) => {
             <FiX className="aboutUsCloseIcon" />
           </button>
         </div>
-        <div className="aboutUsContent">
+        <div 
+          className={`aboutUsContent ${isScrollbarVisible ? 'scrollbar-visible' : 'scrollbar-hidden'}`}
+          ref={contentRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onScroll={handleScroll}
+          onTouchStart={handleInteraction}
+          onTouchMove={handleInteraction}
+          onMouseMove={handleInteraction}
+        >
           <p className="aboutUsSubtitle">
-            Whispr is a powerful messaging mockup tool that helps you create realistic chat conversations for presentations, demos, and design projects. Create authentic-looking messages with custom avatars, timestamps, and multiple messaging platforms.
+            See what's new and improved in Mockly!
           </p>
           <div className="aboutUsChangelog">
             <div className="aboutUsVersion">
@@ -25,6 +109,9 @@ const AboutUs = ({ open, onClose }) => {
                 <span className="aboutUsVersionNumber">v1.5.0</span>
                 <span className="aboutUsVersionDate">Jul 24, 2025</span>
               </div>
+              <p className="aboutUsVersionText">
+                Major improvements to styling and animation features that pave the way for video exports!
+              </p>
               <ul className="aboutUsVersionFeatures">
                 <li>Enhanced image export with high-quality screenshots</li>
                 <li>Smooth animations and improved user experience</li>
