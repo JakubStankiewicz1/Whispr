@@ -163,6 +163,17 @@ const Message = ({
     setSelectedTime(e.target.value);
   };
 
+  // Update selectedDate when selectedTime changes
+  useEffect(() => {
+    if (selectedTime && selectedDate) {
+      const [hours, minutes] = selectedTime.split(':');
+      const newDate = new Date(selectedDate);
+      newDate.setHours(parseInt(hours, 10));
+      newDate.setMinutes(parseInt(minutes, 10));
+      setSelectedDate(newDate);
+    }
+  }, [selectedTime]);
+
   // Handle month navigation
   const handleMonthChange = (direction) => {
     setCurrentMonth(prev => {

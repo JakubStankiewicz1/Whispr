@@ -57,6 +57,9 @@ const Home = () => {
     format: 'custom'
   });
 
+  // Platform state
+  const [selectedPlatform, setSelectedPlatform] = useState('Messenger');
+
   // Aktualizuj początkową wiadomość gdy zmienią się globalne ustawienia
   useEffect(() => {
     setMessages(prev => prev.map((msg, idx) => 
@@ -113,6 +116,7 @@ const Home = () => {
       showYear: true,
       format: 'custom'
     });
+    // Nie resetujemy selectedPlatform - zachowujemy aktualnie wybraną platformę
   };
 
   return (
@@ -159,6 +163,8 @@ const Home = () => {
           forceDateDisplay={forceDateDisplay}
           globalDateSettings={globalDateSettings}
           onReset={handleResetToDefaults}
+          selectedPlatform={selectedPlatform}
+          setSelectedPlatform={setSelectedPlatform}
         />
     </div>
   )

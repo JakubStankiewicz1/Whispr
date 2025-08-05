@@ -705,6 +705,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+
+    /* background-color: lightblue; */
+    padding-bottom: 10px;
 }
 
 .leftSidebarContainerTopContainerRightContainerThreeContainerTwoBottom {
@@ -725,6 +728,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+
+    /* background-color: lightblue; */
+    padding-bottom: 10px;
 }
 
 /* Chat Type Toggle */

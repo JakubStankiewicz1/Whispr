@@ -9,12 +9,23 @@ import { SiSignal, SiSlack, SiTinder } from 'react-icons/si';
 import { IoLogoIonitron } from 'react-icons/io5';
 import { GoPlus } from "react-icons/go";
 
-const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter, onReset }) => {
+const RightNavigationBar = ({ 
+  selectedDevice, 
+  setSelectedDevice, 
+  darkMode, 
+  setDarkMode, 
+  showHeader, 
+  setShowHeader, 
+  showFooter, 
+  setShowFooter, 
+  onReset,
+  selectedPlatform = 'Messenger',
+  setSelectedPlatform
+}) => {
   const [showSettings, setShowSettings] = useState(false);
   const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-  const [selectedPlatform, setSelectedPlatform] = useState('Messenger');
   const dropdownRef = useRef(null);
 
   // Platform data
@@ -41,23 +52,23 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
     setIsDownloading(true);
     
     try {
-      // Znajdź element messenger
-      const messengerElement = document.querySelector('.messenger');
-      if (!messengerElement) {
-        alert('Messenger element not found. Please try again.');
+      // Znajdź element messenger lub whatsapp
+      const chatElement = document.querySelector('.messenger, .whatsapp');
+      if (!chatElement) {
+        alert('Chat element not found. Please try again.');
         return;
       }
 
       // Użyj html2canvas do zrobienia screenshotu
       const html2canvas = (await import('html2canvas')).default;
-      const canvas = await html2canvas(messengerElement, {
+      const canvas = await html2canvas(chatElement, {
         backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
         scale: 2, // Wyższa jakość
         useCORS: true,
         allowTaint: true,
         logging: false,
-        width: messengerElement.offsetWidth,
-        height: messengerElement.offsetHeight
+        width: chatElement.offsetWidth,
+        height: chatElement.offsetHeight
       });
 
       // Konwertuj canvas na blob
@@ -67,7 +78,7 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
           const url = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = url;
-          link.download = `whispr-messenger-${selectedDevice}-${new Date().toISOString().slice(0, 10)}.png`;
+          link.download = `whispr-${selectedPlatform.toLowerCase()}-${selectedDevice}-${new Date().toISOString().slice(0, 10)}.png`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
@@ -150,7 +161,9 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
   };
 
   const handlePlatformSelect = (platformName) => {
-    setSelectedPlatform(platformName);
+    if (setSelectedPlatform) {
+      setSelectedPlatform(platformName);
+    }
     setShowPlatformDropdown(false);
   };
 
