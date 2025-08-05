@@ -7,6 +7,7 @@ const Home = () => {
   const [senderName, setSenderName] = useState('You');
   const [receiverNames, setReceiverNames] = useState(['Frinted']);
   const [receiverImages, setReceiverImages] = useState(['']);
+  const [receiverStatuses, setReceiverStatuses] = useState(['Active now']);
   const [messages, setMessages] = useState([
           {
         id: Date.now() + Math.random(),
@@ -68,6 +69,7 @@ const Home = () => {
     setSenderName('You');
     setReceiverNames(['Friend']);
     setReceiverImages(['']);
+    setReceiverStatuses(['Active now']);
     setMessages([
       {
         id: Date.now() + Math.random(),
@@ -124,6 +126,8 @@ const Home = () => {
           setReceiverNames={setReceiverNames} 
           receiverImages={receiverImages} 
           setReceiverImages={setReceiverImages}
+          receiverStatuses={receiverStatuses}
+          setReceiverStatuses={setReceiverStatuses}
           chatType={chatType}
           setChatType={setChatType}
           groupName={groupName}
@@ -139,6 +143,7 @@ const Home = () => {
           senderName={senderName} 
           receiverNames={receiverNames} 
           receiverImages={receiverImages} 
+          receiverStatuses={receiverStatuses}
           messages={messages} 
           selectedDevice={selectedDevice} 
           setSelectedDevice={setSelectedDevice}

@@ -151,10 +151,149 @@
   cursor: pointer;
   color: #64748b;
   transition: background-color 0.2s;
+  position: relative;
 }
 
 .rightNavigationBarActionButton:hover {
   background-color: #F1F5F9;
+}
+
+/* Tooltip for settings button */
+.rightNavigationBarActionButton[data-tooltip="settings"]::before {
+  content: "Settings";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0F172B;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+/* Tooltip for analytics button */
+.rightNavigationBarActionButton[data-tooltip="analytics"]::before {
+  content: "Analytics";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0F172B;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+/* Tooltip for preview button */
+.rightNavigationBarActionButton[data-tooltip="preview"]::before {
+  content: "Preview";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0F172B;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+/* Tooltip for export button */
+.rightNavigationBarActionButton[data-tooltip="export"]::before {
+  content: "Export";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0F172B;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+/* Tooltip for reset button */
+.rightNavigationBarActionButton[data-tooltip="reset"]::before {
+  content: "Reset";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0F172B;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  z-index: 1000;
+}
+
+.rightNavigationBarActionButton[data-tooltip="settings"]::after,
+.rightNavigationBarActionButton[data-tooltip="analytics"]::after,
+.rightNavigationBarActionButton[data-tooltip="preview"]::after,
+.rightNavigationBarActionButton[data-tooltip="export"]::after,
+.rightNavigationBarActionButton[data-tooltip="reset"]::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #0F172B;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 0px;
+  z-index: 1000;
+}
+
+.rightNavigationBarActionButton[data-tooltip="settings"]:hover::before,
+.rightNavigationBarActionButton[data-tooltip="settings"]:hover::after,
+.rightNavigationBarActionButton[data-tooltip="analytics"]:hover::before,
+.rightNavigationBarActionButton[data-tooltip="analytics"]:hover::after,
+.rightNavigationBarActionButton[data-tooltip="preview"]:hover::before,
+.rightNavigationBarActionButton[data-tooltip="preview"]:hover::after,
+.rightNavigationBarActionButton[data-tooltip="export"]:hover::before,
+.rightNavigationBarActionButton[data-tooltip="export"]:hover::after,
+.rightNavigationBarActionButton[data-tooltip="reset"]:hover::before,
+.rightNavigationBarActionButton[data-tooltip="reset"]:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Special styles for reset button */
@@ -439,4 +578,27 @@
 
 .resetConfirmConfirm:hover {
   background-color: #dc2626;
+}
+
+/* Download Animation */
+.rightNavigationBarActionIcon.downloading {
+  animation: downloadSpin 1s linear infinite;
+}
+
+@keyframes downloadSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rightNavigationBarActionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rightNavigationBarActionButton:disabled:hover {
+  background-color: transparent;
 }

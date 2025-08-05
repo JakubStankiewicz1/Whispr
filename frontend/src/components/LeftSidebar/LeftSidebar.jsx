@@ -6,6 +6,7 @@ import { LuUsers } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { FiCalendar } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+import { FiAlertTriangle } from "react-icons/fi";
 
 import Participant from '../Participant/Participant';
 import { FiPlus } from "react-icons/fi";
@@ -45,6 +46,7 @@ const LeftSidebar = ({
 
   // Pop-up state
   const [showAboutPopup, setShowAboutPopup] = useState(false);
+  const [showChatTypeConfirm, setShowChatTypeConfirm] = useState(false);
 
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
@@ -60,6 +62,35 @@ const LeftSidebar = ({
   // Funkcja do zamykania pop-up
   const handleClosePopup = () => {
     setShowAboutPopup(false);
+  };
+
+  // Funkcja do obsługi zmiany typu chatu
+  const handleChatTypeChange = (newChatType) => {
+    if (newChatType === 'single' && chatType === 'group' && receiverNames && receiverNames.filter(name => name && name.trim()).length > 1) {
+      // Pokaż popup potwierdzenia
+      setShowChatTypeConfirm(true);
+    } else {
+      // Bezpośrednia zmiana
+      setChatType(newChatType);
+    }
+  };
+
+  // Funkcja do potwierdzenia zmiany na single chat
+  const handleConfirmSingleChat = () => {
+    // Zostaw tylko pierwszego odbiorcę
+    const firstReceiverName = receiverNames && receiverNames.length > 0 ? receiverNames[0] : '';
+    const firstReceiverImage = receiverImages && receiverImages.length > 0 ? receiverImages[0] : '';
+    
+    setReceiverNames([firstReceiverName]);
+    setReceiverImages([firstReceiverImage]);
+    setReceivers([0]);
+    setChatType('single');
+    setShowChatTypeConfirm(false);
+  };
+
+  // Funkcja do anulowania zmiany
+  const handleCancelChatTypeChange = () => {
+    setShowChatTypeConfirm(false);
   };
 
   // Funkcje do obliczania liczby uczestników i wiadomości
@@ -362,13 +393,13 @@ const LeftSidebar = ({
                                         <div className="chatTypeToggle">
                                           <button 
                                             className={`toggleButton ${chatType === 'single' ? 'active' : ''}`}
-                                            onClick={() => setChatType('single')}
+                                            onClick={() => handleChatTypeChange('single')}
                                           >
                                             Single
                                           </button>
                                           <button 
                                             className={`toggleButton ${chatType === 'group' ? 'active' : ''}`}
-                                            onClick={() => setChatType('group')}
+                                            onClick={() => handleChatTypeChange('group')}
                                           >
                                             Group
                                           </button>
@@ -480,9 +511,10 @@ const LeftSidebar = ({
                           </div>
                         </div>
                       </div>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
+                {/* </div> */}
 
 
 
@@ -499,6 +531,10 @@ const LeftSidebar = ({
                 <div className="leftSidebarContainerTopContainerRightContainerDividerTwo">
                   <div className="leftSidebarContainerTopContainerRightContainerDividerTwoLine" />
                 </div>
+
+
+
+                {/* </div> */}
 
 
 
@@ -976,6 +1012,11 @@ const LeftSidebar = ({
                 </div>
 
 
+
+
+                </div>
+
+
                 </div>
 
 
@@ -991,7 +1032,54 @@ const LeftSidebar = ({
 
       {/* Settings Panel */}
       {/* Removed settings panel as per edit hint */}
-    </div>
+    {/* </div> */}
+
+    {/* Chat Type Confirmation Popup */}
+    {showChatTypeConfirm && (
+      <div className="chatTypeConfirmOverlay" onClick={handleCancelChatTypeChange}>
+        <div className="chatTypeConfirmModal" onClick={(e) => e.stopPropagation()}>
+          <div className="chatTypeConfirmHeader">
+            <h3 className="chatTypeConfirmTitle">Switch to Single Chat?</h3>
+            <button className="chatTypeConfirmClose" onClick={handleCancelChatTypeChange}>
+              <FiX className="chatTypeConfirmCloseIcon" />
+            </button>
+          </div>
+          
+          <div className="chatTypeConfirmContent">
+            <p className="chatTypeConfirmMessage">
+              You're about to switch from group chat to single chat. This will remove all additional participants except the first one.
+            </p>
+            
+            <div className="chatTypeConfirmWarning">
+              <div className="chatTypeConfirmWarningText">
+                <FiAlertTriangle className="chatTypeConfirmWarningIcon" />
+                This action cannot be undone
+              </div>
+            </div>
+            
+            <div className="chatTypeConfirmReceivers">
+              <div className="chatTypeConfirmReceiversTitle">Current participants:</div>
+              <div className="chatTypeConfirmReceiversList">
+                {receiverNames && receiverNames.filter(name => name && name.trim()).map((name, index) => (
+                  <div key={index} className="chatTypeConfirmReceiverItem">
+                    {name || `Receiver ${index + 1}`}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div className="chatTypeConfirmFooter">
+            <button className="chatTypeConfirmCancel" onClick={handleCancelChatTypeChange}>
+              Cancel
+            </button>
+            <button className="chatTypeConfirmProceed" onClick={handleConfirmSingleChat}>
+              Switch to Single
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
 
     <AboutUs open={showAboutPopup} onClose={handleClosePopup} />
   </>

@@ -1,23 +1,19 @@
 /* Kropka do instrukcji w sidebarze */
 .leftSidebarDot {
-  width: 18px;
-  height: 18px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: none;
+  background-color: #4A5565;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #99A1AF;
   margin-right: 0;
-  font-size: 18px;
-  border: 2.5px solid #99A1AF;
-  box-sizing: border-box;
-  transition: opacity 0.15s;
+  transition: background-color 0.15s;
 }
-.leftSidebarDot:hover {
-  opacity: 0.7;
-}
+/* .leftSidebarDot:hover {
+  background-color: #6B7280;
+} */
 .leftSidebar {
     width: 468px !important;
     /* min-height: 100vh; */
@@ -412,37 +408,53 @@
     background-color: #E2E8F0;
 }
 
-
-.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    min-height: 24px;
-    gap: 8px;
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainer {
+  /* background-color: red; */
+  padding-left: 0;
+  margin-left: 0;
 }
 
-.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon {
-    width: 18px;
-    height: 18px;
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement {
+  width: 100%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 24px;
+  /* gap: 8px; */
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
 }
 
 /* Idealne wyrównanie dla kontenerów kropek */
 .leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 /* Idealne wyrównanie dla kontenerów tekstu w instrukcjach */
 .leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 24px;
-    flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 24px;
+  flex: 1;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .leftSidebarDivier {
@@ -603,6 +615,10 @@
     align-items: stretch; /* Wszystkie elementy mają tę samą szerokość */
 }
 
+.leftSidebarContainerTopContainerRightContainerFourContainerTwoContainer {
+  /* background-color: red; */
+}
+
 /* Idealne wyrównanie dla kontenerów wewnętrznych accordion */
 .leftSidebarContainerTopContainerRightContainerTwoContainerTwoContainer,
 .leftSidebarContainerTopContainerRightContainerThreeContainerTwoContainer,
@@ -610,7 +626,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 0px;
 }
 
 /* --- Add Button Modern Style --- */
@@ -718,7 +734,7 @@
   gap: 4px;
   background-color: #f1f5f9;
   border-radius: 6px;
-  padding: 2px;
+  padding: 2px 2px;
 }
 
 .toggleButton {
@@ -734,7 +750,8 @@
 }
 
 .toggleButton.active {
-  background-color: #3b82f6;
+  /* background-color: #3b82f6; */
+  background-color: #000000;
   color: #ffffff;
 }
 
@@ -985,7 +1002,7 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: ;
+  /* justify-content: ; */
   align-items: center;
   /* background-color: blue; */
   /* width: 88%; */
@@ -1123,4 +1140,205 @@
   width: 100%;
   height: 1px;
   background-color: #E2E8F0;
+}
+
+/* Chat Type Confirmation Popup */
+.chatTypeConfirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: chatTypeConfirmFadeIn 0.2s ease-out;
+}
+
+.chatTypeConfirmModal {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 90vw;
+  padding: 32px;
+  animation: chatTypeConfirmSlideIn 0.3s ease-out;
+  position: relative;
+}
+
+.chatTypeConfirmHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chatTypeConfirmTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.chatTypeConfirmClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatTypeConfirmClose:hover {
+  background-color: #f1f5f9;
+}
+
+.chatTypeConfirmCloseIcon {
+  width: 20px;
+  height: 20px;
+  color: #64748b;
+}
+
+.chatTypeConfirmContent {
+  margin-bottom: 24px;
+}
+
+.chatTypeConfirmMessage {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.chatTypeConfirmWarning {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.chatTypeConfirmWarningIcon {
+  width: 16px;
+  height: 16px;
+  color: #d97706;
+  margin-right: 8px;
+}
+
+.chatTypeConfirmWarningText {
+  font-size: 0.875rem;
+  color: #92400e;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.chatTypeConfirmReceivers {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.chatTypeConfirmReceiversTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.chatTypeConfirmReceiversList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chatTypeConfirmReceiverItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.chatTypeConfirmReceiverItem:first-child {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+.chatTypeConfirmReceiverItem:not(:first-child) {
+  opacity: 0.6;
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.chatTypeConfirmFooter {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.chatTypeConfirmCancel {
+  padding: 10px 20px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #374151;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chatTypeConfirmCancel:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.chatTypeConfirmProceed {
+  padding: 10px 20px;
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chatTypeConfirmProceed:hover {
+  background: #b91c1c;
+}
+
+@keyframes chatTypeConfirmFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes chatTypeConfirmSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

@@ -12,6 +12,7 @@ const Messenger = ({
   senderName, 
   receiverNames, 
   receiverImages, 
+  receiverStatuses = [],
   messages, 
   selectedDevice = 'desktop', 
   chatType = 'single', 
@@ -81,6 +82,14 @@ const Messenger = ({
       return receiverImages[0];
     }
     return null;
+  };
+
+  // Get the first receiver status for the header (single chat)
+  const getFirstReceiverStatus = () => {
+    if (receiverStatuses && receiverStatuses.length > 0 && receiverStatuses[0]) {
+      return receiverStatuses[0];
+    }
+    return 'Active now';
   };
 
   // Get the first letter of the receiver name for avatar (fallback)
@@ -255,7 +264,7 @@ const Messenger = ({
                     {getHeaderName()}
                   </h3>
                   <p className="messengerHeaderStatus">
-                    {chatType === 'group' ? `${receiverNames.filter(name => name.trim()).length} members` : 'Active now'}
+                    {chatType === 'group' ? `${receiverNames.filter(name => name.trim()).length} members` : getFirstReceiverStatus()}
                   </p>
                 </div>
               </div>

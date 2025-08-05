@@ -12,6 +12,7 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
   const [showSettings, setShowSettings] = useState(false);
   const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const dropdownRef = useRef(null);
 
   // Platform data
@@ -31,6 +32,56 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
     { name: 'WhatsApp', icon: FaWhatsapp, color: '#25D366' },
     { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000' }
   ];
+
+  // Funkcja do pobierania screenshotu
+  const handleDownloadScreenshot = async () => {
+    if (isDownloading) return; // Zapobiegaj wielokrotnym kliknięciom
+    
+    setIsDownloading(true);
+    
+    try {
+      // Znajdź element messenger
+      const messengerElement = document.querySelector('.messenger');
+      if (!messengerElement) {
+        alert('Messenger element not found. Please try again.');
+        return;
+      }
+
+      // Użyj html2canvas do zrobienia screenshotu
+      const html2canvas = (await import('html2canvas')).default;
+      const canvas = await html2canvas(messengerElement, {
+        backgroundColor: darkMode ? '#1a1a1a' : '#ffffff',
+        scale: 2, // Wyższa jakość
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        width: messengerElement.offsetWidth,
+        height: messengerElement.offsetHeight
+      });
+
+      // Konwertuj canvas na blob
+      canvas.toBlob((blob) => {
+        if (blob) {
+          // Utwórz link do pobrania
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `whispr-messenger-${selectedDevice}-${new Date().toISOString().slice(0, 10)}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        } else {
+          alert('Failed to generate screenshot. Please try again.');
+        }
+      }, 'image/png');
+    } catch (error) {
+      console.error('Error taking screenshot:', error);
+      alert('Failed to take screenshot. Please try again.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   // Close settings when clicking outside
   useEffect(() => {
@@ -164,17 +215,17 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
 
         {/* Action Icons */}
         <div className="rightNavigationBarActions">
-          <button className="rightNavigationBarActionButton" onClick={() => setShowSettings(!showSettings)}>
+          <button className="rightNavigationBarActionButton" onClick={() => setShowSettings(!showSettings)} data-tooltip="settings">
             <FiSettings className="rightNavigationBarActionIcon" />
           </button>
           <button className="rightNavigationBarActionButton">
             <FiBarChart2 className="rightNavigationBarActionIcon" />
           </button>
-          <button className="rightNavigationBarActionButton">
+          <button className="rightNavigationBarActionButton" data-tooltip="preview">
             <FiPlay className="rightNavigationBarActionIcon" />
           </button>
-          <button className="rightNavigationBarActionButton">
-            <FiDownload className="rightNavigationBarActionIcon" />
+          <button className="rightNavigationBarActionButton" onClick={handleDownloadScreenshot} data-tooltip="export" disabled={isDownloading}>
+            <FiDownload className={`rightNavigationBarActionIcon ${isDownloading ? 'downloading' : ''}`} />
           </button>
           <button 
             className="rightNavigationBarActionButton" 

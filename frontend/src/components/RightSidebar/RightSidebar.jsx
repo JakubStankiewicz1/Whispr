@@ -9,6 +9,7 @@ const RightSidebar = ({
   senderName, 
   receiverNames, 
   receiverImages, 
+  receiverStatuses = [],
   messages, 
   selectedDevice, 
   setSelectedDevice, 
@@ -38,6 +39,7 @@ const RightSidebar = ({
             senderName={senderName} 
             receiverNames={receiverNames} 
             receiverImages={receiverImages} 
+            receiverStatuses={receiverStatuses}
             messages={messages} 
             selectedDevice={selectedDevice}
             chatType={chatType}
