@@ -300,6 +300,11 @@
   word-wrap: break-word;
 }
 
+/* Sender message text should be white */
+.messengerMessage--sender .messengerMessageText {
+  color: #ffffff;
+}
+
 /* Message Images */
 .messengerMessageImages {
   display: flex;

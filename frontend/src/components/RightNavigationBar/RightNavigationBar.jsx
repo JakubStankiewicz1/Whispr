@@ -7,6 +7,7 @@ import { LuSmartphone } from "react-icons/lu";
 import { FaDiscord, FaInstagram, FaReddit, FaSnapchat, FaTelegram, FaTiktok, FaWeixin, FaWhatsapp, FaXTwitter } from 'react-icons/fa6';
 import { SiSignal, SiSlack, SiTinder } from 'react-icons/si';
 import { IoLogoIonitron } from 'react-icons/io5';
+import { GoPlus } from "react-icons/go";
 
 const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDarkMode, showHeader, setShowHeader, showFooter, setShowFooter, onReset }) => {
   const [showSettings, setShowSettings] = useState(false);
@@ -159,7 +160,8 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
 
         {/* Left Section */}
         <div className="rightNavigationBarLeft">
-          <div className="rightNavigationBarLogo" onClick={handlePlatformClick} style={{cursor: 'pointer'}}>
+          <div className="rightNavigationBarLogo" onClick={handlePlatformClick}>
+
             {(() => {
               const platform = platforms.find(p => p.name === selectedPlatform);
               const IconComponent = platform ? platform.icon : BsMessenger;
@@ -175,22 +177,24 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
               <div className="platformDropdownContent">
                 {platforms.map((platform, index) => (
                   <div key={index} className="platformItem" onClick={() => handlePlatformSelect(platform.name)}>
-                    <div className="platformIcon" style={{ backgroundColor: platform.color }}>
-                      <platform.icon className="platformIconSvg" />
+                    <div className="platformItemContainer">
+                      <div className="platformIcon">
+                        <platform.icon style={{ color: platform.color }} className="platformIconSvg" />
+                      </div>
+                      <span className="platformName">{platform.name}</span>
+                      {/* {platform.name === selectedPlatform && (
+                        <div className="platformCheckmark">✓</div>
+                      )} */}
                     </div>
-                    <span className="platformName">{platform.name}</span>
-
-                    {platform.name === selectedPlatform && (
-                      <div className="platformCheckmark">✓</div>
-                    )}
-
                   </div>
                 ))}
                 <div className="platformItem addPlatform">
-                  <div className="platformIcon addPlatformIcon">
-                    <FiPlus className="platformIconSvg" />
+                  <div className="platformItemContainer">
+                    <div className="platformIcon addPlatformIcon">
+                      <FiPlus className="platformIconSvg" />
+                    </div>
+                    <span className="platformName">Add platform</span>
                   </div>
-                  <span className="platformName">Add platform</span>
                 </div>
               </div>
             </div>
@@ -229,7 +233,7 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
           <button className="rightNavigationBarActionButton" onClick={() => setShowSettings(!showSettings)} data-tooltip="settings">
             <FiSettings className="rightNavigationBarActionIcon" />
           </button>
-          <button className="rightNavigationBarActionButton">
+          <button className="rightNavigationBarActionButton" data-tooltip="analytics">
             <FiBarChart2 className="rightNavigationBarActionIcon" />
           </button>
           <button className="rightNavigationBarActionButton" data-tooltip="preview">
@@ -241,7 +245,7 @@ const RightNavigationBar = ({ selectedDevice, setSelectedDevice, darkMode, setDa
           <button 
             className="rightNavigationBarActionButton" 
             onClick={handleResetClick}
-            title="Reset to defaults"
+            data-tooltip="reset"
           >
             <FiTrash2 className="rightNavigationBarActionIcon" data-icon="trash" />
           </button>

@@ -16,7 +16,9 @@ const AboutUs = ({ open, onClose }) => {
           </button>
         </div>
         <div className="aboutUsContent">
-          <p className="aboutUsSubtitle">See what's new and improved in Whispr!</p>
+          <p className="aboutUsSubtitle">
+            Whispr is a powerful messaging mockup tool that helps you create realistic chat conversations for presentations, demos, and design projects. Create authentic-looking messages with custom avatars, timestamps, and multiple messaging platforms.
+          </p>
           <div className="aboutUsChangelog">
             <div className="aboutUsVersion">
               <div className="aboutUsVersionHeader">
@@ -24,9 +26,10 @@ const AboutUs = ({ open, onClose }) => {
                 <span className="aboutUsVersionDate">Jul 24, 2025</span>
               </div>
               <ul className="aboutUsVersionFeatures">
-                <li>Improved image export</li>
-                <li>Improved animations</li>
-                <li>Improved styles</li>
+                <li>Enhanced image export with high-quality screenshots</li>
+                <li>Smooth animations and improved user experience</li>
+                <li>Refined design with better visual consistency</li>
+                <li>New platform support and improved dropdown</li>
               </ul>
             </div>
             <div className="aboutUsVersion">
@@ -35,7 +38,9 @@ const AboutUs = ({ open, onClose }) => {
                 <span className="aboutUsVersionDate">Jul 21, 2025</span>
               </div>
               <ul className="aboutUsVersionFeatures">
-                <li>Improved editor experience</li>
+                <li>Improved message editor with better inline editing</li>
+                <li>Enhanced participant management</li>
+                <li>Better group chat functionality</li>
               </ul>
             </div>
             <div className="aboutUsVersion">
@@ -44,7 +49,42 @@ const AboutUs = ({ open, onClose }) => {
                 <span className="aboutUsVersionDate">Jul 16, 2025</span>
               </div>
               <ul className="aboutUsVersionFeatures">
-                <li>Animated previews</li>
+                <li>Animated message previews</li>
+                <li>Real-time chat simulation</li>
+                <li>Custom timestamp formatting</li>
+              </ul>
+            </div>
+            <div className="aboutUsVersion">
+              <div className="aboutUsVersionHeader">
+                <span className="aboutUsVersionNumber">v1.2.0</span>
+                <span className="aboutUsVersionDate">Jul 10, 2025</span>
+              </div>
+              <ul className="aboutUsVersionFeatures">
+                <li>Multiple messaging platforms support</li>
+                <li>Custom avatar uploads</li>
+                <li>Group chat functionality</li>
+              </ul>
+            </div>
+            <div className="aboutUsVersion">
+              <div className="aboutUsVersionHeader">
+                <span className="aboutUsVersionNumber">v1.1.0</span>
+                <span className="aboutUsVersionDate">Jul 5, 2025</span>
+              </div>
+              <ul className="aboutUsVersionFeatures">
+                <li>Basic message creation</li>
+                <li>Simple chat interface</li>
+                <li>Export functionality</li>
+              </ul>
+            </div>
+            <div className="aboutUsVersion">
+              <div className="aboutUsVersionHeader">
+                <span className="aboutUsVersionNumber">v1.0.0</span>
+                <span className="aboutUsVersionDate">Jul 1, 2025</span>
+              </div>
+              <ul className="aboutUsVersionFeatures">
+                <li>Initial release</li>
+                <li>Core messaging mockup features</li>
+                <li>Basic UI and interactions</li>
               </ul>
             </div>
           </div>

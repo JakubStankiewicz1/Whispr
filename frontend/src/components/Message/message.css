@@ -763,6 +763,13 @@
     cursor: pointer;
     margin: 0;
     transition: color 0.2s ease, transform 0.2s ease;
+
+
+    color: transparent;
+}
+
+.message:hover .messageContainerDivRightContainerTopContainerRightContainerIcon {
+    color: #DC2626;
 }
 
 .messageContainerDivRightContainerTopContainerRightContainerIcon:hover {

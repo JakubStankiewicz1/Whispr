@@ -853,7 +853,7 @@ const LeftSidebar = ({
                             <div className="leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwo">
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwoContainer">
                                 <p className="leftSidebarContainerTopContainerRightContainerFourContainerOneContainerLeftContainerTwoContainerText">
-                                  Instructions
+                                  Quick Guide
                                 </p>
                               </div>
                             </div>
@@ -889,7 +889,7 @@ const LeftSidebar = ({
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
                                   <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
-                                    Click "Add Message" to create a new message
+                                    Use "Add Message" to create new conversation entries
                                   </p>
                                 </div>
                               </div>
@@ -917,7 +917,7 @@ const LeftSidebar = ({
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
                                   <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
-                                    Click on any message text to edit it inline
+                                    Click any message text to edit it directly inline
                                   </p>
                                 </div>
                               </div>
@@ -945,36 +945,7 @@ const LeftSidebar = ({
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
                                   <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
-                                    Click on avatars to cycle through users
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-
-
-
-
-
-
-
-                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
-                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
-                              {/* Left Part */}
-                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
-                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
-                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
-                                  <div className="leftSidebarDot" />
-                                </div>
-                              </div>
-
-
-                              {/* Right Part */}
-                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
-                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
-                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
-                                    Click on timestamps to change them
+                                    Click avatars to switch between different users
                                   </p>
                                 </div>
                               </div>
@@ -1003,7 +974,78 @@ const LeftSidebar = ({
                               <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
                                 <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
                                   <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
-                                    Changes are saved automatically
+                                    Click timestamps to customize date and time
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  {/* <LuDot className='leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainerIcon' /> */}
+                                  <div className="leftSidebarDot" />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    All changes are automatically saved as you work
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <div className="leftSidebarDot" />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Switch between desktop and mobile views
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElement">
+                            <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainer">
+                              {/* Left Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeft">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerLeftContainer">
+                                  <div className="leftSidebarDot" />
+                                </div>
+                              </div>
+
+
+                              {/* Right Part */}
+                              <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRight">
+                                <div className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainer">
+                                  <p className="leftSidebarContainerTopContainerRightContainerFourContainerTwoContainerElementContainerRightContainerText">
+                                    Export screenshots for presentations
                                   </p>
                                 </div>
                               </div>
