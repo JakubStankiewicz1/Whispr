@@ -101,9 +101,11 @@ const AboutUs = ({ open, onClose }) => {
           onMouseMove={handleInteraction}
         >
           <p className="aboutUsSubtitle">
-            See what's new and improved in Mockly!
+            See what's new and improved in Whispr!
           </p>
-          <div className="aboutUsChangelog">
+
+
+          {/* <div className="aboutUsChangelog">
             <div className="aboutUsVersion">
               <div className="aboutUsVersionHeader">
                 <span className="aboutUsVersionNumber">v1.5.0</span>
@@ -174,13 +176,13 @@ const AboutUs = ({ open, onClose }) => {
                 <li>Basic UI and interactions</li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="aboutUsFooter">
           <p className="aboutUsFooterText">
             Questions or feedback? Email{' '}
-            <a href="mailto:maurice@getwhispr.com" className="aboutUsFooterLink">
-              maurice@getwhispr.com
+            <a href="mailto:stankiewicz.kuba152@gmail.com" className="aboutUsFooterLink">
+              stankiewicz.kuba152@gmail.com
             </a>
           </p>
         </div>
