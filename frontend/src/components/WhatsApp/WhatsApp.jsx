@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './whatsapp.css';
-import { FiPlus, FiImage, FiSmile } from 'react-icons/fi';
+import { FiPlus, FiImage, FiSmile, FiVideo, FiPhone, FiSearch } from 'react-icons/fi';
 import { IoSend } from 'react-icons/io5';
 import { TbFileSmile } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
@@ -8,6 +8,11 @@ import { FiPlusCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaMicrophone } from "react-icons/fa";
+import { LuPlus } from "react-icons/lu";
+import { HiMicrophone } from "react-icons/hi2";
+import { HiOutlineMicrophone } from "react-icons/hi";
+// import { HiOutlineMicrophone } from "react-icons/hi";
+// import { HiOutlineMicrophone } from "react-icons/hi";
 
 const WhatsApp = ({ 
   senderName, 
@@ -248,42 +253,56 @@ const WhatsApp = ({
   return (
     <div className={`whatsapp whatsapp--${selectedDevice} ${darkMode ? 'whatsapp--dark' : ''}`}>
       <div className="whatsappContainer">
-        {/* Header */}
-        {showHeader && (
-          <div className="whatsappHeader">
-            <div className="whatsappHeaderContainer">
-              <div className="whatsappHeaderLeft">
-                <div className="whatsappHeaderAvatar">
-                  {headerImage ? (
-                    <img
-                      src={headerImage}
-                      alt="Profile"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: '50%',
-                        objectFit: 'cover'
-                      }}
-                    />
-                  ) : (
-                    <span className="whatsappHeaderAvatarText">{getHeaderInitial()}</span>
-                  )}
-                </div>
-                <div className="whatsappHeaderInfo">
-                  <h3 className="whatsappHeaderName">
-                    {getHeaderName()}
-                  </h3>
-                  <p className="whatsappHeaderStatus">
-                    {getHeaderStatus()}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+                 {/* Header */}
+         {showHeader && (
+           <div className="whatsappHeader">
+             <div className="whatsappHeaderContainer">
+               <div className="whatsappHeaderLeft">
+                 <div className="whatsappHeaderAvatar">
+                   {headerImage ? (
+                     <img
+                       src={headerImage}
+                       alt="Profile"
+                       style={{
+                         width: '100%',
+                         height: '100%',
+                         borderRadius: '50%',
+                         objectFit: 'cover'
+                       }}
+                     />
+                   ) : (
+                     <span className="whatsappHeaderAvatarText">{getHeaderInitial()}</span>
+                   )}
+                 </div>
+                 <div className="whatsappHeaderInfo">
+                   <h3 className="whatsappHeaderName">
+                     {getHeaderName()}
+                   </h3>
+                   <p className="whatsappHeaderStatus">
+                     {getHeaderStatus()}
+                   </p>
+                 </div>
+               </div>
+               
+               {/* Header Right Icons */}
+               <div className="whatsappHeaderRight">
+                 <button className="whatsappHeaderIcon">
+                   <FiVideo className="whatsappHeaderIconSvg" />
+                 </button>
+                 <button className="whatsappHeaderIcon">
+                   <FiPhone className="whatsappHeaderIconSvg" />
+                 </button>
+                 <button className="whatsappHeaderIcon">
+                   <FiSearch className="whatsappHeaderIconSvg" />
+                 </button>
+               </div>
+             </div>
+           </div>
+         )}
 
         {/* Message Area */}
         <div className="whatsappMessages">
+          
           <div className="whatsappMessagesContainer">
             <div className="whatsappMessagesList">
               {messages && messages.length > 0 && messages.map((msg, idx) => {
@@ -393,47 +412,37 @@ const WhatsApp = ({
         {/* Input Bar */}
         {showFooter && (
           <div className="whatsappInput">
+
             <div className="whatsappInputContainer">
-              <div className="whatsappInputLeft">
+
+              <div className="whatsappInputContainerDiv">
                 <button className="whatsappInputButton">
-                  <FiPlusCircle className="whatsappInputIcon" />
-                </button>
-                <button className="whatsappInputButton">
-                  <FiImage className="whatsappInputIcon" />
-                </button>
-                <button className="whatsappInputButton">
-                  <TbFileSmile className="whatsappInputIcon" />
+                  <LuPlus className="whatsappInputIcon" />
                 </button>
               </div>
 
               <div className="whatsappInputCenter">
-                <textarea
+                <input
+                  type="text"
                   className="whatsappInputField"
-                  placeholder="Type a message..."
+                  // placeholder="Type a message..."
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  rows="1"
                 />
               </div>
 
-              <div className="whatsappInputRight">
-                {inputMessage.trim() ? (
-                  <button
-                    className="whatsappSendButton"
-                    onClick={handleSendMessage}
-                  >
-                    <IoSend className="whatsappSendIcon" />
-                  </button>
-                ) : (
-                  <button
-                    className={`whatsappVoiceButton ${isRecording ? 'recording' : ''}`}
-                    onClick={handleVoiceRecord}
-                  >
-                    <FaMicrophone className="whatsappVoiceIcon" />
-                  </button>
-                )}
+              <div className="whatsappInputContainerDivEle">
+                <button className="whatsappInputButton">
+                  <FiSmile className="whatsappInputIcon" />
+                </button>
+
+                <button className="whatsappVoiceButton">
+                  <HiOutlineMicrophone className="whatsappVoiceIcon" />
+                </button>
               </div>
+
+              
             </div>
           </div>
         )}

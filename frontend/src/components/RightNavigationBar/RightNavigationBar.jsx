@@ -30,19 +30,19 @@ const RightNavigationBar = ({
 
   // Platform data
   const platforms = [
-    { name: 'Discord', icon: FaDiscord, color: '#5865F2' },
-    { name: 'Instagram', icon: FaInstagram, color: '#E4405F' },
-    { name: 'Messenger', icon: BsMessenger, color: '#0084FF' },
-    { name: 'Reddit', icon: FaReddit, color: '#FF4500' },
-    { name: 'Signal', icon: SiSignal, color: '#3A76F0' },
-    { name: 'Slack', icon: SiSlack, color: '#4A154B' },
-    { name: 'Snapchat', icon: FaSnapchat, color: '#FFFC00' },
-    { name: 'Telegram', icon: FaTelegram, color: '#0088CC' },
-    { name: 'TikTok', icon: FaTiktok, color: '#000000' },
-    { name: 'Tinder', icon: SiTinder, color: '#FF6B6B' },
-    { name: 'WeChat', icon: FaWeixin, color: '#07C160' },
-    { name: 'WhatsApp', icon: FaWhatsapp, color: '#25D366' },
-    { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000' }
+    { name: 'Discord', icon: FaDiscord, color: '#5865F2', available: false },
+    { name: 'Instagram', icon: FaInstagram, color: '#E4405F', available: false },
+    { name: 'Messenger', icon: BsMessenger, color: '#0084FF', available: true },
+    { name: 'Reddit', icon: FaReddit, color: '#FF4500', available: false },
+    { name: 'Signal', icon: SiSignal, color: '#3A76F0', available: false },
+    { name: 'Slack', icon: SiSlack, color: '#4A154B', available: false },
+    { name: 'Snapchat', icon: FaSnapchat, color: '#FFFC00', available: false },
+    { name: 'Telegram', icon: FaTelegram, color: '#0088CC', available: false },
+    { name: 'TikTok', icon: FaTiktok, color: '#000000', available: false },
+    { name: 'Tinder', icon: SiTinder, color: '#FF6B6B', available: false },
+    { name: 'WeChat', icon: FaWeixin, color: '#07C160', available: false },
+    { name: 'WhatsApp', icon: FaWhatsapp, color: '#25D366', available: true },
+    { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000', available: false }
   ];
 
   // Funkcja do pobierania screenshotu
@@ -161,7 +161,8 @@ const RightNavigationBar = ({
   };
 
   const handlePlatformSelect = (platformName) => {
-    if (setSelectedPlatform) {
+    const platform = platforms.find(p => p.name === platformName);
+    if (platform && platform.available && setSelectedPlatform) {
       setSelectedPlatform(platformName);
     }
     setShowPlatformDropdown(false);
@@ -189,15 +190,27 @@ const RightNavigationBar = ({
             <div className="platformDropdown" ref={dropdownRef}>
               <div className="platformDropdownContent">
                 {platforms.map((platform, index) => (
-                  <div key={index} className="platformItem" onClick={() => handlePlatformSelect(platform.name)}>
+                  <div 
+                    key={index} 
+                    className={`platformItem ${!platform.available ? 'platformItem--coming-soon' : ''}`} 
+                    onClick={() => handlePlatformSelect(platform.name)}
+                  >
                     <div className="platformItemContainer">
                       <div className="platformIcon">
-                        <platform.icon style={{ color: platform.color }} className="platformIconSvg" />
+                        <platform.icon 
+                          style={{ 
+                            color: platform.available ? platform.color : '#D1D5DB',
+                            filter: platform.available ? 'none' : 'grayscale(100%)'
+                          }} 
+                          className="platformIconSvg" 
+                        />
                       </div>
                       <span className="platformName">{platform.name}</span>
-                      {/* {platform.name === selectedPlatform && (
-                        <div className="platformCheckmark">✓</div>
-                      )} */}
+                      {!platform.available && (
+                        <div className="platformComingSoon">
+                          {/* <span className="platformComingSoonText">Coming Soon</span> */}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
