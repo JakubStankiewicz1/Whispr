@@ -3,54 +3,77 @@ import './home.css';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar.jsx';
 import RightSidebar from '../../components/RightSidebar/RightSidebar.jsx';
 
+const STORAGE_KEY = 'whispr-app-state';
+
 const Home = () => {
-  const [senderName, setSenderName] = useState('You');
-  const [receiverNames, setReceiverNames] = useState(['Friend']);
-  const [receiverImages, setReceiverImages] = useState(['']);
-  const [receiverStatuses, setReceiverStatuses] = useState(['Active now']);
-  const [messages, setMessages] = useState([
-          {
-        id: Date.now() + Math.random(),
-        text: "Hello, how are you?",
-        type: 'sender',
-        sender: 'You',
-        images: [],
-        date: new Date(),
-        dateDisplaySettings: {
-          showDate: true,
-          showTime: false,
-          showYear: true,
-          format: 'custom'
+  // Funkcja do pobierania stanu z localStorage
+  const getInitialState = () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Odtwórz daty z stringów na obiekty Date
+        if (parsed.messages) {
+          parsed.messages = parsed.messages.map(msg => ({
+            ...msg,
+            date: msg.date ? new Date(msg.date) : new Date(),
+          }));
         }
-      },
-          {
-        id: Date.now() + Math.random() + 1,
-        text: "I'm glad, thank you!",
-        type: 'receiver',
-        sender: 'Friend',
-        images: [],
-        date: new Date(),
-        dateDisplaySettings: {
-          showDate: true,
-          showTime: false,
-          showYear: true,
-          format: 'custom'
-        }
+        return parsed;
       }
+    } catch (e) {}
+    return null;
+  };
+
+  const initial = getInitialState();
+
+  const [senderName, setSenderName] = useState(initial?.senderName ?? 'You');
+  const [receiverNames, setReceiverNames] = useState(initial?.receiverNames ?? ['Friend']);
+  const [receiverImages, setReceiverImages] = useState(initial?.receiverImages ?? ['']);
+  const [receiverStatuses, setReceiverStatuses] = useState(initial?.receiverStatuses ?? ['Active now']);
+  const [messages, setMessages] = useState(initial?.messages ?? [
+    {
+      id: Date.now() + Math.random(),
+      text: "Hello, how are you?",
+      type: 'sender',
+      sender: 'You',
+      images: [],
+      date: new Date(),
+      dateDisplaySettings: {
+        showDate: true,
+        showTime: false,
+        showYear: true,
+        format: 'custom'
+      }
+    },
+    {
+      id: Date.now() + Math.random() + 1,
+      text: "I'm glad, thank you!",
+      type: 'receiver',
+      sender: 'Friend',
+      images: [],
+      date: new Date(),
+      dateDisplaySettings: {
+        showDate: true,
+        showTime: false,
+        showYear: true,
+        format: 'custom'
+      }
+    }
   ]);
-  const [selectedDevice, setSelectedDevice] = useState('desktop');
+  const [selectedDevice, setSelectedDevice] = useState(initial?.selectedDevice ?? 'desktop');
   
   // New state for group chat functionality
-  const [chatType, setChatType] = useState('single'); // 'single' or 'group'
-  const [groupName, setGroupName] = useState('');
-  const [groupImage, setGroupImage] = useState('');
+  const [chatType, setChatType] = useState(initial?.chatType ?? 'single'); // 'single' or 'group'
+  const [groupName, setGroupName] = useState(initial?.groupName ?? '');
+  const [groupImage, setGroupImage] = useState(initial?.groupImage ?? '');
 
   // Settings state
-  const [darkMode, setDarkMode] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-  const [showFooter, setShowFooter] = useState(true);
-  const [forceDateDisplay, setForceDateDisplay] = useState(false);
-  const [globalDateSettings, setGlobalDateSettings] = useState({
+  const [darkMode, setDarkMode] = useState(initial?.darkMode ?? false);
+  const [showHeader, setShowHeader] = useState(initial?.showHeader ?? true);
+  const [showFooter, setShowFooter] = useState(initial?.showFooter ?? true);
+  const [forceDateDisplay, setForceDateDisplay] = useState(initial?.forceDateDisplay ?? false);
+  const [globalDateSettings, setGlobalDateSettings] = useState(initial?.globalDateSettings ?? {
     showDate: true,
     showTime: false,
     showYear: true,
@@ -58,7 +81,29 @@ const Home = () => {
   });
 
   // Platform state
-  const [selectedPlatform, setSelectedPlatform] = useState('Messenger');
+  const [selectedPlatform, setSelectedPlatform] = useState(initial?.selectedPlatform ?? 'Messenger');
+
+  // Zapisuj stan do localStorage przy każdej zmianie
+  useEffect(() => {
+    const stateToSave = {
+      senderName,
+      receiverNames,
+      receiverImages,
+      receiverStatuses,
+      messages,
+      selectedDevice,
+      chatType,
+      groupName,
+      groupImage,
+      darkMode,
+      showHeader,
+      showFooter,
+      forceDateDisplay,
+      globalDateSettings,
+      selectedPlatform,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
+  }, [senderName, receiverNames, receiverImages, receiverStatuses, messages, selectedDevice, chatType, groupName, groupImage, darkMode, showHeader, showFooter, forceDateDisplay, globalDateSettings, selectedPlatform]);
 
   // Aktualizuj początkową wiadomość gdy zmienią się globalne ustawienia
   useEffect(() => {
@@ -69,6 +114,7 @@ const Home = () => {
 
   // Funkcja do resetowania wszystkich ustawień do domyślnych
   const handleResetToDefaults = () => {
+    localStorage.removeItem(STORAGE_KEY);
     setSenderName('You');
     setReceiverNames(['Friend']);
     setReceiverImages(['']);
