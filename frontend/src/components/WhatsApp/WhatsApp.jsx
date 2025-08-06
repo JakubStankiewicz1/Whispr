@@ -395,7 +395,7 @@ const WhatsApp = ({
                         )}
                         
                         {/* WhatsApp Message Timestamp */}
-                        <div className="whatsappMessageTimestamp">
+                        <div className={`whatsappMessageTimestamp ${isFromSender ? 'whatsappMessageTimestamp--sender' : 'whatsappMessageTimestamp--receiver'}`} style={isFromSender ? {justifyContent: 'flex-start'} : {justifyContent: 'flex-end'}}>
                           <span className="whatsappMessageTime">
                             {formatMessageTime(getMessageDate(msg))}
                           </span>

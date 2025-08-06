@@ -277,9 +277,16 @@
 /* WhatsApp Message Timestamp Styles */
 .whatsappMessageTimestamp {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   margin-top: 4px;
+}
+
+.whatsappMessageTimestamp--sender {
+  justify-content: flex-start;
+}
+
+.whatsappMessageTimestamp--receiver {
+  justify-content: flex-end;
 }
 
 .whatsappMessageTime {
