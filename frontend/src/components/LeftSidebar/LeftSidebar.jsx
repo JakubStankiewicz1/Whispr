@@ -14,6 +14,7 @@ import ParticipantReceiver from '../ParticipantReceiver/ParticipantReceiver';
 import Message from '../Message/Message';
 import Group from '../Group/Group';
 import AboutUs from '../AboutUs/AboutUs';
+import SignIn from '../SignIn/SignIn';
 
 
 const LeftSidebar = ({ 
@@ -49,6 +50,7 @@ const LeftSidebar = ({
   // Pop-up state
   const [showAboutPopup, setShowAboutPopup] = useState(false);
   const [showChatTypeConfirm, setShowChatTypeConfirm] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
 
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
@@ -205,6 +207,14 @@ const LeftSidebar = ({
     setReceiverStatuses((prev) => [...prev, 'Active now']);
   };
 
+  const handleSignInClick = () => {
+    setShowSignIn(true);
+  };
+
+  const handleCloseSignIn = () => {
+    setShowSignIn(false);
+  };
+
   return (
     <>
       <div className='leftSidebar'>
@@ -242,7 +252,7 @@ const LeftSidebar = ({
                     </div>
 
                     <div className="leftSidebarContainerTopContainerRightContainerOneContainerOne">
-                      <div className="leftSidebarContainerTopContainerRightContainerOneContainerOneContainer">
+                      <div className="leftSidebarContainerTopContainerRightContainerOneContainerOneContainer" onClick={handleSignInClick} style={{ cursor: 'pointer' }}>
                         <div className="leftSidebarContainerTopContainerRightContainerOneContainerOneContainerDiv">
                           <p className="leftSidebarContainerTopContainerRightContainerOneContainerOneContainerDivText">
                             Sign in
@@ -1133,6 +1143,14 @@ const LeftSidebar = ({
     )}
 
     <AboutUs open={showAboutPopup} onClose={handleClosePopup} />
+
+    {showSignIn && (
+      <div className="signInOverlay" onClick={handleCloseSignIn}>
+        <div className="signInModal" onClick={(e) => e.stopPropagation()}>
+          <SignIn />
+        </div>
+      </div>
+    )}
   </>
   )
 }

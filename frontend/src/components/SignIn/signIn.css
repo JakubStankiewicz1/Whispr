@@ -1,0 +1,294 @@
+.signIn {
+    width: 448px;
+    height: 356px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.signInContainer {
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+}
+
+.signInContainerDiv {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.signInContainerDivTop {
+    width: 100%;
+    /* height: 100%; */
+
+    /* background-color: blue; */
+}
+
+.signInContainerDivTopContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signInContainerDivTopContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.signInContainerDivTopContainerDivOneContainerText {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: #020618
+}
+
+.signInContainerDivTopContainerDivTwoContainerText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #62748E
+}
+
+
+.signInContainerDivMiddle {
+    width: 100%;
+    /* height: 100%; */
+
+    /* background-color: blue; */
+    margin-top: 26px;
+}
+
+.signInContainerDivMiddleContainer {
+    width: 89%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* background-color: blue; */
+}
+
+.signInContainerDivMiddleContainerDiv {
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 17px;
+    /* align-items: center; */
+}
+
+
+.signInContainerDivMiddleContainerDivOne,
+.signInContainerDivMiddleContainerDivTwo {
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+}
+
+.signInContainerDivMiddleContainerDivOneContainer,
+.signInContainerDivMiddleContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDiv,
+.signInContainerDivMiddleContainerDivTwoContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    /* align-items: center; */
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDivTwo,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwo {
+    width: 100%;
+    height: 36px;
+
+    /* background-color: red; */
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDivTwoContainer,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDivTwoContainerInput,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwoContainerInput {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    outline: none;
+    border: none;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    padding-left: 12px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #020618;
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDivTwoContainerInput::placeholder,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwoContainerInput::placeholder {
+    color: #62748E;
+}
+
+.signInContainerDivMiddleContainerDivOneContainerDivOneContainerText,
+.signInContainerDivMiddleContainerDivTwoContainerDivOneContainerText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #020618;
+}
+
+
+
+.signInContainerDivBottom {
+    /* background-color: lightsalmon; */
+    width: 100%;
+    /* height: 100%; */
+    margin-top: 16px;
+}
+
+.signInContainerDivBottomContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.signInContainerDivBottomContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 17px;
+}
+
+.signInContainerDivBottomContainerDivOne {
+    width: 100%;
+    /* height: 100%; */
+}
+
+.signInContainerDivBottomContainerDivOneContainer {
+    width: 89%;
+    height: 36px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* background-color: lightsalmon; */
+}
+
+.signInContainerDivBottomContainerDivOneContainerDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.signInContainerDivBottomContainerDivOneContainerDivButton {
+    width: 100%;
+    height: 100%;
+
+    background-color: #0F172B;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.signInContainerDivBottomContainerDivOneContainerDivButton:hover {
+    background-color: #262E40;
+}
+
+.signInContainerDivBottomContainerDivOneContainerDivButtonContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.signInContainerDivBottomContainerDivOneContainerDivButtonContainerText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #F8FAFC;
+}
+
+
+
+
+.signInContainerDivBottomContainerDivTwo {
+    width: 100%;
+
+    /* background-color: blue; */
+}
+
+.signInContainerDivBottomContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+
+.signInContainerDivBottomContainerDivTwoContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+.signInContainerDivBottomContainerDivTwoContainerDivOneContainerText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #020618;
+}
+
+
+.signInContainerDivBottomContainerDivTwoContainerDivTwoContainerText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #155DFC;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.signInContainerDivBottomContainerDivTwoContainerDivTwoContainerText:hover {
+    color: #2B7FFF;
+}
+
+/* .signInContainerDivMiddleContainerDivOneContainerDivTwoContainerInput:hover,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwoContainerInput:hover {
+  border-color: #155DFC;
+  box-shadow: 0px 0px 4px rgba(21, 93, 252, 0.5);
+} */
+
+.signInContainerDivMiddleContainerDivOneContainerDivTwoContainerInput:focus,
+.signInContainerDivMiddleContainerDivTwoContainerDivTwoContainerInput:focus {
+  border-color: #90A1B9;
+  box-shadow: 0px 0px 0px 3px rgb(199, 208, 219);
+  /* color: rgb(199, 208, 219); */
+  outline: none;
+}
