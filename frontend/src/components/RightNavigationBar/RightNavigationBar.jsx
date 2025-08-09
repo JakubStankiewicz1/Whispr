@@ -30,19 +30,19 @@ const RightNavigationBar = ({
 
   // Platform data
   const platforms = [
-    { name: 'Discord', icon: FaDiscord, color: '#5865F2', available: false },
-    { name: 'Instagram', icon: FaInstagram, color: '#E4405F', available: false },
+    { name: 'Discord', icon: FaDiscord, color: '#5865F2', available: true },
+    { name: 'Instagram', icon: FaInstagram, color: '#E4405F', available: true },
     { name: 'Messenger', icon: BsMessenger, color: '#0084FF', available: true },
-    { name: 'Reddit', icon: FaReddit, color: '#FF4500', available: false },
-    { name: 'Signal', icon: SiSignal, color: '#3A76F0', available: false },
-    { name: 'Slack', icon: SiSlack, color: '#4A154B', available: false },
-    { name: 'Snapchat', icon: FaSnapchat, color: '#FFFC00', available: false },
-    { name: 'Telegram', icon: FaTelegram, color: '#0088CC', available: false },
-    { name: 'TikTok', icon: FaTiktok, color: '#000000', available: false },
-    { name: 'Tinder', icon: SiTinder, color: '#FF6B6B', available: false },
-    { name: 'WeChat', icon: FaWeixin, color: '#07C160', available: false },
+    { name: 'Reddit', icon: FaReddit, color: '#FF4500', available: true },
+    { name: 'Signal', icon: SiSignal, color: '#3A76F0', available: true },
+    { name: 'Slack', icon: SiSlack, color: '#4A154B', available: true },
+    { name: 'Snapchat', icon: FaSnapchat, color: '#FFFC00', available: true },
+    { name: 'Telegram', icon: FaTelegram, color: '#0088CC', available: true },
+    { name: 'TikTok', icon: FaTiktok, color: '#000000', available: true },
+    { name: 'Tinder', icon: SiTinder, color: '#FF6B6B', available: true },
+    { name: 'WeChat', icon: FaWeixin, color: '#07C160', available: true },
     { name: 'WhatsApp', icon: FaWhatsapp, color: '#25D366', available: true },
-    { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000', available: false }
+    { name: 'X (Twitter)', icon: FaXTwitter, color: '#000000', available: true }
   ];
 
   // Funkcja do pobierania screenshotu
@@ -52,8 +52,8 @@ const RightNavigationBar = ({
     setIsDownloading(true);
     
     try {
-      // Znajdź element messenger lub whatsapp
-      const chatElement = document.querySelector('.messenger, .whatsapp');
+      // Znajdź element chat dla wszystkich platform
+      const chatElement = document.querySelector('.messenger, .whatsapp, .telegram, .discord, .instagram');
       if (!chatElement) {
         alert('Chat element not found. Please try again.');
         return;

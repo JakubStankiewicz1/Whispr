@@ -2,6 +2,17 @@ import React from 'react';
 import './rightSidebar.css';
 import Messenger from '../Messenger/Messenger';
 import WhatsApp from '../WhatsApp/WhatsApp';
+import Telegram from '../Telegram/Telegram';
+import Discord from '../Discord/Discord';
+import Instagram from '../Instagram/Instagram';
+import Twitter from '../Twitter/Twitter';
+import TikTok from '../TikTok/TikTok';
+import Tinder from '../Tinder/Tinder';
+import Snapchat from '../Snapchat/Snapchat';
+import Signal from '../Signal/Signal';
+import Reddit from '../Reddit/Reddit';
+import Slack from '../Slack/Slack';
+import WeChat from '../WeChat/WeChat';
 import RightNavigationBar from '../RightNavigationBar/RightNavigationBar';
 import { FiSettings, FiBarChart2, FiPlay, FiDownload, FiChevronDown, FiMonitor, FiPhone } from 'react-icons/fi';
 import { BsMessenger } from 'react-icons/bs';
@@ -56,6 +67,28 @@ const RightSidebar = ({
     switch (selectedPlatform) {
       case 'WhatsApp':
         return <WhatsApp {...commonProps} />;
+      case 'Telegram':
+        return <Telegram {...commonProps} />;
+      case 'Discord':
+        return <Discord {...commonProps} />;
+      case 'Instagram':
+        return <Instagram {...commonProps} />;
+      case 'X (Twitter)':
+        return <Twitter {...commonProps} />;
+      case 'TikTok':
+        return <TikTok {...commonProps} />;
+      case 'Tinder':
+        return <Tinder {...commonProps} />;
+      case 'Snapchat':
+        return <Snapchat {...commonProps} />;
+      case 'Signal':
+        return <Signal {...commonProps} />;
+      case 'Reddit':
+        return <Reddit {...commonProps} />;
+      case 'Slack':
+        return <Slack {...commonProps} />;
+      case 'WeChat':
+        return <WeChat {...commonProps} />;
       case 'Messenger':
       default:
         return <Messenger {...commonProps} />;

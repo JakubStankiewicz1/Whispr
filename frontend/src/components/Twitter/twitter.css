@@ -1,0 +1,475 @@
+.twitter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: width 0.3s cubic-bezier(.4,2,.6,1);
+  max-width: 100%;
+  color: #ffffff;
+}
+
+.twitter--desktop {
+  width: 100%;
+  max-width: 100%;
+}
+
+.twitter--mobile {
+  width: 100%;
+  min-width: 320px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.twitter--dark {
+  background-color: #15202b;
+  color: #ffffff;
+}
+
+.twitterContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+}
+
+/* Header */
+.twitterHeader {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #38444d;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #000000;
+}
+
+.twitter--dark .twitterHeader {
+  background-color: #15202b;
+  border-bottom-color: #38444d;
+}
+
+.twitterHeaderContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.twitterHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.twitterHeaderAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1d9bf0;
+}
+
+.twitterDefaultAvatar {
+  background-color: #1d9bf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.twitterGroupAvatar {
+  border-color: #1d9bf0;
+}
+
+.twitterHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.twitterHeaderName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.twitter--dark .twitterHeaderName {
+  color: #ffffff;
+}
+
+.twitterHeaderStatus {
+  font-size: 14px;
+  color: #8b98a5;
+  margin: 0;
+}
+
+.twitterHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.twitterHeaderButton {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8b98a5;
+  transition: all 0.2s ease;
+}
+
+.twitterHeaderButton:hover {
+  background-color: #1e2732;
+  color: #1d9bf0;
+}
+
+/* Messages */
+.twitterMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #000000;
+}
+
+.twitter--dark .twitterMessages {
+  background-color: #15202b;
+}
+
+.twitterMessagesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.twitterMessage {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  word-wrap: break-word;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.twitterMessage--sender {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.twitterMessage--receiver {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.twitterMessageSenderName {
+  font-size: 12px;
+  color: #8b98a5;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.twitterMessageBubble {
+  background-color: #1d9bf0;
+  border-radius: 18px;
+  padding: 12px 16px;
+  position: relative;
+  max-width: 100%;
+}
+
+.twitterMessage--receiver .twitterMessageBubble {
+  background-color: #1e2732;
+  border: 1px solid #38444d;
+}
+
+.twitter--dark .twitterMessage--receiver .twitterMessageBubble {
+  background-color: #1e2732;
+}
+
+.twitterMessageText {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.twitterMessage--receiver .twitterMessageText {
+  color: #ffffff;
+}
+
+.twitterMessageImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.twitterMessageImage {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 12px;
+  cursor: pointer;
+  object-fit: cover;
+  border: 1px solid #38444d;
+}
+
+/* Date Separator */
+.twitterDateSeparator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0 8px 0;
+  position: relative;
+}
+
+.twitterDateSeparator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #38444d;
+}
+
+.twitterDateText {
+  background-color: #000000;
+  color: #8b98a5;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #38444d;
+}
+
+.twitter--dark .twitterDateText {
+  background-color: #15202b;
+}
+
+/* Input */
+.twitterInput {
+  padding: 16px 20px;
+  border-top: 1px solid #38444d;
+  background-color: #000000;
+}
+
+.twitter--dark .twitterInput {
+  background-color: #15202b;
+}
+
+.twitterInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.twitterInputBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #1e2732;
+  border: 1px solid #38444d;
+  border-radius: 24px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.twitterInputBox:focus-within {
+  border-color: #1d9bf0;
+  box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.2);
+}
+
+.twitterInputField {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: #ffffff;
+  padding: 8px 0;
+}
+
+.twitterInputField::placeholder {
+  color: #8b98a5;
+}
+
+.twitterInputButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8b98a5;
+  transition: all 0.2s ease;
+}
+
+.twitterInputButton:hover {
+  background-color: #1e2732;
+  color: #1d9bf0;
+}
+
+.twitterInputSend {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: #1d9bf0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  margin-left: 4px;
+}
+
+.twitterInputSend:hover {
+  background-color: #1a8cd8;
+}
+
+.twitterInputSend:disabled {
+  background-color: #1e2732;
+  color: #8b98a5;
+  cursor: not-allowed;
+}
+
+/* Empty State */
+.twitterEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #8b98a5;
+  text-align: center;
+}
+
+.twitterEmptyIcon {
+  margin-bottom: 12px;
+  color: #1d9bf0;
+}
+
+/* Image Modal */
+.twitterImageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.twitterImageModalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default;
+}
+
+.twitterImageModalImage {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+}
+
+.twitterImageModalClose {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.twitterImageModalClose:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .twitter--mobile .twitterHeader {
+    padding: 0 16px;
+    height: 56px;
+  }
+  
+  .twitter--mobile .twitterHeaderAvatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .twitter--mobile .twitterHeaderName {
+    font-size: 15px;
+  }
+  
+  .twitter--mobile .twitterHeaderStatus {
+    font-size: 13px;
+  }
+  
+  .twitter--mobile .twitterMessages {
+    padding: 16px;
+  }
+  
+  .twitter--mobile .twitterMessage {
+    max-width: 85%;
+  }
+  
+  .twitter--mobile .twitterMessageImage {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  .twitter--mobile .twitterInput {
+    padding: 12px 16px;
+  }
+}
+
+/* Dark mode transitions */
+.twitter,
+.twitterHeader,
+.twitterMessages,
+.twitterInput,
+.twitterDateText {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

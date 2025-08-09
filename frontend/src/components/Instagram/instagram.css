@@ -1,0 +1,719 @@
+.instagram {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: width 0.3s cubic-bezier(.4,2,.6,1);
+  max-width: 100%;
+}
+
+.instagram--desktop {
+  width: 100%;
+  max-width: 100%;
+}
+
+.instagram--mobile {
+  width: 100%;
+  min-width: 320px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.instagramContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* Header */
+.instagramHeader {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instagramHeaderContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.instagramHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.instagramHeaderAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid #dbdbdb;
+}
+
+.instagramHeaderAvatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.instagramHeaderAvatarText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.instagramHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.instagramHeaderName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.instagramHeaderStatus {
+  font-size: 13px;
+  color: #8e8e8e;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.instagramHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.instagramHeaderButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.instagramHeaderButton:hover {
+  background-color: #fafafa;
+}
+
+.instagramHeaderIcon {
+  width: 18px;
+  height: 18px;
+  color: #262626;
+}
+
+/* Messages Area */
+.instagramMessages {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.instagramMessagesContainer {
+  padding: 20px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.instagramDateSeparator {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.instagramDateText {
+  background-color: #fafafa;
+  color: #8e8e8e;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.instagramMessagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.instagramMessage {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 70%;
+}
+
+.instagramMessage--sender {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.instagramMessage--receiver {
+  align-self: flex-start;
+}
+
+.instagramMessageAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid #dbdbdb;
+}
+
+.instagramMessageAvatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.instagramMessageAvatarFallback {
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbdbdb;
+}
+
+.instagramMessageAvatarIcon {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.instagramMessage--receiver {
+  margin-right: auto;
+}
+
+.instagramMessage--sender {
+  margin-left: auto;
+}
+
+.instagramMessageBubble {
+  background-color: #fafafa;
+  border-radius: 18px;
+  padding: 8px 12px;
+  position: relative;
+  max-width: 100%;
+  word-wrap: break-word;
+  border: 1px solid #dbdbdb;
+}
+
+.instagramMessageBubble--sender {
+  background-color: #0095f6;
+  color: #ffffff;
+  border-color: #0095f6;
+}
+
+.instagramMessageBubble--receiver {
+  background-color: #fafafa;
+  color: #262626;
+  border-color: #dbdbdb;
+}
+
+.instagramMessageBubble--sender-single {
+  border-bottom-right-radius: 4px;
+}
+
+.instagramMessageBubble--sender-first {
+  border-bottom-right-radius: 4px;
+}
+
+.instagramMessageBubble--sender-middle {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.instagramMessageBubble--sender-last {
+  border-top-right-radius: 4px;
+}
+
+.instagramMessageBubble--receiver-single {
+  border-bottom-left-radius: 4px;
+}
+
+.instagramMessageBubble--receiver-first {
+  border-bottom-left-radius: 4px;
+}
+
+.instagramMessageBubble--receiver-middle {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.instagramMessageBubble--receiver-last {
+  border-top-left-radius: 4px;
+}
+
+.instagramMessageText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: inherit;
+}
+
+.instagramMessage--sender .instagramMessageText {
+  color: #ffffff;
+}
+
+.instagramMessageImages {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.instagramMessageImageWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.instagramMessageImageWrapper:hover {
+  opacity: 0.9;
+}
+
+.instagramMessageImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.instagram--desktop .instagramMessageImage {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(1):nth-last-child(1)) .instagramMessageImage {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(2):nth-last-child(2)) .instagramMessageImage,
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(3):nth-last-child(3)) .instagramMessageImage {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(4):nth-last-child(4)) .instagramMessageImage,
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(5):nth-last-child(5)) .instagramMessageImage,
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(6):nth-last-child(6)) .instagramMessageImage {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(7):nth-last-child(7)) .instagramMessageImage,
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(8):nth-last-child(8)) .instagramMessageImage,
+.instagram--desktop .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(9):nth-last-child(9)) .instagramMessageImage {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.instagram--mobile .instagramMessageImage {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(1):nth-last-child(1)) .instagramMessageImage {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(2):nth-last-child(2)) .instagramMessageImage,
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(3):nth-last-child(3)) .instagramMessageImage {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(4):nth-last-child(4)) .instagramMessageImage,
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(5):nth-last-child(5)) .instagramMessageImage,
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(6):nth-last-child(6)) .instagramMessageImage {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(7):nth-last-child(7)) .instagramMessageImage,
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(8):nth-last-child(8)) .instagramMessageImage,
+.instagram--mobile .instagramMessageImages:has(.instagramMessageImageWrapper:nth-child(9):nth-last-child(9)) .instagramMessageImage {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.instagram--dark .instagramMessageImage {
+  filter: brightness(0.9);
+}
+
+.instagram--dark .instagramMessageImageWrapper:hover {
+  opacity: 0.8;
+}
+
+.instagramImageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.instagramImageModalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: scaleIn 0.3s ease;
+}
+
+.instagramImageModalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.instagramImageModalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.instagramImageModalClose:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.instagramImageModalCloseIcon {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Input Area */
+.instagramInput {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #dbdbdb;
+}
+
+.instagramInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #fafafa;
+  border-radius: 20px;
+  padding: 8px 16px;
+  border: 1px solid #dbdbdb;
+}
+
+.instagramInputLeft {
+  display: flex;
+  align-items: center;
+}
+
+.instagramInputButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.instagramInputButton:hover {
+  background-color: #f0f0f0;
+}
+
+.instagramInputIcon {
+  width: 18px;
+  height: 18px;
+  color: #8e8e8e;
+  transition: color 0.2s ease;
+}
+
+.instagramInputIcon.recording {
+  color: #ed4956;
+  animation: pulse 1s infinite;
+}
+
+.instagramInputCenter {
+  flex: 1;
+}
+
+.instagramInputField {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #262626;
+  font-size: 14px;
+  line-height: 1.4;
+  resize: none;
+  max-height: 120px;
+  min-height: 20px;
+}
+
+.instagramInputField:focus {
+  outline: none;
+}
+
+.instagramInputField::placeholder {
+  color: #8e8e8e;
+}
+
+.instagramInputRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.instagramSendButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #0095f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.instagramSendButton:hover {
+  background-color: #0081d6;
+}
+
+.instagramSendIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Empty State */
+.instagramEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8e8e8e;
+  text-align: center;
+}
+
+.instagramEmptyIcon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  color: #0095f6;
+}
+
+.instagramEmptyText {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Scrollbar */
+.instagramMessages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.instagramMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.instagramMessages::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 3px;
+}
+
+.instagramMessages::-webkit-scrollbar-thumb:hover {
+  background-color: #c7c7c7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .instagramHeader {
+    padding: 0 16px;
+  }
+
+  .instagramMessagesContainer {
+    padding: 16px;
+  }
+
+  .instagramInput {
+    padding: 12px 16px;
+  }
+
+  .instagramMessageBubble {
+    max-width: 85%;
+  }
+}
+
+/* Dark Mode */
+.instagram--dark {
+  background-color: #000000;
+}
+
+.instagram--dark .instagramContainer {
+  background-color: #000000;
+}
+
+.instagram--dark .instagramHeader {
+  background-color: #000000;
+  border-bottom-color: #262626;
+}
+
+.instagram--dark .instagramHeaderName {
+  color: #ffffff;
+}
+
+.instagram--dark .instagramHeaderStatus {
+  color: #8e8e8e;
+}
+
+.instagram--dark .instagramMessages {
+  background-color: #000000;
+}
+
+.instagram--dark .instagramMessagesContainer {
+  background-color: #000000;
+}
+
+.instagram--dark .instagramDateText {
+  background-color: #262626;
+  color: #8e8e8e;
+}
+
+.instagram--dark .instagramMessageBubble--receiver {
+  background-color: #262626;
+  color: #ffffff;
+  border-color: #262626;
+}
+
+.instagram--dark .instagramMessageBubble--receiver-single,
+.instagram--dark .instagramMessageBubble--receiver-first,
+.instagram--dark .instagramMessageBubble--receiver-middle,
+.instagram--dark .instagramMessageBubble--receiver-last {
+  background-color: #262626;
+  border-color: #262626;
+}
+
+.instagram--dark .instagramInput {
+  background-color: #000000;
+  border-top-color: #262626;
+}
+
+.instagram--dark .instagramInputContainer {
+  background-color: #262626;
+  border-color: #262626;
+}
+
+.instagram--dark .instagramInputField {
+  color: #ffffff;
+}
+
+.instagram--dark .instagramInputField::placeholder {
+  color: #8e8e8e;
+}
+
+.instagram--dark .instagramInputButton {
+  background-color: transparent;
+}
+
+.instagram--dark .instagramInputButton:hover {
+  background-color: #1a1a1a;
+}
+
+.instagramMessageTimestamp {
+  font-size: 11px;
+  color: #8e8e8e;
+  margin-top: 4px;
+  display: block;
+  text-align: right;
+}
+
+.instagramMessageBubble--sender .instagramMessageTimestamp {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
