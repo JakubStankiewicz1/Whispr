@@ -15,6 +15,7 @@ import Message from '../Message/Message';
 import Group from '../Group/Group';
 import AboutUs from '../AboutUs/AboutUs';
 import SignIn from '../SignIn/SignIn';
+import Register from '../Register/Register';
 
 
 const LeftSidebar = ({ 
@@ -51,6 +52,7 @@ const LeftSidebar = ({
   const [showAboutPopup, setShowAboutPopup] = useState(false);
   const [showChatTypeConfirm, setShowChatTypeConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
   // Receivers state
   const [receivers, setReceivers] = useState([0]);
@@ -215,6 +217,14 @@ const LeftSidebar = ({
     setShowSignIn(false);
   };
 
+  const handleRegisterClick = () => {
+    setShowRegister(true);
+  };
+
+  const handleCloseRegister = () => {
+    setShowRegister(false);
+  };
+
   return (
     <>
       <div className='leftSidebar'>
@@ -244,7 +254,7 @@ const LeftSidebar = ({
                         </div>
                       </div>
 
-                      <div className="leftSidebarContainerTopContainerRightContainerOneContainerButtonTwo">
+                      <div className="leftSidebarContainerTopContainerRightContainerOneContainerButtonTwo" onClick={handleRegisterClick} style={{ cursor: 'pointer' }}>
                         <p className="leftSidebarContainerTopContainerRightContainerOneContainerButtonTwoText">
                           Go Premium
                         </p>
@@ -1148,6 +1158,14 @@ const LeftSidebar = ({
       <div className="signInOverlay" onClick={handleCloseSignIn}>
         <div className="signInModal" onClick={(e) => e.stopPropagation()}>
           <SignIn />
+        </div>
+      </div>
+    )}
+
+    {showRegister && (
+      <div className="registerOverlay" onClick={handleCloseRegister}>
+        <div className="registerModal" onClick={(e) => e.stopPropagation()}>
+          <Register />
         </div>
       </div>
     )}

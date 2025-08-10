@@ -1,0 +1,693 @@
+.register {
+    width: 1152px;
+    height: 705px;
+
+    /* background-color: blue; */
+    background-color: white;
+}
+
+.registerContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDiv {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+
+.registerContainerDivLeft {
+    display: flex;
+    flex: 1;
+
+    /* background-color: lightcoral; */
+}
+
+.registerContainerDivRight {
+    display: flex;
+    flex: 1;
+    /* background: linear-gradient(135deg, #AD46FF 0%, #8B5CF6 100%); */
+}
+
+
+.registerContainerDivLeftContainer {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+
+    padding-top: 59px;
+
+    /* background-color: red; */
+}
+
+.registerContainerDivLeftContainerDivOneContainerDivText {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: #020618;
+}
+
+
+.registerContainerDivLeftContainerDivTwo {
+    /* background-color: green; */
+    margin-top: 29px;
+}
+
+.registerContainerDivLeftContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivTwo {
+    /* background-color: lightcoral; */
+    margin-top: 17px;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivThree {
+    /* background-color: lightblue; */
+    margin-top: 17px;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOne,
+.registerContainerDivLeftContainerDivTwoContainerDivTwo,
+.registerContainerDivLeftContainerDivTwoContainerDivThree {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainer,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainer,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDiv,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDiv,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 7px
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivOneContainerDivText,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivOneContainerDivText,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivOneContainerDivText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #020618;
+}
+
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwo,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivTwo,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivTwo {
+    width: 100%;
+    height: 36px;
+
+    /* background-color: green; */
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainer,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivTwoContainer,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainerDiv,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivTwoContainerDiv,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivTwoContainerDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainerDivInput,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivTwoContainerDivInput,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivTwoContainerDivInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: 1px solid #E2E8F0;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #020618;
+    border-radius: 8px;
+}
+
+.registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainerDivInput::placeholder,
+.registerContainerDivLeftContainerDivTwoContainerDivTwoContainerDivTwoContainerDivInput::placeholder,
+.registerContainerDivLeftContainerDivTwoContainerDivThreeContainerDivTwoContainerDivInput::placeholder {
+    color: #62748E;
+}
+
+
+
+
+
+.registerContainerDivLeftContainerDivThree {
+    width: 100%;
+    margin-top: 17px;
+
+    /* background-color: lightcoral; */
+}
+
+.registerContainerDivLeftContainerDivThreeContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDiv {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivOneContainerDivText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #020618;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwo {
+    width: 100%;
+    height: 100%;
+    /* background-color: blue; */
+    margin-top: 11px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDiv {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElement {
+    width: 195px;
+    height: 185px;
+
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElement:hover {
+    border-color: #D1D5DB;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElement.active {
+    border: 3px solid #AD46FF;
+    background-color: #FAF7FF;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainer {
+    width: 82%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* padding-top: 10px; */
+
+    /* background-color: blue; */
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivOneContainerDiv {
+    background-color: #AD46FF;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    /* border-radius: 10px; */
+    width: fit-content;
+    /* max-width: 80%; */
+    /* margin: 0 auto; */
+    text-align: center;
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 3.4px;
+    padding-bottom: 3.4px;
+}
+
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivOneContainerDivEleText {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivTwo {
+    margin-top: 5px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivTwoContainerDivText {
+    color: #8200DB;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivThreeContainerDivEle {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivThreeContainerDivEleOneContainerText {
+    color: #101828;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivThreeContainerDivEleTwoContainerText {
+    color: #6A7282;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivFour {
+    margin-top: 4px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivFourContainerDivText {
+    color: #6A7282;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivFive {
+    margin-top: 5px;
+}
+
+.registerContainerDivLeftContainerDivThreeContainerDivTwoContainerDivElementContainerDivFiveContainerDivEleText {
+    color: #6A7282;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+.registerContainerDivLeftContainerDivFour {
+    width: 100%;
+
+    margin-top: 26px;
+}
+
+
+.registerContainerDivLeftContainerDivFourContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOne {
+    width: 100%;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOneContainer {
+    width: 100%;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOneContainerButton {
+    width: 100%;
+    height: 36px;
+    background-color: #0F172B;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOneContainerButton:hover {
+    background-color: #262E40;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOneContainerButtonEle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivOneContainerButtonEleText {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #F8FAFC;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivTwoContainerDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivTwoContainerDivOneContainerDivText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #020618;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivTwoContainerDivTwoContainerDivText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #155DFC;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.registerContainerDivLeftContainerDivFourContainerDivTwoContainerDivTwoContainerDivText:hover {
+    color: #2B7FFF;
+}
+
+
+
+
+
+
+
+
+
+.registerContainerDivRightContainer {
+    width: 100%;
+    height: 100%;
+
+    background-color: #AD46FF;
+}
+
+.registerContainerDivRightContainerDiv {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; */
+    /* align-items: center */
+
+    /* background-color: green; */
+    gap: 40px;
+}
+
+
+.registerContainerDivRightContainerDivTop {
+    width: 100%;
+}
+
+.registerContainerDivRightContainerDivTopContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+
+    background-color: #E9D4FF;
+    border-radius: 10px;
+}
+
+.registerContainerDivRightContainerDivTopContainerDiv {
+    width: 91%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: blue; */
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.registerContainerDivRightContainerDivTopContainerDivTwo {
+    margin-top: 12px;
+}
+
+.registerContainerDivRightContainerDivTopContainerDivTwoContainerDivText {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 29px;
+    color: #0F172B;
+}
+
+.registerContainerDivRightContainerDivTopContainerDivThree {
+    margin-top: 12px;
+}
+
+.registerContainerDivRightContainerDivTopContainerDivThreeContainerDivText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #314158;
+}
+
+.registerContainerDivRightContainerDivTopContainerDivOneContainerDivImage {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+
+
+
+
+.registerContainerDivRightContainerDivBottom {
+    /* background-color: green; */
+    width: 100%;
+    /* height: 100%; */
+}
+
+.registerContainerDivRightContainerDivBottomContainer {
+    /* background-color: lightblue; */
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+
+.registerContainerDivRightContainerDivBottomContainerDivTopContainerDivText {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #F1F5F9;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottom {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElement {
+    /* background-color: lightgray; */
+    width: 100%;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainer {
+    /* background-color: green; */
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 15px; */
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivOne {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivOneContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivOneContainerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivOneContainerDivIcon {
+    color: #F1F5F9;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivTwo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: blue; */
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivTwoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivLeftContainerDivTwoContainerText {
+    color: #F1F5F9;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivRightContainerDivButton {
+    background-color: #F1F5F9;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivRightContainerDivButtonEle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerContainerDivRightContainerDivBottomContainerDivBottomContainerDivElementContainerDivRightContainerDivButtonEleText {
+    color: #0F172B;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
