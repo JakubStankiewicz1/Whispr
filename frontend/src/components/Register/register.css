@@ -3,12 +3,51 @@
     height: 705px;
 
     /* background-color: blue; */
-    background-color: white;
+    background-color: #ffffff;
+    border-radius: 10px;
 }
 
 .registerContainer {
     width: 100%;
     height: 100%;
+
+    position: relative;
+}
+
+.registerContainerClose {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 10;
+    cursor: pointer;
+    /* background: rgba(255,255,255,0.85); */
+    /* border-radius: 50%; */
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.07); */
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: #62748E; */
+    /* transition: all 0.2s ease-in-out; */
+    /* width: 36px; */
+    /* height: 36px; */
+}
+
+.registerContainerCloseContainer {
+
+}
+
+.registerContainerCloseContainerIcon {
+    color: #62748E;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+}
+
+.registerContainerCloseContainerIcon:hover {
+    color: #000000;
+
 }
 
 .registerContainerDiv {
@@ -449,6 +488,8 @@
     height: 100%;
 
     background-color: #AD46FF;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .registerContainerDivRightContainerDiv {

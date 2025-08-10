@@ -3,6 +3,44 @@
     height: 356px;
     border-radius: 10px;
     background-color: #FFFFFF;
+    position: relative;
+}
+/* Ikona zamykania w prawym górnym rogu */
+.signInCloseIcon {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 10;
+    cursor: pointer;
+    /* background: rgba(255,255,255,0.85); */
+    /* border-radius: 50%; */
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.07); */
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: #62748E; */
+    /* transition: all 0.2s ease-in-out; */
+    /* width: 36px; */
+    /* height: 36px; */
+}
+
+.signInCloseIconContainerIcon {
+    color: #62748E;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+}
+
+.signInCloseIconContainerIcon:hover {
+    color: #000000;
+}
+
+.signInCloseIcon:hover {
+    /* background: #f2f2f2; */
+    /* color: #000000; */
+    /* box-shadow: 0 4px 16px rgba(0,0,0,0.12); */
 }
 
 .signInContainer {

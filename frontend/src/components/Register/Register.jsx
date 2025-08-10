@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import './register.css';
 import { LuInfinity } from "react-icons/lu";
 import SignIn from '../SignIn/SignIn';
+import { FiX } from 'react-icons/fi';
 
-const Register = () => {
+const Register = ({ onClose }) => {
   const [selectedPlan, setSelectedPlan] = useState('lifetime'); // Default: Premium Lifetime
   const [showSignIn, setShowSignIn] = useState(false);
+
+  // Obsługa zamykania
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
 
   if (showSignIn) {
     return <SignIn />;
@@ -14,6 +22,12 @@ const Register = () => {
   return (
     <div className='register'>
         <div className="registerContainer">
+            {/* Close Button */}
+            <div className="registerContainerClose" onClick={handleClose}>
+                <div className="registerContainerCloseContainer">
+                    <FiX className='registerContainerCloseContainerIcon' />
+                </div>
+            </div>
             <div className="registerContainerDiv">
                 {/* Left Part */}
                 <div className="registerContainerDivLeft">
@@ -28,11 +42,9 @@ const Register = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="registerContainerDivLeftContainerDivTwo">
                                 <div className="registerContainerDivLeftContainerDivTwoContainer">
                                     <div className="registerContainerDivLeftContainerDivTwoContainerDiv">
-
                                         <div className="registerContainerDivLeftContainerDivTwoContainerDivOne">
                                             <div className="registerContainerDivLeftContainerDivTwoContainerDivOneContainer">
                                                 <div className="registerContainerDivLeftContainerDivTwoContainerDivOneContainerDiv">
@@ -45,7 +57,6 @@ const Register = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div className="registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwo">
                                                         <div className="registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainer">
                                                             <div className="registerContainerDivLeftContainerDivTwoContainerDivOneContainerDivTwoContainerDiv">

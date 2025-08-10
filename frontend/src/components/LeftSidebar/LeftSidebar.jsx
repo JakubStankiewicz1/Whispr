@@ -1157,7 +1157,7 @@ const LeftSidebar = ({
     {showSignIn && (
       <div className="signInOverlay" onClick={handleCloseSignIn}>
         <div className="signInModal" onClick={(e) => e.stopPropagation()}>
-          <SignIn />
+          <SignIn onClose={handleCloseSignIn} />
         </div>
       </div>
     )}
@@ -1165,7 +1165,7 @@ const LeftSidebar = ({
     {showRegister && (
       <div className="registerOverlay" onClick={handleCloseRegister}>
         <div className="registerModal" onClick={(e) => e.stopPropagation()}>
-          <Register />
+          <Register onClose={handleCloseRegister} />
         </div>
       </div>
     )}
