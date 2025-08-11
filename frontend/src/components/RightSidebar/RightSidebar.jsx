@@ -43,7 +43,9 @@ const RightSidebar = ({
   },
   onReset = null,
   selectedPlatform = 'Messenger',
-  setSelectedPlatform
+  setSelectedPlatform,
+  onPreviewStart = null,
+  isAnimating = false
 }) => {
   // Renderuj odpowiedni komponent na podstawie wybranej platformy
   const renderChatComponent = () => {
@@ -115,6 +117,8 @@ const RightSidebar = ({
         onReset={onReset}
         selectedPlatform={selectedPlatform}
         setSelectedPlatform={setSelectedPlatform}
+        onPreviewStart={onPreviewStart}
+        isAnimating={isAnimating}
       />
     </div>
   )

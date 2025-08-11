@@ -8,6 +8,7 @@ import { FaDiscord, FaInstagram, FaReddit, FaSnapchat, FaTelegram, FaTiktok, FaW
 import { SiSignal, SiSlack, SiTinder } from 'react-icons/si';
 import { IoLogoIonitron } from 'react-icons/io5';
 import { GoPlus } from "react-icons/go";
+import { useNavigate } from 'react-router-dom';
 
 const RightNavigationBar = ({ 
   selectedDevice, 
@@ -20,13 +21,16 @@ const RightNavigationBar = ({
   setShowFooter, 
   onReset,
   selectedPlatform = 'Messenger',
-  setSelectedPlatform
+  setSelectedPlatform,
+  onPreviewStart = null,
+  isAnimating = false
 }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [showPlatformDropdown, setShowPlatformDropdown] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   // Platform data
   const platforms = [
@@ -160,6 +164,16 @@ const RightNavigationBar = ({
     setShowResetConfirm(false);
   };
 
+  const handlePreviewClick = () => {
+    if (!isAnimating && onPreviewStart) {
+      onPreviewStart();
+    }
+  };
+
+  const handleAnalyticsClick = () => {
+    navigate('/analytics');
+  };
+
   const handlePlatformSelect = (platformName) => {
     const platform = platforms.find(p => p.name === platformName);
     if (platform && platform.available && setSelectedPlatform) {
@@ -259,11 +273,16 @@ const RightNavigationBar = ({
           <button className="rightNavigationBarActionButton" onClick={() => setShowSettings(!showSettings)} data-tooltip="settings">
             <FiSettings className="rightNavigationBarActionIcon" />
           </button>
-          <button className="rightNavigationBarActionButton" data-tooltip="analytics">
+          <button className="rightNavigationBarActionButton" onClick={handleAnalyticsClick} data-tooltip="analytics">
             <FiBarChart2 className="rightNavigationBarActionIcon" />
           </button>
-          <button className="rightNavigationBarActionButton" data-tooltip="preview">
-            <FiPlay className="rightNavigationBarActionIcon" />
+          <button 
+            className={`rightNavigationBarActionButton ${isAnimating ? 'rightNavigationBarActionButton--animating' : ''}`} 
+            onClick={handlePreviewClick}
+            disabled={isAnimating}
+            data-tooltip={isAnimating ? "playing..." : "preview"}
+          >
+            <FiPlay className={`rightNavigationBarActionIcon ${isAnimating ? 'rightNavigationBarActionIcon--spinning' : ''}`} />
           </button>
           <button className="rightNavigationBarActionButton" onClick={handleDownloadScreenshot} data-tooltip="export" disabled={isDownloading}>
             <FiDownload className={`rightNavigationBarActionIcon ${isDownloading ? 'downloading' : ''}`} />

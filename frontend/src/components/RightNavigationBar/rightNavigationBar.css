@@ -742,3 +742,265 @@
 .rightNavigationBarActionButton:disabled:hover {
   background-color: transparent;
 }
+
+/* Preview Animation Styles */
+.rightNavigationBarActionButton--animating {
+  background-color: #0084FF;
+  color: white;
+}
+
+.rightNavigationBarActionIcon--spinning {
+  animation: previewSpin 2s linear infinite;
+}
+
+@keyframes previewSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Analytics Panel Styles */
+.analyticsOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.analyticsPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 800px;
+  max-height: 80vh;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.analyticsPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.analyticsPanelHeader h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.analyticsPanelClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analyticsPanelClose:hover {
+  background-color: #e2e8f0;
+}
+
+.analyticsPanelContent {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.analyticsCard {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.analyticsCard:hover {
+  border-color: #0084FF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 132, 255, 0.1);
+}
+
+.analyticsCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.analyticsCardHeader h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0;
+}
+
+.analyticsCardIcon {
+  font-size: 20px;
+}
+
+.analyticsCardValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.analyticsCardLabel {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.analyticsChartSection {
+  margin-bottom: 32px;
+}
+
+.analyticsChartSection h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.analyticsChart {
+  background-color: #f8fafc;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.analyticsChartBars {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 120px;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.analyticsChartBar {
+  background: linear-gradient(180deg, #0084FF 0%, #0066CC 100%);
+  border-radius: 4px 4px 0 0;
+  min-height: 8px;
+  flex: 1;
+  animation: chartBarGrow 1s ease-out;
+  animation-fill-mode: both;
+}
+
+.analyticsChartBar:nth-child(1) { animation-delay: 0.1s; }
+.analyticsChartBar:nth-child(2) { animation-delay: 0.2s; }
+.analyticsChartBar:nth-child(3) { animation-delay: 0.3s; }
+.analyticsChartBar:nth-child(4) { animation-delay: 0.4s; }
+.analyticsChartBar:nth-child(5) { animation-delay: 0.5s; }
+.analyticsChartBar:nth-child(6) { animation-delay: 0.6s; }
+.analyticsChartBar:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes chartBarGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+.analyticsChartLabels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.analyticsChartLabel {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+  flex: 1;
+}
+
+.analyticsInsights h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 16px;
+}
+
+.analyticsInsightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.analyticsInsight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #0084FF;
+}
+
+.analyticsInsightIcon {
+  font-size: 16px;
+}
+
+.analyticsInsightText {
+  font-size: 14px;
+  color: #475569;
+  flex: 1;
+}
+
+/* Responsive Analytics Panel */
+@media (max-width: 768px) {
+  .analyticsPanel {
+    width: 95vw;
+    max-height: 85vh;
+  }
+  
+  .analyticsPanelHeader,
+  .analyticsPanelContent {
+    padding: 16px;
+  }
+  
+  .analyticsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  
+  .analyticsCard {
+    padding: 16px;
+  }
+  
+  .analyticsCardValue {
+    font-size: 24px;
+  }
+}

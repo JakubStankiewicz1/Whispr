@@ -179,7 +179,7 @@ const LeftSidebar = ({
       id: Date.now() + Math.random(), 
       text: '',
       type: nextType,
-      sender: senderName,
+      sender: nextType === 'sender' ? senderName : (receiverNames[nextReceiverIdx] || 'Friend'),
       receiverIdx: nextReceiverIdx,
       images: [], // Dodajemy pole images
       date: new Date(), // Dodajemy aktualną datę

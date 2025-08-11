@@ -7,6 +7,12 @@ import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
+import { MdMic } from 'react-icons/md';
+import { FiFile } from 'react-icons/fi';
+import { BsFiletypeGif, BsEmojiSmile } from 'react-icons/bs';
+import { AiFillLike } from 'react-icons/ai';
+import { FaRegSmile } from "react-icons/fa";
+// import { AiFillLike } from "react-icons/ai";
 
 const Messenger = ({ 
   senderName, 
@@ -56,16 +62,25 @@ const Messenger = ({
 
   // Helper function to determine if message is from sender
   const isMessageFromSender = (message) => {
-    // If message has a type property, use it
-    if (message.type) {
-      return message.type === 'sender';
-    }
-    // If message has a sender property, use it
+    // DEBUG - sprawdzamy logikę
+    console.log('🔍 Sprawdzanie pozycji wiadomości:', {
+      messageText: message.text?.substring(0, 30),
+      messageSender: message.sender,
+      currentSenderName: senderName,
+      messageType: message.type,
+      result: message.sender === senderName
+    });
+    
+    // PRIORYTET 1: ZAWSZE sprawdzaj według aktualnego senderName i sender property!
     if (message.sender) {
       return message.sender === senderName;
     }
-    // Default: assume it's from sender if no specific info
-    return true;
+    // PRIORYTET 2: Fallback na type property (ale to może być nieaktualne)
+    if (message.type) {
+      return message.type === 'sender';
+    }
+    // PRIORYTET 3: Default - bezpieczniej założyć że to receiver
+    return false;
   };
 
   // Get the first receiver name for the header (single chat)
@@ -286,6 +301,49 @@ const Messenger = ({
             {/* Messages with Date Separators */}
             <div className="messengerMessagesList">
               {messages && messages.length > 0 && messages.map((msg, idx) => {
+                // Handle special message types
+                if (msg.type === 'date-separator') {
+                  return (
+                    <div key={msg.id} className="messengerDateSeparator">
+                      <span className="messengerDateText">
+                        {formatMessageDate(msg.date, msg.dateDisplaySettings)}
+                      </span>
+                    </div>
+                  );
+                }
+                
+                if (msg.type === 'typing') {
+                  // ZAWSZE sprawdzaj według sender property dla typingu
+                  const isFromSender = msg.sender === senderName;
+                    
+                  return (
+                    <div key={msg.id} className={`messengerMessage messengerMessage--typing ${isFromSender ? 'messengerMessage--sender' : 'messengerMessage--receiver'}`}>
+                      {!isFromSender && (
+                        <div className="messengerMessageAvatar">
+                          {getFirstReceiverImage() ? (
+                            <img 
+                              src={getFirstReceiverImage()} 
+                              alt="User avatar" 
+                              className="messengerMessageAvatarImage"
+                            />
+                          ) : (
+                            <div className="messengerMessageAvatarFallback">
+                              <FiUser className="messengerMessageAvatarIcon" />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      <div className="messengerMessageBubble messengerMessageBubble--typing">
+                        <div className="messengerTypingIndicator">
+                          <span className="messengerTypingDot"></span>
+                          <span className="messengerTypingDot"></span>
+                          <span className="messengerTypingDot"></span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+                
                 const isFromSender = isMessageFromSender(msg);
                 
                 // Sprawdzamy czy wiadomość ma treść (tekst lub obrazy)
@@ -407,27 +465,66 @@ const Messenger = ({
         {showFooter && (
           <div className="messengerInput">
             <div className="messengerInputContainer">
+
+
               <div className="messengerInputLeft">
                 <button className="messengerInputButton">
-                  <FiPlusCircle   className="messengerInputIcon" />
+                  <MdMic className="messengerInputIcon" />
                 </button>
+
                 <button className="messengerInputButton">
                   <FiImage className="messengerInputIcon" />
                 </button>
+
                 <button className="messengerInputButton">
-                  <TbFileSmile  className="messengerInputIcon" />
+                  <FiFile className="messengerInputIcon" />
                 </button>
+
+                <button className="messengerInputButton">
+                  <BsFiletypeGif   className="messengerInputIcon" />
+                </button>
+
+                {/* <button className="messengerInputButton">
+                  <FiPlusCircle   className="messengerInputIcon" />
+                </button> */}
+
+                {/* <button className="messengerInputButton">
+                  <FiImage className="messengerInputIcon" />
+                </button> */}
+
+                {/* <button className="messengerInputButton">
+                  <TbFileSmile  className="messengerInputIcon" />
+                </button> */}
               </div>
 
+
+
               <div className="messengerInputCenter">
-                <textarea
-                  className="messengerInputField"
-                  placeholder="Type a message..."
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  rows="1"
-                />
+                  <div className="messengerInputCenterOne" style={{position: 'relative', width: '100%'}}>
+                    <textarea
+                      className="messengerInputField"
+                      placeholder="Type a message..."
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      rows="1"
+                      style={{paddingRight: '38px'}}
+                    />
+                    <FaRegSmile 
+                      className="messengerInputEmojiIcon"
+                      style={{
+                        position: 'absolute',
+                        right: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        cursor: 'pointer',
+                        color: '#64748b',
+                        width: '22px',
+                        height: '22px',
+                        zIndex: 2
+                      }}
+                    />
+                  </div>
               </div>
 
               <div className="messengerInputRight">
@@ -435,7 +532,8 @@ const Messenger = ({
                   className="messengerSendButton"
                   onClick={handleSendMessage}
                 >
-                  <IoSend className="messengerSendIcon" />
+                  {/* <IoSend className="messengerSendIcon" /> */}
+                  <AiFillLike className='messengerSendButtonIcon' />
                 </button>
               </div>
             </div>

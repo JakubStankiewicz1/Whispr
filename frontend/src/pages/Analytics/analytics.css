@@ -1,0 +1,485 @@
+.analytics {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.analyticsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header */
+.analyticsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  background-color: #ffffff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.analyticsBackButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+}
+
+.analyticsBackButton:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  transform: translateX(-2px);
+}
+
+.analyticsBackIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.analyticsTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.analyticsHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.analyticsUpdateTime {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Content */
+.analyticsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Stats Grid */
+.analyticsStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.analyticsStatCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.analyticsStatCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.analyticsStatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.analyticsStatIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.analyticsStatIcon--messages {
+  background: linear-gradient(135deg, #0084FF, #0066CC);
+}
+
+.analyticsStatIcon--users {
+  background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.analyticsStatIcon--time {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.analyticsStatIcon--engagement {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+}
+
+.analyticsStatLabel {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.analyticsStatValue {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.analyticsStatChange {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.analyticsStatChange--positive {
+  color: #10B981;
+}
+
+.analyticsStatChange--negative {
+  color: #64748b;
+}
+
+.analyticsStatChangeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Charts Grid */
+.analyticsChartsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.analyticsChartCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.analyticsChartCard--full {
+  grid-column: 1 / -1;
+}
+
+.analyticsChartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.analyticsChartHeader h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.analyticsChartFilter {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #64748b;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+/* Bar Chart */
+.analyticsChart {
+  height: 200px;
+}
+
+.analyticsChartBars {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 160px;
+  margin-bottom: 16px;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.analyticsChartBar {
+  background: linear-gradient(180deg, #0084FF 0%, #0066CC 100%);
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  flex: 1;
+  max-width: 32px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: chartBarGrow 1s ease-out;
+}
+
+.analyticsChartBar:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.analyticsChartBar:hover::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1e293b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@keyframes chartBarGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: inherit;
+  }
+}
+
+.analyticsChartLabels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.analyticsChartLabel {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+  flex: 1;
+  max-width: 32px;
+}
+
+/* Platform Usage */
+.analyticsPlatformList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.analyticsPlatformItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.analyticsPlatformInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.analyticsPlatformColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.analyticsPlatformName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+  truncate: true;
+}
+
+.analyticsPlatformUsage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 120px;
+}
+
+.analyticsPlatformBar {
+  height: 8px;
+  border-radius: 4px;
+  min-width: 0;
+  flex: 1;
+  animation: platformBarGrow 1s ease-out;
+}
+
+@keyframes platformBarGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: inherit;
+  }
+}
+
+.analyticsPlatformPercent {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 35px;
+  text-align: right;
+}
+
+/* Line Chart */
+.analyticsChartLegend {
+  display: flex;
+  gap: 24px;
+}
+
+.analyticsChartLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.analyticsChartLegendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.analyticsLineChart {
+  height: 200px;
+  margin-top: 16px;
+}
+
+.analyticsLineChartSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Insights */
+.analyticsInsights {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.analyticsInsights h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.analyticsInsightsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.analyticsInsight {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border-left: 4px solid #0084FF;
+  transition: all 0.2s ease;
+}
+
+.analyticsInsight:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 132, 255, 0.1);
+}
+
+.analyticsInsightIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.analyticsInsightContent h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.analyticsInsightContent p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .analyticsChartsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .analyticsContainer {
+    padding: 16px;
+  }
+  
+  .analyticsHeader {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .analyticsTitle {
+    font-size: 24px;
+  }
+  
+  .analyticsStatsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .analyticsStatCard {
+    padding: 20px;
+  }
+  
+  .analyticsStatValue {
+    font-size: 28px;
+  }
+  
+  .analyticsInsightsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .analyticsChartLegend {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .analyticsStatsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .analyticsPlatformUsage {
+    min-width: 100px;
+  }
+}

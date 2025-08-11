@@ -77,6 +77,11 @@ const Message = ({
       onChangeRef.current(currentMessageData);
     }
   }, [text, type, senderName, receiverNames, receiverIdx, images, selectedDate, dateDisplaySettings, forceDateDisplay]);
+
+  // Call onChange when type or receiverIdx changes (for switch functionality)
+  useEffect(() => {
+    callOnChange();
+  }, [type, receiverIdx, callOnChange]);
   
   const isActive = focused || text || images.length > 0;
   const displayName = type === 'sender' ? (senderName || 'Sender') : (receiverNames && receiverNames[receiverIdx]) || 'Receiver';
@@ -340,8 +345,7 @@ const Message = ({
         setReceiverIdx(0);
       }
     }
-    // Call onChange after state changes
-    setTimeout(callOnChange, 0);
+    // Nie wywołujemy callOnChange bezpośrednio - useEffect to zrobi
   };
   
   const handleTextChange = (e) => {
@@ -368,11 +372,6 @@ const Message = ({
       onRemove();
     }
   };
-
-  // Call onChange when images change
-  useEffect(() => {
-    callOnChange();
-  }, [images, callOnChange]);
   
   const currentImage = getCurrentImage();
   

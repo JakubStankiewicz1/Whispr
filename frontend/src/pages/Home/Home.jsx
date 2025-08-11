@@ -82,6 +82,11 @@ const Home = () => {
 
   // Platform state
   const [selectedPlatform, setSelectedPlatform] = useState(initial?.selectedPlatform ?? 'Messenger');
+  
+  // Animation state for preview
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [originalMessages, setOriginalMessages] = useState([]);
+  const [animationMessages, setAnimationMessages] = useState([]);
 
   // Zapisuj stan do localStorage przy każdej zmianie
   useEffect(() => {
@@ -111,6 +116,39 @@ const Home = () => {
       idx === 0 ? { ...msg, dateDisplaySettings: globalDateSettings } : msg
     ));
   }, [globalDateSettings]);
+
+  // WAŻNE: Aktualizuj właściwość sender w wiadomościach gdy zmienia się senderName lub receiverNames
+  useEffect(() => {
+    console.log('🔧 Aktualizowanie sender w wiadomościach...', { senderName, receiverNames });
+    setMessages(prev => prev.map(msg => {
+      let newSender = msg.sender;
+      
+      // Aktualizuj sender na podstawie typu wiadomości
+      if (msg.type === 'sender') {
+        newSender = senderName;
+      } else if (msg.type === 'receiver') {
+        newSender = receiverNames[0] || 'Friend';
+      }
+      
+      console.log('📝 Aktualizacja wiadomości:', { 
+        text: msg.text?.substring(0, 20), 
+        oldSender: msg.sender, 
+        newSender, 
+        type: msg.type 
+      });
+      
+      return { ...msg, sender: newSender };
+    }));
+  }, [senderName, receiverNames]);
+
+  // Zatrzymaj animację jeśli użytkownik zmienia dane podczas animacji
+  useEffect(() => {
+    if (isAnimating) {
+      setIsAnimating(false);
+      setAnimationMessages([]);
+      setOriginalMessages([]);
+    }
+  }, [senderName, receiverNames, messages]); // Nie włączaj isAnimating w dependencies!
 
   // Funkcja do resetowania wszystkich ustawień do domyślnych
   const handleResetToDefaults = () => {
@@ -165,6 +203,98 @@ const Home = () => {
     // Nie resetujemy selectedPlatform - zachowujemy aktualnie wybraną platformę
   };
 
+  // Funkcja do uruchomienia animacji preview
+  const handlePreviewStart = async () => {
+    if (isAnimating || !messages || messages.length === 0) return;
+    
+    // Zapisz oryginalne wiadomości - ale tylko te które nie są typu typing lub date-separator
+    const originalMessagesFiltered = messages.filter(msg => 
+      msg.type !== 'typing' && msg.type !== 'date-separator'
+    );
+    setOriginalMessages([...originalMessagesFiltered]);
+    setIsAnimating(true);
+    
+    // Sortuj wiadomości po dacie
+    const sortedMessages = [...originalMessagesFiltered].sort((a, b) => {
+      const dateA = new Date(a.date || a.timestamp || 0);
+      const dateB = new Date(b.date || b.timestamp || 0);
+      return dateA - dateB;
+    });
+    
+    // Rozpocznij animację z separatorem daty
+    setAnimationMessages([]);
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    if (sortedMessages.length > 0) {
+      setAnimationMessages([{
+        id: 'date-separator-' + Date.now(),
+        text: '',
+        type: 'date-separator',
+        date: sortedMessages[0].date || new Date(),
+        dateDisplaySettings: sortedMessages[0].dateDisplaySettings || globalDateSettings
+      }]);
+    }
+    
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Dodawaj wiadomości po kolei
+    for (let i = 0; i < sortedMessages.length; i++) {
+      const currentMsg = sortedMessages[i];
+      
+      // WAŻNE: Zawsze sprawdzaj względem aktualnego senderName!
+      const isCurrentMsgFromSender = currentMsg.sender === senderName;
+      
+      // Pokaż kropki oczekiwania przed wiadomością
+      setAnimationMessages(prev => [...prev, {
+        id: 'typing-' + Date.now() + i,
+        text: '...',
+        type: 'typing',
+        sender: currentMsg.sender, // Zachowaj oryginalnego sendera
+        date: new Date()
+      }]);
+      
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Usuń kropki oczekiwania i dodaj prawdziwą wiadomość
+      setAnimationMessages(prev => [
+        ...prev.filter(msg => msg.type !== 'typing'),
+        {
+          ...currentMsg,
+          // WAŻNE: Typ bazuje na aktualnym senderName, nie na oryginalnym type
+          type: isCurrentMsgFromSender ? 'sender' : 'receiver'
+        }
+      ]);
+      
+      // Czekaj 3 sekundy przed następną wiadomością (oprócz ostatniej)
+      if (i < sortedMessages.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+    }
+    
+    // Czekaj 2 sekundy, potem zakończ animację
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Zakończ animację
+    setAnimationMessages([]);
+    setIsAnimating(false);
+    setOriginalMessages([]);
+  };
+
+  // Funkcja do zatrzymania animacji (jeśli trwa)
+  const stopAnimation = () => {
+    if (isAnimating) {
+      setAnimationMessages([]);
+      setIsAnimating(false);
+      setOriginalMessages([]);
+    }
+  };
+
+  // Zatrzymuj animację gdy zmieniają się kluczowe dane
+  useEffect(() => {
+    stopAnimation();
+  }, [senderName, receiverNames, messages]);
+
   return (
     <div className={`home home--${selectedDevice}`}>
         <LeftSidebar 
@@ -194,7 +324,7 @@ const Home = () => {
           receiverNames={receiverNames} 
           receiverImages={receiverImages} 
           receiverStatuses={receiverStatuses}
-          messages={messages} 
+          messages={isAnimating ? animationMessages : messages} 
           selectedDevice={selectedDevice} 
           setSelectedDevice={setSelectedDevice}
           chatType={chatType}
@@ -211,6 +341,8 @@ const Home = () => {
           onReset={handleResetToDefaults}
           selectedPlatform={selectedPlatform}
           setSelectedPlatform={setSelectedPlatform}
+          onPreviewStart={handlePreviewStart}
+          isAnimating={isAnimating}
         />
     </div>
   )

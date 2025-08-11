@@ -499,6 +499,16 @@
 
 .messengerInputCenter {
   flex: 1;
+  display: flex;
+  flex-direction: row;
+
+  /* background-color: blue; */
+}
+
+.messengerInputCenterOne {
+  width: 100%;
+  display: flex;
+  position: relative;
 }
 
 .messengerInputField {
@@ -523,6 +533,11 @@
 
 .messengerInputField::placeholder {
   color: #94a3b8;
+}
+
+.messengerInputCenterTwo {
+  position: absolute;
+  transform: translateX(100%);
 }
 
 .messengerInputRight {
@@ -715,4 +730,62 @@
   align-items: flex-end;
   justify-content: flex-end;
   margin-bottom: 8px;
+}
+
+/* Typing Indicator Styles */
+.messengerMessage--typing {
+  animation: fadeInTyping 0.3s ease-in;
+}
+
+.messengerMessageBubble--typing {
+  background-color: #f0f2f5 !important;
+  padding: 12px 16px;
+}
+
+.messengerTypingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.messengerTypingDot {
+  width: 8px;
+  height: 8px;
+  background-color: #65676b;
+  border-radius: 50%;
+  animation: typingPulse 1.4s infinite ease-in-out;
+}
+
+.messengerTypingDot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.messengerTypingDot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.messengerTypingDot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes typingPulse {
+  0%, 80%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fadeInTyping {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
