@@ -5,6 +5,7 @@ import { IoSend } from 'react-icons/io5';
 import { TbFileSmile } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
 import { FiPlusCircle } from "react-icons/fi";
+import { FiCamera } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdMic } from 'react-icons/md';
@@ -12,6 +13,7 @@ import { FiFile } from 'react-icons/fi';
 import { BsFiletypeGif, BsEmojiSmile } from 'react-icons/bs';
 import { AiFillLike } from 'react-icons/ai';
 import { FaRegSmile } from "react-icons/fa";
+import { FiPhone, FiVideo, FiMoreVertical } from "react-icons/fi";
 // import { AiFillLike } from "react-icons/ai";
 
 const Messenger = ({ 
@@ -264,7 +266,7 @@ const Messenger = ({
         {/* Header */}
         {showHeader && (
           <div className="messengerHeader">
-            <div className="messengerHeaderContainer">
+            <div className="messengerHeaderContainer" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
               <div className="messengerHeaderLeft">
                 <div className="messengerHeaderAvatar">
                   {headerImage ? (
@@ -290,6 +292,30 @@ const Messenger = ({
                     {getHeaderStatus()}
                   </p>
                 </div>
+              </div>
+              <div className="messengerHeaderRight" style={{display: 'flex', alignItems: 'center', gap: '18px'}}>
+                {selectedDevice === 'mobile' ? (
+                  <>
+                    <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
+                      <FiPhone style={{width: '22px', height: '22px', color: '#64748b'}} />
+                    </button>
+                    <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
+                      <FiVideo style={{width: '22px', height: '22px', color: '#64748b'}} />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
+                      <FiPhone style={{width: '22px', height: '22px', color: '#64748b'}} />
+                    </button>
+                    <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
+                      <FiVideo style={{width: '22px', height: '22px', color: '#64748b'}} />
+                    </button>
+                    <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
+                      <FiMoreVertical style={{width: '22px', height: '22px', color: '#64748b'}} />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -468,33 +494,37 @@ const Messenger = ({
 
 
               <div className="messengerInputLeft">
-                <button className="messengerInputButton">
-                  <MdMic className="messengerInputIcon" />
-                </button>
-
-                <button className="messengerInputButton">
-                  <FiImage className="messengerInputIcon" />
-                </button>
-
-                <button className="messengerInputButton">
-                  <FiFile className="messengerInputIcon" />
-                </button>
-
-                <button className="messengerInputButton">
-                  <BsFiletypeGif   className="messengerInputIcon" />
-                </button>
-
-                {/* <button className="messengerInputButton">
-                  <FiPlusCircle   className="messengerInputIcon" />
-                </button> */}
-
-                {/* <button className="messengerInputButton">
-                  <FiImage className="messengerInputIcon" />
-                </button> */}
-
-                {/* <button className="messengerInputButton">
-                  <TbFileSmile  className="messengerInputIcon" />
-                </button> */}
+                {selectedDevice === 'mobile' ? (
+                  <>
+                    <button className="messengerInputButton">
+                      <FiPlusCircle className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <FiCamera className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <FiImage className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <MdMic className="messengerInputIcon" />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button className="messengerInputButton">
+                      <MdMic className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <FiImage className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <FiFile className="messengerInputIcon" />
+                    </button>
+                    <button className="messengerInputButton">
+                      <BsFiletypeGif className="messengerInputIcon" />
+                    </button>
+                  </>
+                )}
               </div>
 
 
