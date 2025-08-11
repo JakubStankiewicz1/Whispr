@@ -57,14 +57,79 @@
 }
 
 .messengerHeaderAvatar {
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
-  background-color: #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border: 1px solid #CDD0D3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f4f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #e0e2e6;
+  overflow: hidden;
+  position: relative;
+}
+/* Avatar usera w headerze Messengera - styl 1:1 jak na obrazku */
+.messengerHeaderAvatarIcon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* background: #f4f6fa; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background-color: #E2E5E9;
+  border: 1px solid #CED1D4;
+}
+
+.messengerHeaderAvatarIconContainer {
+  /* width: 22px; */
+  /* height: 22px; */
+  /* border-radius: 50%; */
+  /* background: #cfd4db; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  /* top: 8px; */
+  /* left: 9px; */
+}
+
+.messengerHeaderAvatarIcon-user svg {
+  width: 22px;
+  height: 22px;
+  color: #b0b3b8;
+  position: relative;
+  z-index: 2;
+}
+
+.messengerHeaderAvatarIconContainerIcon {
+  width: 28px;
+  height: 28px;
+
+  color: #6F7276;
+  transform: translateY(6px);
+}
+
+.messengerHeaderAvatarIcon-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 13px;
+  background: #e0e2e6;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  z-index: 1;
 }
 
 .messengerHeaderAvatarText {
@@ -455,7 +520,7 @@
 .messengerInput {
   width: 100%;
   background-color: #ffffff;
-  border-top: 1px solid #e2e8f0;
+  /* border-top: 1px solid #e2e8f0; */
   padding: 16px 20px;
   display: flex;
   align-items: center;
@@ -495,6 +560,7 @@
 .messengerInputIcon {
   width: 18px;
   height: 18px;
+  color: #0070F6;
 }
 
 .messengerInputCenter {
@@ -546,21 +612,28 @@
 }
 
 .messengerSendButton {
-  width: 40px;
-  height: 40px;
   border: none;
-  background-color: #3b82f6;
-  border-radius: 50%;
+  background: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
-  color: #ffffff;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.messengerSendButtonIcon {
+  color: #0070F6;
+  width: 22px;
+  height: 22px;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .messengerSendButton:hover {
-  background-color: #2563eb;
+  background: none;
 }
 
 .messengerSendIcon {
@@ -616,6 +689,7 @@
 }
 
 .messenger--dark .messengerHeader {
+
   background-color: #2d2d2d;
   border-bottom-color: #404040;
 }

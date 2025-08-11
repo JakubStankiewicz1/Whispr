@@ -15,6 +15,10 @@ import { AiFillLike } from 'react-icons/ai';
 import { FaRegSmile } from "react-icons/fa";
 import { FiPhone, FiVideo, FiMoreVertical } from "react-icons/fi";
 // import { AiFillLike } from "react-icons/ai";
+import { FaUser } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa6";
+import { HiVideoCamera } from "react-icons/hi";
+import { BsThreeDots } from "react-icons/bs";
 
 const Messenger = ({ 
   senderName, 
@@ -281,7 +285,12 @@ const Messenger = ({
                       }}
                     />
                   ) : (
-                    <span className="messengerHeaderAvatarText">{getHeaderInitial()}</span>
+                      <div className="messengerHeaderAvatarIcon">
+                        <div className="messengerHeaderAvatarIconContainer">
+                          <FaUser className='messengerHeaderAvatarIconContainerIcon' />
+                        </div>
+                        {/* <div className="messengerHeaderAvatarIcon-bottom"></div> */}
+                      </div>
                   )}
                 </div>
                 <div className="messengerHeaderInfo">
@@ -297,22 +306,22 @@ const Messenger = ({
                 {selectedDevice === 'mobile' ? (
                   <>
                     <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                      <FiPhone style={{width: '22px', height: '22px', color: '#64748b'}} />
+                      <FaPhone style={{width: '22px', height: '22px', color: '#AA00FF'}} />
                     </button>
                     <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                      <FiVideo style={{width: '22px', height: '22px', color: '#64748b'}} />
+                      <HiVideoCamera  style={{width: '22px', height: '22px', color: '#AA00FF'}} />
                     </button>
                   </>
                 ) : (
                   <>
                     <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                      <FiPhone style={{width: '22px', height: '22px', color: '#64748b'}} />
+                      <FaPhone style={{width: '18px', height: '18px', color: '#AA00FF'}} />
                     </button>
                     <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                      <FiVideo style={{width: '22px', height: '22px', color: '#64748b'}} />
+                      <HiVideoCamera style={{width: '24px', height: '24px', color: '#AA00FF'}} />
                     </button>
                     <button className="messengerHeaderIconButton" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                      <FiMoreVertical style={{width: '22px', height: '22px', color: '#64748b'}} />
+                      <BsThreeDots  style={{width: '23px', height: '23px', color: '#AA00FF'}} />
                     </button>
                   </>
                 )}
